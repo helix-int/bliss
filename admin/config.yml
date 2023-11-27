@@ -734,21 +734,17 @@ collections:
             label: Text
             name: '-bd2c9ad'
             widget: string
-          - hint: 'Original text: Welcome to Bliss!, key: -1057edf7'
+          - hint: 'Original text: Book an appointment:, key: 4d7d0677'
             label: Text
-            name: '-1057edf7'
+            name: 4d7d0677
             widget: string
-          - hint: >-
-              Original text: Thank you! Your submission has been received!, key:
-              5a0ea5a1
+          - hint: "Original text: BOOK\_ONLINE, key: -6f26e816"
             label: Text
-            name: 5a0ea5a1
+            name: '-6f26e816'
             widget: string
-          - hint: >-
-              Original text: Oops! Something went wrong while submitting the
-              form., key: -7c112e99
+          - hint: "Original text: CALL\_US: (616) 446-5035, key: -440e413c"
             label: Text
-            name: '-7c112e99'
+            name: '-440e413c'
             widget: string
           - hint: 'Original text: Home, key: 2268ff'
             label: Text
@@ -817,10 +813,6 @@ collections:
           - hint: 'Original text: Shop, key: 274f16'
             label: Text
             name: 274f16
-            widget: string
-          - hint: 'Original text: pages, key: 657efc4'
-            label: Text
-            name: 657efc4
             widget: string
           - hint: 'Original text: get in touch, key: -5bfbfdf2'
             label: Text
@@ -895,6 +887,18 @@ collections:
           - hint: 'Original text: Send us a message, key: 20046dbe'
             label: Text
             name: 20046dbe
+            widget: string
+          - hint: >-
+              Original text: Thank you! Your submission has been received!, key:
+              5a0ea5a1
+            label: Text
+            name: 5a0ea5a1
+            widget: string
+          - hint: >-
+              Original text: Oops! Something went wrong while submitting the
+              form., key: -7c112e99
+            label: Text
+            name: '-7c112e99'
             widget: string
           - hint: 'Original text: Our resourses, key: 7f724e41'
             label: Text
@@ -1572,6 +1576,10 @@ collections:
             label: Text
             name: '-56736d3d'
             widget: string
+          - hint: 'Original text: Or call us at , key: -310b78d0'
+            label: Text
+            name: '-310b78d0'
+            widget: string
           - hint: "Original text: CoUPLES\_THERAPY, key: -e6c5ee4"
             label: Text
             name: '-e6c5ee4'
@@ -1792,21 +1800,6 @@ collections:
             label: Text
             name: dc89
             widget: string
-          - hint: 'Original text: Spa news, key: 7a3807ef'
-            label: Text
-            name: 7a3807ef
-            widget: string
-          - hint: 'Original text: Our tips from the world of wellness, key: -3c4a5c31'
-            label: Text
-            name: '-3c4a5c31'
-            widget: string
-          - hint: >-
-              Original text: Our experts share their insights on massage
-              techniques, spa products, and other wellbeing best practices.,
-              key: 7a12fbbc
-            label: Text
-            name: 7a12fbbc
-            widget: text
           - hint: 'Original text: Affordable Quality Care, key: -106a3a8'
             label: Text
             name: '-106a3a8'
@@ -2131,6 +2124,10 @@ collections:
           - hint: 'Original text: Salt & Aroma, key: 37f5522e'
             label: Text
             name: 37f5522e
+            widget: string
+          - hint: 'Original text: Spa news, key: 7a3807ef'
+            label: Text
+            name: 7a3807ef
             widget: string
           - hint: 'Original text: Our tips from the world of beauty, key: 61cf82a6'
             label: Text
@@ -2598,6 +2595,10 @@ collections:
             label: Text
             name: 7e85e19e
             widget: string
+          - hint: 'Original text: No matching results., key: -75764c4'
+            label: Text
+            name: '-75764c4'
+            widget: string
           - hint: 'Original text: Grid System, key: -568e37b7'
             label: Text
             name: '-568e37b7'
@@ -3047,6 +3048,14 @@ collections:
             label: Link
             name: 636eb9b8
             widget: string
+          - hint: 'Original link: https://calendly.com/bliss-spa, key: -675de4fd'
+            label: Link
+            name: '-675de4fd'
+            widget: string
+          - hint: 'Original link: tel:+16164465035, key: -4bd0a163'
+            label: Link
+            name: '-4bd0a163'
+            widget: string
           - hint: 'Original link: http://bit.ly/3VZO0iX, key: 53ab78d8'
             label: Link
             name: 53ab78d8
@@ -3107,14 +3116,6 @@ collections:
           - hint: 'Original link: http://www.twitter.com, key: -5ba5d2a3'
             label: Link
             name: '-5ba5d2a3'
-            widget: string
-          - hint: 'Original link: #email-form-2, key: 3e1cec5d'
-            label: Link
-            name: 3e1cec5d
-            widget: string
-          - hint: 'Original link: #email-3, key: -2dd90341'
-            label: Link
-            name: '-2dd90341'
             widget: string
           - hint: 'Original link: https://unsplash.com/, key: 6bccb4d'
             label: Link
@@ -3650,7 +3651,20 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: i57338d1e
+            name: i294352ef
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i2af82b8e
             widget: object
             fields:
               - name: url
@@ -3833,6 +3847,19 @@ collections:
                 required: false
           - label: Image
             name: i778d041a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i57338d1e
             widget: object
             fields:
               - name: url

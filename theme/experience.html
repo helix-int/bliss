@@ -15,6 +15,9 @@
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="{{ settings.site.favicon | default: "/assets/images/favicon.png" }}" rel="shortcut icon" type="image/x-icon">
   <link href="{{ settings.site.apple_touch_icon | default: "/assets/images/webclip.png" }}" rel="apple-touch-icon">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async=""></script>
+  <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/bliss-spa?hide_gdpr_banner=1&primary_color=8ca472', text: 'Book an Appointment', color: '#8ca472', textColor: '#ffffff', branding: true }); }</script>
 {{ settings.site.header_additional_content }}{%- include "partials/_site-css-variables" -%}<style>.w-video.w-embed {
             aspect-ratio: 16 / 9;
         }</style><style>picture { border: 0;
@@ -25,142 +28,12 @@
   <div data-animation="over-left" class="navbar-fixed-2 transparent-header-one-row w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1">
     <div class="nav-container-2 w-container">
       <div class="nav-menu-wrapper-2">
-        <a href="{{ links.2f }}" class="brand-3 w-nav-brand">{%- image "/assets/images/bliss-logo-white_1bliss-logo-white.webp", "", '[]', 'loading="lazy" class="image-bliss"' -%}</a>
+        <a href="{{ links.2f }}" class="brand-3 w-nav-brand">{%- image "/assets/images/logo-white.webp", "", '[]', 'loading="lazy" class="image-bliss"' -%}</a>
         <nav role="navigation" class="nav-menu-2 w-nav-menu">
           <div class="nav-menu-shadow-overlay-2">
             <div class="tablet-menu-2">
               <a href="{{ links.2f }}" class="logo-mobile-2 w-nav-brand">{%- image "/assets/images/bliss-logo-green_1bliss-logo-green.webp", "", '[]', 'loading="lazy" class="image-bliss"' -%}</a>
               <div class="close-menu-button-2 w-nav-button">{%- image "/assets/images/close-orange_1close-orange.png", "", '[]', 'loading="lazy" class="nav-close-icon-2"' -%}{%- image "/assets/external/62849b600f97da9768555b15_x_icon.png", "", '[]', 'loading="lazy" class="nav-close-icon-copy"' -%}</div>
-            </div>
-            <div data-hover="true" data-delay="0" data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d05" class="nav-dropdown-2 w-dropdown">
-              <div class="nav-dropdown-toggle-2 w-dropdown-toggle">
-                <div class="nav-dropdown-icon-2 w-icon-dropdown-toggle"></div>
-                <p class="nav-item-title-2">{{ texts.-1af4aa10 }}</p>
-                <div class="yellow-strip"></div>
-              </div>
-              <nav class="nav-dropdown-list-2 big-menu w-dropdown-list">
-                <div class="megamenu-dropdown-wrapper-2">
-                  <div class="megamenu-dropdown-wrap">
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.35a47a1b }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.21098e90 }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.-3ac9850b }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-233f9c97 }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.-347dcf8a }}" aria-current="page" class="nav-dropdown-link-2 w-dropdown-link w--current">{{ texts.17d0456a }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.3d5aa505 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.1c7731b }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.761ecb39 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-2827090e }}</a>
-                    </div>
-                  </div>
-                  <div class="megamenu-dropdown-wrap">
-                    <div data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d26" class="nav-dropdown-link-wrapper-2">
-                      <a href="{{ links.-d9445a8 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.18042ba6 }}</a>
-                      <div class="nav-dropdown-line-2"></div>
-                    </div>
-                    <div data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d2b" class="nav-dropdown-link-wrapper-2">
-                      <a href="{{ links.-1b5f74d4 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.1590c3d4 }}</a>
-                      <div class="nav-dropdown-line-2"></div>
-                    </div>
-                    <div data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d2f" class="nav-dropdown-link-wrapper-2">
-                      <a href="{{ links.24a44a1f }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.2868ef7f }}</a>
-                      <div class="nav-dropdown-line-2"></div>
-                    </div>
-                    <div data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d33" class="nav-dropdown-link-wrapper-2">
-                      <a href="{{ links.-4e1c9a00 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.5ebc673e }}</a>
-                      <div class="nav-dropdown-line-2"></div>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <a href="{{ links.2c62888 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.10ef6 }}</a>
-                      <div class="nav-dropdown-line-2"></div>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-            </div>
-            <div data-hover="true" data-delay="0" data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d47" class="nav-dropdown-2 portfolio w-dropdown">
-              <div class="nav-dropdown-toggle-2 w-dropdown-toggle">
-                <div class="nav-dropdown-icon-2 w-icon-dropdown-toggle"></div>
-                <p class="nav-item-title-2">{{ texts.-7f24ffa2 }}</p>
-                <div class="yellow-strip"></div>
-              </div>
-              <nav class="nav-dropdown-list-2 w-dropdown-list">
-                <div data-w-id="9dba8fa9-1c47-a4e0-6082-77fa68b51310" class="nav-dropdown-link-wrapper-2">
-                  <div class="nav-dropdown-line-2"></div>
-                  <a href="{{ links.-661a1d7f }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.13a96ef2 }}</a>
-                </div>
-                <div data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d4e" class="nav-dropdown-link-wrapper-2">
-                  <div class="nav-dropdown-line-2"></div>
-                  <a href="{{ links.-e875046 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.641e32e4 }}</a>
-                </div>
-                <div data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d52" class="nav-dropdown-link-wrapper-2">
-                  <div class="nav-dropdown-line-2"></div>
-                  <a href="{{ links.-75359eee }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.2580def9 }}</a>
-                </div>
-                <div class="nav-dropdown-link-wrapper-2">
-                  <div class="nav-dropdown-line-2"></div>
-                  <a href="{{ links.62d89b66 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-38ae26a8 }}</a>
-                </div>
-              </nav>
-            </div>
-            <div data-hover="true" data-delay="0" data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d5a" class="nav-dropdown-2 w-dropdown">
-              <div class="nav-dropdown-toggle-2 w-dropdown-toggle">
-                <div class="nav-dropdown-icon-2 w-icon-dropdown-toggle"></div>
-                <p class="nav-item-title-2">{{ texts.-507b3926 }}</p>
-                <div class="yellow-strip"></div>
-              </div>
-              <nav class="nav-dropdown-list-2 mini-menu w-dropdown-list">
-                <div class="nav-dropdown-link-wrapper-2">
-                  <div class="nav-dropdown-line-2"></div>
-                  <a href="{{ links.-42cf3076 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-32f88c2a }}</a>
-                </div>
-                <div class="nav-dropdown-link-wrapper-2">
-                  <div class="nav-dropdown-line-2"></div>
-                  <a href="{{ links.-5bfe5326 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.569c053 }}</a>
-                </div>
-                <div class="nav-dropdown-link-wrapper-2">
-                  <div class="nav-dropdown-line-2"></div>
-                  <a href="{{ links.44e50d93 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.5b6744ed }}</a>
-                </div>
-              </nav>
-            </div>
-            <div data-hover="true" data-delay="0" data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d6d" class="nav-dropdown-2 w-dropdown">
-              <div class="nav-dropdown-toggle-2 w-dropdown-toggle">
-                <p class="nav-item-title-2">{{ texts.1fa3c2 }}</p>
-                <div class="nav-dropdown-icon-2 w-icon-dropdown-toggle"></div>
-                <div class="yellow-strip"></div>
-              </div>
-              <nav class="nav-dropdown-list-2 w-dropdown-list">
-                <div data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d74" class="nav-dropdown-link-wrapper-2">
-                  <a href="{{ links.ce8312d }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-51e0aafc }}</a>
-                  <div class="nav-dropdown-line-2"></div>
-                </div>
-                <div data-w-id="d2dc4dcd-8cd2-5305-5520-baab4b0286b0" class="nav-dropdown-link-wrapper-2">
-                  <a href="{{ links.16d5a7d9 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-e17d1ec }}</a>
-                  <div class="nav-dropdown-line-2"></div>
-                </div>
-                <div data-w-id="33adfd55-f642-01cc-d3b3-a9790947c4aa" class="nav-dropdown-link-wrapper-2">
-                  <a href="{{ links.-578d1b1 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.3b5100de }}</a>
-                  <div class="nav-dropdown-line-2"></div>
-                </div>
-                <div data-w-id="ef0ba1f1-6933-05a2-00f7-4fb939d26dd6" class="nav-dropdown-link-wrapper-2">
-                  <a href="{{ links.24ba9a05 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.24da77bc }}</a>
-                  <div class="nav-dropdown-line-2"></div>
-                </div>
-                <div data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d7c" class="nav-dropdown-link-wrapper-2">
-                  <a href="{{ links.bbc1807 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.1bdfe7c4 }}</a>
-                  <div class="nav-dropdown-line-2"></div>
-                </div>
-              </nav>
             </div>
             <div data-hover="true" data-delay="0" data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d80" class="nav-dropdown-2 contact-us w-dropdown">
               <div class="nav-dropdown-toggle-2 w-dropdown-toggle">
@@ -170,112 +43,9 @@
               <nav class="nav-dropdown-list-2 w-dropdown-list"></nav>
             </div>
             <a href="{{ links.23 }}" class="nav-link-2 hidden w-nav-link">{{ texts.274f16 }}</a>
-            <div data-hover="true" data-delay="0" data-w-id="cf40a6da-3944-edbc-dff3-432a6b9ef700" class="nav-dropdown-2 w-dropdown">
-              <div class="nav-dropdown-toggle-2 w-dropdown-toggle">
-                <div class="nav-dropdown-icon-2 w-icon-dropdown-toggle"></div>
-                <p class="nav-item-title-2">{{ texts.657efc4 }}</p>
-                <div class="yellow-strip"></div>
-              </div>
-              <nav class="nav-dropdown-list-2 big-menu-last-one w-dropdown-list">
-                <div class="megamenu-dropdown-wrapper-2">
-                  <div class="megamenu-dropdown-wrap">
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.2f }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-7ed3d6b0 }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.5377d6dc }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-7ed3d6af }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.5377d6fb }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-7ed3d6ae }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.35a47a1b }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.21098e90 }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.-3ac9850b }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-233f9c97 }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.-347dcf8a }}" aria-current="page" class="nav-dropdown-link-2 w-dropdown-link w--current">{{ texts.17d0456a }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.3d5aa505 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.1c7731b }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.761ecb39 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-2827090e }}</a>
-                    </div>
-                    <div data-w-id="cf40a6da-3944-edbc-dff3-432a6b9ef725" class="nav-dropdown-link-wrapper-2">
-                      <a href="{{ links.-d9445a8 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.18042ba6 }}</a>
-                      <div class="nav-dropdown-line-2"></div>
-                    </div>
-                    <div data-w-id="cf40a6da-3944-edbc-dff3-432a6b9ef72a" class="nav-dropdown-link-wrapper-2">
-                      <a href="{{ links.-1b5f74d4 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.1590c3d4 }}</a>
-                      <div class="nav-dropdown-line-2"></div>
-                    </div>
-                    <div data-w-id="cf40a6da-3944-edbc-dff3-432a6b9ef72e" class="nav-dropdown-link-wrapper-2">
-                      <a href="{{ links.24a44a1f }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.2868ef7f }}</a>
-                      <div class="nav-dropdown-line-2"></div>
-                    </div>
-                  </div>
-                  <div class="megamenu-dropdown-wrap">
-                    <div data-w-id="cf40a6da-3944-edbc-dff3-432a6b9ef732" class="nav-dropdown-link-wrapper-2">
-                      <a href="{{ links.-4e1c9a00 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.5ebc673e }}</a>
-                      <div class="nav-dropdown-line-2"></div>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <a href="{{ links.2c62888 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.10ef6 }}</a>
-                      <div class="nav-dropdown-line-2"></div>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.-661a1d7f }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.18b07ed2 }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.-e875046 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.641e32e4 }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.-75359eee }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.2580def9 }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.62d89b66 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-38ae26a8 }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.-42cf3076 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.-32f88c2a }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.-5bfe5326 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.569c053 }}</a>
-                    </div>
-                    <div class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.44e50d93 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.5b6744ed }}</a>
-                    </div>
-                    <div data-w-id="cf40a6da-3944-edbc-dff3-432a6b9ef73e" class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.-10adc0e9 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.c938 }}</a>
-                    </div>
-                    <div data-w-id="cf40a6da-3944-edbc-dff3-432a6b9ef73a" class="nav-dropdown-link-wrapper-2">
-                      <div class="nav-dropdown-line-2"></div>
-                      <a href="{{ links.64f73df7 }}" class="nav-dropdown-link-2 w-dropdown-link">{{ texts.ccc773a }}</a>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-            </div>
           </div>
         </nav>
-        <a href="{{ links.24a44a1f }}" class="primary-orange-button header-button w-button">{{ texts.-59e6af01 }}</a>
+        <a href="{{ links.-675de4fd }}" class="primary-orange-button header-button w-button">{{ texts.-59e6af01 }}</a>
         <form action="/search" class="search-desktop w-form">
           <div class="search-wrapper"><input type="search" class="search-wrap-input-2 w-input" autofocus="true" maxlength="256" name="query" placeholder="Enter search keyword" id="search-2" required="">
             <div class="search-bottom-line-2"></div><input type="submit" value="Search" class="primary-orange-button search w-button">
@@ -497,23 +267,23 @@
         <p data-w-id="707105ce-5744-31b8-a079-975735b79a68" style="opacity:0" class="project-description-2">{{ texts.-64cf452f }}</p>
       </div>
       <div class="about-1-video-wrapper">
-        <div data-w-id="707105ce-5744-31b8-a079-975735b79a6b" style="opacity:0" class="collection-list-wrapper-video w-dyn-list">
-          <div role="list" class="w-dyn-items">
-            <div role="listitem" class="collection-item-7 w-dyn-item">
+        {%- assign collection = collections.blog-posts | offset: 2 | limit: 1 | sort: "-created-on" -%}<div data-w-id="707105ce-5744-31b8-a079-975735b79a6b" style="opacity:0" class="collection-list-wrapper-video w-dyn-list">
+          {%- unless collection.length == 0 -%}<div role="list" class="w-dyn-items">
+            {%- for item in collection -%}<div role="listitem" class="collection-item-7 w-dyn-item">
               <a href="{{ links.23 }}" data-w-id="707105ce-5744-31b8-a079-975735b79a6e" style="opacity:0" class="about-us-video-section w-inline-block w-lightbox">
                 <div style="color:rgb(253,105,50)" class="big-play-icon-blue">{{ texts.f04b }}</div>
                 <div style="background-color:rgb(255,255,255)" class="big-play-white"></div>
                 <div class="big-play-white-animations"></div>
                 <script type="application/json" class="w-json">{"items":[{"url":"https://www.youtube.com/watch?v=QkZio6yLAmU","originalUrl":"https://www.youtube.com/watch?v=QkZio6yLAmU","width":940,"height":528,"thumbnailUrl":"https://i.ytimg.com/vi/QkZio6yLAmU/hqdefault.jpg","html":"<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FQkZio6yLAmU%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DQkZio6yLAmU&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FQkZio6yLAmU%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen=\"true\"></iframe>","type":"video"}],"group":""}</script>
               </a>
-              <a href="{{ links.23 }}" class="home-video-wrapper-item-2 w-inline-block w-lightbox">{%- image "", "", '[]', 'loading="lazy" class="image-11"' -%}
+              <a href="{{ links.23 }}" class="home-video-wrapper-item-2 w-inline-block w-lightbox">{%- image item.data.f_thumbnail-image.url, item.data.f_thumbnail-image.alt, '[]', 'loading="lazy" class="image-11"' -%}
                 <script type="application/json" class="w-json">{"items":[],"group":""}</script>
               </a>
-            </div>
-          </div>
-          <div class="w-dyn-empty">
+            </div>{%- endfor -%}
+          </div>{%- endunless -%}
+          {%- if collection.length == 0 -%}<div class="w-dyn-empty">
             <div>{{ texts.3d503d2b }}</div>
-          </div>
+          </div>{%- endif -%}
         </div>
         <div class="our-services-wrapper">
           <div class="our-services-wrap-2">
@@ -788,18 +558,9 @@
     </div>
     <div class="light-blue-container">
       <div data-w-id="058986aa-5c23-6027-ca94-fa79f04c9974" class="footer-light-blue-wrap">
-        <h2>{{ texts.-1057edf7 }}</h2>
-        <div class="contacts-footer-form w-form">
-          <form id="email-form-2" name="email-form-2" data-name="email_2" method="get" class="contacts-3-form-3" data-wf-page-id="650c5a9fb6d07b0fd3853b3d" data-wf-element-id="058986aa-5c23-6027-ca94-fa79f04c9978" data-netlify="true" data-ajax="true" data-content-type="application/x-www-form-urlencoded">
-            <div class="contact-footer-inputs-wrapper"><input type="text" class="contacts-footer-item-input w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="First name" id="name-3" required=""><input type="text" class="contacts-footer-item-input w-input" maxlength="256" name="Last-name-2" data-name="Last Name 2" placeholder="Last name" id="Last-name-2" required=""><input type="email" class="contacts-footer-item-input w-input" maxlength="256" name="email-3" data-name="Email 3" placeholder="Email" id="email-3" required=""><input type="tel" class="contacts-footer-item-input w-input" maxlength="256" name="email-3" data-name="Email 3" placeholder="Phone number" id="email-3" required=""></div><textarea placeholder="Message" maxlength="5000" id="field-4" name="field-4" required="" data-name="field" class="message-footer-item w-input"></textarea><input type="submit" value="BOOK AN APPOINTMENT" data-wait="Please wait..." class="primary-orange-button footer-button w-button">
-          </form>
-          <div class="w-form-done">
-            <div>{{ texts.5a0ea5a1 }}</div>
-          </div>
-          <div class="w-form-fail">
-            <div>{{ texts.-7c112e99 }}</div>
-          </div>
-        </div>
+        <h2>{{ texts.4d7d0677 }}</h2>
+        <a href="{{ links.-675de4fd }}" class="primary-orange-button w-button">{{ texts.-6f26e816 }}</a>
+        <a href="{{ links.-4bd0a163 }}" class="primary-orange-button w-button">{{ texts.-440e413c }}</a>
         <div class="footer-link-container">
           <a href="{{ links.2f }}" class="pages-footer-link">{{ texts.2268ff }}</a>
           <a href="{{ links.-d9445a8 }}" class="pages-footer-link">{{ texts.18042ba6 }}</a>
@@ -810,7 +571,7 @@
         </div>
         <div class="footer-rights-wrapper">
           <div class="footer-copyright-2">{{ texts.-5b10c99f }}</div>
-        </div>
+        </div>{%- image "/assets/images/logo.webp", "", '[]', 'loading="lazy"' -%}
       </div>
     </div>
   </div>

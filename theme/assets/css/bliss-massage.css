@@ -313,6 +313,7 @@ blockquote {
   background-position: 87% 97%, 25% 100%, -4% 95%, 8% 17%, 120% 4%;
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
   background-size: auto 100px, auto 150px, auto 120px, auto 100px, auto 300px;
+  margin-top: 0;
   padding-top: 0;
 }
 
@@ -2588,6 +2589,8 @@ blockquote {
   letter-spacing: .05em;
   text-transform: uppercase;
   border-radius: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 10px 20px;
   font-family: Open Sans, sans-serif;
   font-size: 14px;
@@ -2920,7 +2923,7 @@ blockquote {
 }
 
 .image-bliss {
-  height: 40px;
+  height: 70px;
 }
 
 .line-header-white, .line-white {
@@ -3197,7 +3200,8 @@ blockquote {
 .footer-link-container {
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 60px;
+  margin-top: 20px;
+  margin-bottom: 40px;
   display: flex;
 }
 
@@ -3272,10 +3276,9 @@ blockquote {
 
 .banner-slide-5 {
   height: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), var(--image-i57338d1e);
-  background-position: 0 0, 50%;
-  background-repeat: repeat, no-repeat;
-  background-size: auto, cover;
+  background-image: var(--image-i294352ef);
+  background-position: 0 0;
+  background-size: cover;
 }
 
 .home-slider-right-arrow {
@@ -3310,7 +3313,7 @@ blockquote {
   right: 0%;
 }
 
-.banner-slide-content-con-2 {
+.banner-slide-content-con-4 {
   z-index: 50;
   height: 100%;
   justify-content: center;
@@ -3324,6 +3327,7 @@ blockquote {
   max-width: 850px;
   color: var(--primary-light);
   letter-spacing: .5px;
+  margin-top: 0;
   font-size: 20px;
 }
 
@@ -3336,6 +3340,9 @@ blockquote {
 
 .banner-slide-6 {
   height: 100%;
+  background-image: var(--image-i2af82b8e);
+  background-position: 0 0;
+  background-size: cover;
 }
 
 .text-span-5 {
@@ -6820,6 +6827,7 @@ blockquote {
 .image-banner-home-1 {
   width: 100vw;
   height: 100vh;
+  filter: brightness(50%);
   object-fit: cover;
 }
 
@@ -7428,6 +7436,40 @@ blockquote {
   height: 12px;
 }
 
+.banner-slide-content-con-3 {
+  z-index: 50;
+  height: 100%;
+  background-image: var(--image-i294352ef);
+  background-position: 0 0;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 15px;
+  display: flex;
+  position: relative;
+}
+
+.heading-7 {
+  margin-top: 100px;
+}
+
+.text-block-2 {
+  color: var(--primary-light);
+  margin-top: -40px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.link {
+  color: var(--primary-light);
+  font-size: 20px;
+}
+
+.html-embed {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
 @media screen and (min-width: 1280px) {
   .section {
     padding-top: 130px;
@@ -7697,7 +7739,7 @@ blockquote {
     padding-bottom: 49px;
   }
 
-  .banner-slide-content-con-2 {
+  .banner-slide-content-con-4 {
     align-items: center;
     padding-bottom: 80px;
   }
@@ -8228,6 +8270,11 @@ blockquote {
 
   .banner-title-wrapper-2 {
     margin-top: 0;
+  }
+
+  .banner-slide-content-con-3 {
+    align-items: center;
+    padding-bottom: 80px;
   }
 }
 
