@@ -20,10 +20,13 @@
   <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/bliss-spa?hide_gdpr_banner=1&primary_color=8ca472', text: 'Book an Appointment', color: '#8ca472', textColor: '#ffffff', branding: true }); }</script>
 {{ settings.site.header_additional_content }}{%- include "partials/_site-css-variables" -%}<style>.w-video.w-embed {
             aspect-ratio: 16 / 9;
-        }</style></head>
+        }</style><style>picture { border: 0;
+        max-width: 100%;
+        vertical-align: middle;
+        display: inline-block; }</style></head>
 <body>
   <div class="coming-soon-page-wrap">
-    <div class="coming-soon-wrapper"><img src="/assets/images/bliss-logo-green_1bliss-logo-green.webp" loading="lazy" style="opacity:0" height="30" alt="" data-w-id="8b2a683f-8693-92ce-183b-f1f5dca927c0" class="image-bliss">
+    <div class="coming-soon-wrapper">{%- image "/assets/images/bliss-logo-green_1bliss-logo-green.webp", "", '[]', 'loading="lazy" style="opacity:0" height="30" data-w-id="8b2a683f-8693-92ce-183b-f1f5dca927c0" class="image-bliss"' -%}
       <h1 data-w-id="ff7be7a5-232c-8647-b49e-4afdd6cb0851" style="opacity:0" class="coming-soon-heading">{{ texts.-7d83c8c3 }}</h1>
       <p data-w-id="0ed57da7-2582-3b58-e02d-0ba20d4fb610" style="opacity:0" class="coming-soon-paragraph">{{ texts.2fbe2aaa }}</p>
       <div data-w-id="77c65c3e-1fa7-9a1e-fa8b-3c975f0ecf14" style="opacity:0" class="coming-soon-form w-form">
@@ -35,12 +38,12 @@
           <div>{{ texts.-7c112e99 }}</div>
         </div>
       </div>
-    </div><img class="coming-soon-image" src="/assets/images/soon-1.png" alt="" style="opacity:0" sizes="(max-width: 991px) 100vw, (max-width: 1279px) 46vw, 480px" data-w-id="06c0587d-e616-534e-5eae-afa76579d9ff" loading="lazy" srcset="/assets/images/soon-1-p-500.png 500w, /assets/images/soon-1.png 1400w">
+    </div>{%- image "/assets/images/soon-1.png", "", '[]', 'class="coming-soon-image" style="opacity:0" data-w-id="06c0587d-e616-534e-5eae-afa76579d9ff" loading="lazy"' -%}
   </div>
-  <a href="{{ links.53ab78d8 }}" target="_blank" class="buy-this-template w-inline-block"><img src="/assets/images/webflow-logo.svg" loading="lazy" alt="" class="btn-icon">
+  <a href="{{ links.53ab78d8 }}" target="_blank" class="buy-this-template w-inline-block">{%- image "/assets/images/webflow-logo.svg", "", '[]', 'loading="lazy" class="btn-icon"' -%}
     <div class="text-block">{{ texts.-28239c5e }}</div>
   </a>
-  <a href="{{ links.4ae71637 }}" target="_blank" class="all-templates w-inline-block"><img src="/assets/images/wcopilot.svg" loading="lazy" width="16" alt="" class="btn-icon">
+  <a href="{{ links.4ae71637 }}" target="_blank" class="all-templates w-inline-block">{%- image "/assets/images/wcopilot.svg", "", '[]', 'loading="lazy" width="16" class="btn-icon"' -%}
     <div>{{ texts.1570db3a }}</div>
   </a>
   <div class="hire-popup">
@@ -55,7 +58,7 @@
           <div>{{ texts.-7eb4752d }}</div>
         </a>
       </div>
-      <div data-w-id="6ca11bc6-470f-5429-795a-b60df65e9c7f" class="hire-popup-close"><img src="/assets/images/close-pop-up.svg" loading="lazy" alt="" class="close-popup-image"></div>
+      <div data-w-id="6ca11bc6-470f-5429-795a-b60df65e9c7f" class="hire-popup-close">{%- image "/assets/images/close-pop-up.svg", "", '[]', 'loading="lazy" class="close-popup-image"' -%}</div>
     </div>
   </div>
   <script src="/assets/external/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" crossorigin="anonymous"></script>

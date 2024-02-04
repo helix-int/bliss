@@ -18,17 +18,20 @@
   <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/bliss-spa?hide_gdpr_banner=1&primary_color=8ca472', text: 'Book an Appointment', color: '#8ca472', textColor: '#ffffff', branding: true }); }</script>
 {{ settings.site.header_additional_content }}{%- include "partials/_site-css-variables" -%}<style>.w-video.w-embed {
             aspect-ratio: 16 / 9;
-        }</style></head>
+        }</style><style>picture { border: 0;
+        max-width: 100%;
+        vertical-align: middle;
+        display: inline-block; }</style></head>
 <body>
   <div data-animation="over-left" class="navbar-fixed-2 w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1">
     <div class="nav-container-2 w-container">
       <div class="nav-menu-wrapper-2">
-        <a href="{{ links.2f }}" class="brand-bliss w-nav-brand"><img src="/assets/images/bliss-logo-green_1bliss-logo-green.webp" loading="lazy" alt="" class="image-bliss"></a>
+        <a href="{{ links.2f }}" class="brand-bliss w-nav-brand">{%- image "/assets/images/bliss-logo-green_1bliss-logo-green.webp", "", '[]', 'loading="lazy" class="image-bliss"' -%}</a>
         <nav role="navigation" class="nav-menu-2 w-nav-menu">
           <div class="nav-menu-shadow-overlay-2">
             <div class="tablet-menu-2">
-              <a href="{{ links.2f }}" class="logo-mobile-2 w-nav-brand"><img src="/assets/images/bliss-logo-green_1bliss-logo-green.webp" loading="lazy" alt="" class="image-bliss"></a>
-              <div class="close-menu-button-2 w-nav-button"><img src="/assets/images/close-orange_1close-orange.png" loading="lazy" alt="" class="nav-close-icon-2"><img src="/assets/external/62849b600f97da9768555b15_x_icon.png" loading="lazy" alt="" class="nav-close-icon-copy"></div>
+              <a href="{{ links.2f }}" class="logo-mobile-2 w-nav-brand">{%- image "/assets/images/bliss-logo-green_1bliss-logo-green.webp", "", '[]', 'loading="lazy" class="image-bliss"' -%}</a>
+              <div class="close-menu-button-2 w-nav-button">{%- image "/assets/images/close-orange_1close-orange.png", "", '[]', 'loading="lazy" class="nav-close-icon-2"' -%}{%- image "/assets/external/62849b600f97da9768555b15_x_icon.png", "", '[]', 'loading="lazy" class="nav-close-icon-copy"' -%}</div>
             </div>
             <div data-hover="true" data-delay="0" data-w-id="a8f0933c-9ad7-d893-43d6-a40b5832b6ad" class="nav-dropdown-2 w-dropdown">
               <div class="nav-dropdown-toggle-2 w-dropdown-toggle">
@@ -363,7 +366,7 @@
                 <div class="spacing-columns w-row">
                   <div data-w-id="f8db0d89-bd0d-c32c-ba16-b903f6fcfdf8" style="opacity:0" class="spacing-system-column w-col w-col-4">
                     <h4 class="spacing-title">{{ texts.-64b9a8b4 }}</h4>
-                    <div class="spacing-wrapper"><img alt="" loading="lazy" src="/assets/images/tablet_spacing_1tablet_spacing.webp" class="spacing-system-image-2">
+                    <div class="spacing-wrapper">{%- image "/assets/images/tablet_spacing_1tablet_spacing.webp", "", '[]', 'loading="lazy" class="spacing-system-image-2"' -%}
                       <p class="top-style-spacing-desktop">{{ texts.56827d1a }}</p>
                       <p class="middle-style-spacing-desktop">{{ texts.30135ad }}</p>
                       <p class="bottom-style-spacing-desktop">{{ texts.56827d1a }}</p>
@@ -372,7 +375,7 @@
                   </div>
                   <div data-w-id="f8db0d89-bd0d-c32c-ba16-b903f6fcfe0d" style="opacity:0" class="spacing-system-column w-col w-col-4">
                     <h4 class="spacing-title">{{ texts.-538d2eca }}</h4>
-                    <div class="spacing-wrapper"><img alt="" loading="lazy" src="/assets/images/tablet_spacing_1tablet_spacing.webp" class="spacing-system-image-2">
+                    <div class="spacing-wrapper">{%- image "/assets/images/tablet_spacing_1tablet_spacing.webp", "", '[]', 'loading="lazy" class="spacing-system-image-2"' -%}
                       <p class="top-style-spacing-desktop">{{ texts.32b7c30 }}</p>
                       <p class="middle-style-spacing-desktop">{{ texts.2f31e2c }}</p>
                       <p class="bottom-style-spacing-desktop">{{ texts.32b7c30 }}</p>
@@ -381,7 +384,7 @@
                   </div>
                   <div data-w-id="f8db0d89-bd0d-c32c-ba16-b903f6fcfe22" style="opacity:0" class="spacing-system-column w-col w-col-4">
                     <h4 class="spacing-title">{{ texts.-5eb9dc8e }}</h4>
-                    <div class="spacing-wrapper-mobile"><img alt="" loading="lazy" src="/assets/images/mobile_spacing_1mobile_spacing.webp" class="spasing-system-image-mobile-2">
+                    <div class="spacing-wrapper-mobile">{%- image "/assets/images/mobile_spacing_1mobile_spacing.webp", "", '[]', 'loading="lazy" class="spasing-system-image-mobile-2"' -%}
                       <p class="top-style-spacing-mobile">{{ texts.30f4d2e }}</p>
                       <p class="middlr-style-spacing-mobile">{{ texts.2f31e2c }}</p>
                       <p class="bottom-style-spacing-mobile">{{ texts.30f4d2e }}</p>
@@ -640,10 +643,10 @@
       </div>
     </div>
   </div>
-  <a href="{{ links.53ab78d8 }}" target="_blank" class="buy-this-template w-inline-block"><img src="/assets/images/webflow-logo.svg" loading="lazy" alt="" class="btn-icon">
+  <a href="{{ links.53ab78d8 }}" target="_blank" class="buy-this-template w-inline-block">{%- image "/assets/images/webflow-logo.svg", "", '[]', 'loading="lazy" class="btn-icon"' -%}
     <div class="text-block">{{ texts.-28239c5e }}</div>
   </a>
-  <a href="{{ links.4ae71637 }}" target="_blank" class="all-templates w-inline-block"><img src="/assets/images/wcopilot.svg" loading="lazy" width="16" alt="" class="btn-icon">
+  <a href="{{ links.4ae71637 }}" target="_blank" class="all-templates w-inline-block">{%- image "/assets/images/wcopilot.svg", "", '[]', 'loading="lazy" width="16" class="btn-icon"' -%}
     <div>{{ texts.1570db3a }}</div>
   </a>
   <div class="hire-popup">
@@ -658,7 +661,7 @@
           <div>{{ texts.-7eb4752d }}</div>
         </a>
       </div>
-      <div data-w-id="6ca11bc6-470f-5429-795a-b60df65e9c7f" class="hire-popup-close"><img src="/assets/images/close-pop-up.svg" loading="lazy" alt="" class="close-popup-image"></div>
+      <div data-w-id="6ca11bc6-470f-5429-795a-b60df65e9c7f" class="hire-popup-close">{%- image "/assets/images/close-pop-up.svg", "", '[]', 'loading="lazy" class="close-popup-image"' -%}</div>
     </div>
   </div>
   <script src="/assets/external/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" crossorigin="anonymous"></script>

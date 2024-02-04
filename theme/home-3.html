@@ -20,17 +20,20 @@
   <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/bliss-spa?hide_gdpr_banner=1&primary_color=8ca472', text: 'Book an Appointment', color: '#8ca472', textColor: '#ffffff', branding: true }); }</script>
 {{ settings.site.header_additional_content }}{%- include "partials/_site-css-variables" -%}<style>.w-video.w-embed {
             aspect-ratio: 16 / 9;
-        }</style></head>
+        }</style><style>picture { border: 0;
+        max-width: 100%;
+        vertical-align: middle;
+        display: inline-block; }</style></head>
 <body>
   <div data-animation="over-left" class="navbar-fixed-2 w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1">
     <div class="nav-container-2 w-container">
       <div class="nav-menu-wrapper-2">
-        <a href="{{ links.2f }}" class="brand-bliss w-nav-brand"><img src="/assets/images/bliss-logo-green_1bliss-logo-green.webp" loading="lazy" alt="" class="image-bliss"></a>
+        <a href="{{ links.2f }}" class="brand-bliss w-nav-brand">{%- image "/assets/images/bliss-logo-green_1bliss-logo-green.webp", "", '[]', 'loading="lazy" class="image-bliss"' -%}</a>
         <nav role="navigation" class="nav-menu-2 w-nav-menu">
           <div class="nav-menu-shadow-overlay-2">
             <div class="tablet-menu-2">
-              <a href="{{ links.2f }}" class="logo-mobile-2 w-nav-brand"><img src="/assets/images/bliss-logo-green_1bliss-logo-green.webp" loading="lazy" alt="" class="image-bliss"></a>
-              <div class="close-menu-button-2 w-nav-button"><img src="/assets/images/close-orange_1close-orange.png" loading="lazy" alt="" class="nav-close-icon-2"><img src="/assets/external/62849b600f97da9768555b15_x_icon.png" loading="lazy" alt="" class="nav-close-icon-copy"></div>
+              <a href="{{ links.2f }}" class="logo-mobile-2 w-nav-brand">{%- image "/assets/images/bliss-logo-green_1bliss-logo-green.webp", "", '[]', 'loading="lazy" class="image-bliss"' -%}</a>
+              <div class="close-menu-button-2 w-nav-button">{%- image "/assets/images/close-orange_1close-orange.png", "", '[]', 'loading="lazy" class="nav-close-icon-2"' -%}{%- image "/assets/external/62849b600f97da9768555b15_x_icon.png", "", '[]', 'loading="lazy" class="nav-close-icon-copy"' -%}</div>
             </div>
             <div data-hover="true" data-delay="0" data-w-id="a8f0933c-9ad7-d893-43d6-a40b5832b6ad" class="nav-dropdown-2 w-dropdown">
               <div class="nav-dropdown-toggle-2 w-dropdown-toggle">
@@ -342,7 +345,7 @@
       <div class="banner-home-1">
         {%- assign collection = collections.blog-posts | offset: 5 | limit: 1 | sort: "-created-on" -%}<div class="w-dyn-list">
           {%- unless collection.length == 0 -%}<div role="list" class="w-dyn-items">
-            {%- for item in collection -%}<div role="listitem" class="home-3-banner-image w-dyn-item"><img loading="lazy" alt="{{ item.data.f_thumbnail-image.alt }}" src="{{ item.data.f_thumbnail-image.url }}" class="banner-image-home-3">
+            {%- for item in collection -%}<div role="listitem" class="home-3-banner-image w-dyn-item">{%- image item.data.f_thumbnail-image.url, item.data.f_thumbnail-image.alt, '[]', 'loading="lazy" class="banner-image-home-3"' -%}
               <a href="{{ links.23 }}" class="drop-and-drag book-now-home-3 w-inline-block">
                 <h5>{{ texts.7b3ec11f }}</h5>
               </a>
@@ -375,7 +378,7 @@
             </div>
           </div>
         </div>
-        <div class="about-5-info-wrap-right"><img class="capabilities-image" src="/assets/images/big-size-1_1big-size-1.webp" alt="" style="opacity:0" sizes="(max-width: 479px) 94vw, (max-width: 767px) 96vw, (max-width: 991px) 97vw, (max-width: 1279px) 45vw, 545px" data-w-id="461749f9-a172-1c69-d7c3-03dc23b13f20" loading="lazy" srcset="/assets/images/big-size-1_1-p-500.jpg 500w, /assets/images/big-size-1_1-p-800.jpg 800w, /assets/images/big-size-1_1big-size-1.webp 900w"></div>
+        <div class="about-5-info-wrap-right">{%- image "/assets/images/big-size-1_1big-size-1.webp", "", '[]', 'class="capabilities-image" style="opacity:0" data-w-id="461749f9-a172-1c69-d7c3-03dc23b13f20" loading="lazy"' -%}</div>
       </div>
     </div>
   </div>
@@ -532,16 +535,16 @@
     <div class="base-container">
       <div data-current="Tab 2" data-easing="ease" data-duration-in="300" data-duration-out="100" class="tabs-our-spa w-tabs">
         <div data-w-id="e1b48b7d-281f-04b2-7599-3fb98779569b" style="opacity:0" class="photo-tabs-wrapper w-tab-menu">
-          <a data-w-tab="Tab 1" class="photo-tab w-inline-block w-tab-link"><img alt="member" loading="lazy" src="/assets/images/rela-member2_1rela-member2.webp" class="testimonials-photo"></a>
-          <a data-w-tab="Tab 2" class="photo-tab w-inline-block w-tab-link w--current"><img sizes="(max-width: 479px) 100vw, (max-width: 1279px) 80px, 96px" srcset="/assets/images/beautiful-1_1-p-500.jpg 500w, /assets/images/beautiful-1_1beautiful-1.webp 700w" src="/assets/images/beautiful-1_1beautiful-1.webp" loading="lazy" alt="" class="testimonials-photo"></a>
-          <a data-w-tab="Tab 3" class="photo-tab w-inline-block w-tab-link"><img alt="member" loading="lazy" src="/assets/images/rela-member3_1rela-member3.webp" class="testimonials-photo"></a>
+          <a data-w-tab="Tab 1" class="photo-tab w-inline-block w-tab-link">{%- image "/assets/images/rela-member2_1rela-member2.webp", "member", '[]', 'loading="lazy" class="testimonials-photo"' -%}</a>
+          <a data-w-tab="Tab 2" class="photo-tab w-inline-block w-tab-link w--current">{%- image "/assets/images/beautiful-1_1beautiful-1.webp", "", '[]', 'loading="lazy" class="testimonials-photo"' -%}</a>
+          <a data-w-tab="Tab 3" class="photo-tab w-inline-block w-tab-link">{%- image "/assets/images/rela-member3_1rela-member3.webp", "member", '[]', 'loading="lazy" class="testimonials-photo"' -%}</a>
         </div>
         <div class="w-tab-content">
           <div data-w-tab="Tab 1" class="w-tab-pane">
             <div data-delay="400" data-animation="slide" class="testimonials-slider-4 w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="5" data-duration="500" data-infinite="true">
               <div class="testimonials-slider-mask w-slider-mask">
                 <div id="Slide-1" data-w-id="e1b48b7d-281f-04b2-7599-3fb9877956a6" class="slide-1 w-slide">
-                  <div class="testimonials-slide-item-our-spa"><img src="/assets/images/12_112.webp" loading="lazy" alt="" class="testimonials-quote-icon-3">
+                  <div class="testimonials-slide-item-our-spa">{%- image "/assets/images/12_112.webp", "", '[]', 'loading="lazy" class="testimonials-quote-icon-3"' -%}
                     <p class="paragraph-large">{{ texts.2671050f }}<br>{{ texts.-2f5c1c99 }}</p>
                     <div class="testimonials-slider-profile-wraper">
                       <div>
@@ -565,7 +568,7 @@
             <div data-delay="400" data-animation="slide" class="testimonials-slider-4 w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="5" data-duration="500" data-infinite="true">
               <div class="testimonials-slider-mask w-slider-mask">
                 <div id="Slide-2" data-w-id="e1b48b7d-281f-04b2-7599-3fb9877956bd" class="slide-1 w-slide">
-                  <div class="testimonials-slide-item-our-spa"><img src="/assets/images/12_112.webp" loading="lazy" alt="" class="testimonials-quote-icon-3">
+                  <div class="testimonials-slide-item-our-spa">{%- image "/assets/images/12_112.webp", "", '[]', 'loading="lazy" class="testimonials-quote-icon-3"' -%}
                     <p data-w-id="e1b48b7d-281f-04b2-7599-3fb9877956c0" style="opacity:0" class="paragraph-large">{{ texts.-5a7359c8 }}</p>
                     <div class="testimonials-slider-profile-wraper">
                       <div>
@@ -589,7 +592,7 @@
             <div data-delay="400" data-animation="slide" class="testimonials-slider-4 w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="5" data-duration="500" data-infinite="true">
               <div class="testimonials-slider-mask w-slider-mask">
                 <div data-w-id="e1b48b7d-281f-04b2-7599-3fb9877956d2" class="slide-1 w-slide">
-                  <div class="testimonials-slide-item-our-spa"><img src="/assets/images/12_112.webp" loading="lazy" alt="" class="testimonials-quote-icon-3">
+                  <div class="testimonials-slide-item-our-spa">{%- image "/assets/images/12_112.webp", "", '[]', 'loading="lazy" class="testimonials-quote-icon-3"' -%}
                     <p class="paragraph-large">{{ texts.2671050f }}<br>{{ texts.-2f5c1c99 }}</p>
                     <div class="testimonials-slider-profile-wraper">
                       <div>
@@ -627,7 +630,7 @@
               <a href="{{ links.636eb9b8 }}" target="_blank" class="team-social-orange-icons">{{ texts.f099 }}</a>
             </div>
           </div>
-        </div><img src="/assets/images/rela-member4_1rela-member4.webp" loading="lazy" alt="member" class="our-spa-member">
+        </div>{%- image "/assets/images/rela-member4_1rela-member4.webp", "member", '[]', 'loading="lazy" class="our-spa-member"' -%}
       </div>
       <div class="our-spa-team">
         <div class="our-spa-green-overlay">
@@ -641,7 +644,7 @@
               <a href="{{ links.636eb9b8 }}" target="_blank" class="team-social-orange-icons">{{ texts.f099 }}</a>
             </div>
           </div>
-        </div><img src="/assets/images/rela-member2_1rela-member2.webp" loading="lazy" alt="member" class="our-spa-member">
+        </div>{%- image "/assets/images/rela-member2_1rela-member2.webp", "member", '[]', 'loading="lazy" class="our-spa-member"' -%}
       </div>
       <div class="our-spa-team">
         <div class="our-spa-green-overlay">
@@ -655,7 +658,7 @@
               <a href="{{ links.636eb9b8 }}" target="_blank" class="team-social-orange-icons">{{ texts.f099 }}</a>
             </div>
           </div>
-        </div><img src="/assets/images/rela-member3_1rela-member3.webp" loading="lazy" alt="member" class="our-spa-member">
+        </div>{%- image "/assets/images/rela-member3_1rela-member3.webp", "member", '[]', 'loading="lazy" class="our-spa-member"' -%}
       </div>
       <div class="our-spa-team">
         <div class="our-spa-green-overlay">
@@ -669,17 +672,17 @@
               <a href="{{ links.636eb9b8 }}" target="_blank" class="team-social-orange-icons">{{ texts.f099 }}</a>
             </div>
           </div>
-        </div><img src="/assets/images/rela-member1_1rela-member1.webp" loading="lazy" alt="member" class="our-spa-member">
+        </div>{%- image "/assets/images/rela-member1_1rela-member1.webp", "member", '[]', 'loading="lazy" class="our-spa-member"' -%}
       </div>
     </div>
   </div>
   <div class="our-partners">
     <div data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d1d" class="our-partners-list">
-      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d1e" class="our-partners-item w-inline-block"><img src="/assets/images/client1.webp" loading="lazy" alt="partners-img" class="our-partners-brand"></a>
-      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d20" class="our-partners-item w-inline-block"><img src="/assets/images/client2.webp" loading="lazy" alt="partners-img" class="our-partners-brand"></a>
-      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d22" class="our-partners-item w-inline-block"><img src="/assets/images/client3.webp" loading="lazy" alt="partners-img" class="our-partners-brand"></a>
-      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d24" class="our-partners-item w-inline-block"><img src="/assets/images/client4.webp" loading="lazy" alt="partners-img" class="our-partners-brand"></a>
-      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d26" class="our-partners-item w-inline-block"><img src="/assets/images/client2.webp" loading="lazy" alt="partners-img" class="our-partners-brand"></a>
+      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d1e" class="our-partners-item w-inline-block">{%- image "/assets/images/client1.webp", "partners-img", '[]', 'loading="lazy" class="our-partners-brand"' -%}</a>
+      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d20" class="our-partners-item w-inline-block">{%- image "/assets/images/client2.webp", "partners-img", '[]', 'loading="lazy" class="our-partners-brand"' -%}</a>
+      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d22" class="our-partners-item w-inline-block">{%- image "/assets/images/client3.webp", "partners-img", '[]', 'loading="lazy" class="our-partners-brand"' -%}</a>
+      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d24" class="our-partners-item w-inline-block">{%- image "/assets/images/client4.webp", "partners-img", '[]', 'loading="lazy" class="our-partners-brand"' -%}</a>
+      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d26" class="our-partners-item w-inline-block">{%- image "/assets/images/client2.webp", "partners-img", '[]', 'loading="lazy" class="our-partners-brand"' -%}</a>
     </div>
   </div>
   <div class="section with-print-2">
@@ -695,7 +698,7 @@
         <div class="gift-wrapper">
           <div data-w-id="0d649fac-56b4-d263-e7a7-72b65a234e63" style="opacity:0" class="gift-item">
             <div class="gift-intro-content">
-              <div class="gift-content"><img src="/assets/images/beauty-spa-1_1beauty-spa-1.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 76vw, (max-width: 991px) 93vw, (max-width: 1279px) 28vw, 347.40625px" srcset="/assets/images/beauty-spa-1_1-p-500.jpg 500w, /assets/images/beauty-spa-1_1beauty-spa-1.webp 700w" alt="" class="gift-intro-image image-2">
+              <div class="gift-content">{%- image "/assets/images/beauty-spa-1_1beauty-spa-1.webp", "", '[]', 'loading="lazy" class="gift-intro-image image-2"' -%}
                 <h4>{{ texts.-663589a9 }}</h4>
                 <p class="gift-text">{{ texts.727dd15a }}</p>
               </div>
@@ -704,7 +707,7 @@
           </div>
           <div data-w-id="0d649fac-56b4-d263-e7a7-72b65a234e6d" style="opacity:0" class="big-gift-item center-item">
             <div class="gift-intro-content">
-              <div class="gift-content"><img src="/assets/images/spa-1_1spa-1.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 76vw, (max-width: 991px) 93vw, (max-width: 1279px) 29vw, 355.1875px" srcset="/assets/images/spa-1_1-p-500.jpg 500w, /assets/images/spa-1_1-p-800.jpg 800w, /assets/images/spa-1_1-p-1080.jpg 1080w, /assets/images/spa-1_1spa-1.webp 1920w" alt="" class="gift-intro-image">
+              <div class="gift-content">{%- image "/assets/images/spa-1_1spa-1.webp", "", '[]', 'loading="lazy" class="gift-intro-image"' -%}
                 <h4>{{ texts.37f5522e }}</h4>
                 <p class="gift-text">{{ texts.727dd15a }}</p>
               </div>
@@ -713,7 +716,7 @@
           </div>
           <div data-w-id="0d649fac-56b4-d263-e7a7-72b65a234e77" style="opacity:0" class="gift-item">
             <div class="gift-intro-content">
-              <div class="gift-content"><img src="/assets/images/noah-1_1noah-1.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 76vw, (max-width: 991px) 93vw, (max-width: 1279px) 28vw, 347.40625px" srcset="/assets/images/noah-1_1-p-500.jpg 500w, /assets/images/noah-1_1noah-1.webp 700w" alt="" class="gift-intro-image image-2">
+              <div class="gift-content">{%- image "/assets/images/noah-1_1noah-1.webp", "", '[]', 'loading="lazy" class="gift-intro-image image-2"' -%}
                 <h4>{{ texts.274f2f9 }}</h4>
                 <p class="gift-text">{{ texts.727dd15a }}</p>
               </div>
@@ -727,28 +730,28 @@
     <div class="base-container">
       <div class="our-services">
         <div class="dream-spa-benefits">
-          <div class="service-img-item"><img src="/assets/images/1_11.webp" loading="lazy" alt="" class="spa-icon"></div>
+          <div class="service-img-item">{%- image "/assets/images/1_11.webp", "", '[]', 'loading="lazy" class="spa-icon"' -%}</div>
           <div class="our-services-content-2">
             <h4 data-w-id="151eee51-9015-697d-66a2-f83c1789a5b1" style="opacity:0" class="our-benefits">{{ texts.-7b60a8eb }}</h4>
             <p data-w-id="151eee51-9015-697d-66a2-f83c1789a5b3" style="opacity:0" class="services-text-home-1">{{ texts.-69669f8f }}</p>
           </div>
         </div>
         <div class="dream-spa-benefits">
-          <div class="service-img-item"><img src="/assets/images/2_12.webp" loading="lazy" alt="" class="spa-icon"></div>
+          <div class="service-img-item">{%- image "/assets/images/2_12.webp", "", '[]', 'loading="lazy" class="spa-icon"' -%}</div>
           <div class="our-services-content-2">
             <h4 data-w-id="151eee51-9015-697d-66a2-f83c1789a5b9" style="opacity:0" class="our-benefits">{{ texts.-38d3c8c3 }}</h4>
             <p data-w-id="151eee51-9015-697d-66a2-f83c1789a5bb" style="opacity:0" class="services-text-home-1">{{ texts.-69669f8f }}</p>
           </div>
         </div>
         <div class="dream-spa-benefits">
-          <div class="service-img-item"><img src="/assets/images/3608011_body_hand_health_massage_medical_icon-1_13608011_body_hand_health_massage_medical_icon-1.webp" loading="lazy" alt="" class="spa-icon"></div>
+          <div class="service-img-item">{%- image "/assets/images/3608011_body_hand_health_massage_medical_icon-1_13608011_body_hand_health_massage_medical_icon-1.webp", "", '[]', 'loading="lazy" class="spa-icon"' -%}</div>
           <div class="our-services-content-2">
             <h4 data-w-id="151eee51-9015-697d-66a2-f83c1789a5c1" style="opacity:0" class="our-benefits">{{ texts.473670f7 }}</h4>
             <p data-w-id="151eee51-9015-697d-66a2-f83c1789a5c3" style="opacity:0" class="services-text-home-1">{{ texts.-69669f8f }}</p>
           </div>
         </div>
         <div class="dream-spa-benefits">
-          <div class="service-img-item"><img src="/assets/images/4762335_care_face_health_massage_relax_icon-1_14762335_care_face_health_massage_relax_icon-1.webp" loading="lazy" alt="" class="spa-icon"></div>
+          <div class="service-img-item">{%- image "/assets/images/4762335_care_face_health_massage_relax_icon-1_14762335_care_face_health_massage_relax_icon-1.webp", "", '[]', 'loading="lazy" class="spa-icon"' -%}</div>
           <div class="our-services-content-2">
             <h4 data-w-id="151eee51-9015-697d-66a2-f83c1789a5c9" style="opacity:0" class="our-benefits">{{ texts.-6ac153a6 }}</h4>
             <p data-w-id="151eee51-9015-697d-66a2-f83c1789a5cb" style="opacity:0" class="services-text-home-1">{{ texts.-69669f8f }}</p>
@@ -788,7 +791,7 @@
             <div class="counter-progressbar-right-block">
               <div style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0)" class="counter-progressbar-mask right"></div>
             </div>
-            <div class="counter-progressbar-static-container"><img src="/assets/images/3608011_body_hand_health_massage_medical_icon-1_13608011_body_hand_health_massage_medical_icon-1.webp" loading="lazy" alt="" class="service-white-icon"></div>
+            <div class="counter-progressbar-static-container">{%- image "/assets/images/3608011_body_hand_health_massage_medical_icon-1_13608011_body_hand_health_massage_medical_icon-1.webp", "", '[]', 'loading="lazy" class="service-white-icon"' -%}</div>
             <div class="percentage-wrapper">
               <div class="percentage-number">{{ texts.dc0d }}</div>
             </div>
@@ -806,7 +809,7 @@
             <div class="counter-progressbar-right-block">
               <div style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0)" class="counter-progressbar-mask right"></div>
             </div>
-            <div class="counter-progressbar-static-container"><img src="/assets/images/2_12.webp" loading="lazy" alt="" class="service-white-icon"></div>
+            <div class="counter-progressbar-static-container">{%- image "/assets/images/2_12.webp", "", '[]', 'loading="lazy" class="service-white-icon"' -%}</div>
             <div class="percentage-wrapper">
               <div class="percentage-number">{{ texts.d1a3 }}</div>
             </div>
@@ -824,7 +827,7 @@
             <div class="counter-progressbar-right-block">
               <div style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0)" class="counter-progressbar-mask right"></div>
             </div>
-            <div class="counter-progressbar-static-container"><img src="/assets/images/1_11.webp" loading="lazy" alt="" class="service-white-icon"></div>
+            <div class="counter-progressbar-static-container">{%- image "/assets/images/1_11.webp", "", '[]', 'loading="lazy" class="service-white-icon"' -%}</div>
             <div class="percentage-wrapper">
               <div class="percentage-number">{{ texts.dbee }}</div>
             </div>
@@ -842,7 +845,7 @@
             <div class="counter-progressbar-right-block">
               <div style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-180deg) skew(0, 0)" class="counter-progressbar-mask right"></div>
             </div>
-            <div class="counter-progressbar-static-container"><img src="/assets/images/4762335_care_face_health_massage_relax_icon-1_14762335_care_face_health_massage_relax_icon-1.webp" loading="lazy" alt="" class="service-white-icon"></div>
+            <div class="counter-progressbar-static-container">{%- image "/assets/images/4762335_care_face_health_massage_relax_icon-1_14762335_care_face_health_massage_relax_icon-1.webp", "", '[]', 'loading="lazy" class="service-white-icon"' -%}</div>
             <div class="percentage-wrapper">
               <div class="percentage-number">{{ texts.c622 }}</div>
             </div>
@@ -866,7 +869,7 @@
         {%- unless collection.length == 0 -%}<div role="list" class="home-9-blog-collection-list w-dyn-items">
           {%- for item in collection -%}<div role="listitem" class="home-9-blog-collection-item w-dyn-item">
             <article class="home-9-blog-post-wrapper">
-              <a href="{{ item.url }}" class="home-9-blog-image-link w-inline-block"><img alt="{{ item.data.f_main-image-2.alt }}" loading="lazy" src="{{ item.data.f_main-image-2.url }}" class="blog-grid-image">
+              <a href="{{ item.url }}" class="home-9-blog-image-link w-inline-block">{%- image item.data.f_main-image-2.url, item.data.f_main-image-2.alt, '[]', 'loading="lazy" class="blog-grid-image"' -%}
                 <div class="primary-light-overlay"></div>
               </a>
               <div class="home-9-blog-content-wrapper">
@@ -999,10 +1002,10 @@
       </div>
     </div>
   </div>
-  <a href="{{ links.53ab78d8 }}" target="_blank" class="buy-this-template w-inline-block"><img src="/assets/images/webflow-logo.svg" loading="lazy" alt="" class="btn-icon">
+  <a href="{{ links.53ab78d8 }}" target="_blank" class="buy-this-template w-inline-block">{%- image "/assets/images/webflow-logo.svg", "", '[]', 'loading="lazy" class="btn-icon"' -%}
     <div class="text-block">{{ texts.-28239c5e }}</div>
   </a>
-  <a href="{{ links.4ae71637 }}" target="_blank" class="all-templates w-inline-block"><img src="/assets/images/wcopilot.svg" loading="lazy" width="16" alt="" class="btn-icon">
+  <a href="{{ links.4ae71637 }}" target="_blank" class="all-templates w-inline-block">{%- image "/assets/images/wcopilot.svg", "", '[]', 'loading="lazy" width="16" class="btn-icon"' -%}
     <div>{{ texts.1570db3a }}</div>
   </a>
   <div class="hire-popup">
@@ -1017,7 +1020,7 @@
           <div>{{ texts.-7eb4752d }}</div>
         </a>
       </div>
-      <div data-w-id="6ca11bc6-470f-5429-795a-b60df65e9c7f" class="hire-popup-close"><img src="/assets/images/close-pop-up.svg" loading="lazy" alt="" class="close-popup-image"></div>
+      <div data-w-id="6ca11bc6-470f-5429-795a-b60df65e9c7f" class="hire-popup-close">{%- image "/assets/images/close-pop-up.svg", "", '[]', 'loading="lazy" class="close-popup-image"' -%}</div>
     </div>
   </div>
   <script src="/assets/external/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" crossorigin="anonymous"></script>

@@ -20,7 +20,10 @@
   <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/bliss-spa?hide_gdpr_banner=1&primary_color=8ca472', text: 'Book an Appointment', color: '#8ca472', textColor: '#ffffff', branding: true }); }</script>
 {{ settings.site.header_additional_content }}{%- include "partials/_site-css-variables" -%}<style>.w-video.w-embed {
             aspect-ratio: 16 / 9;
-        }</style></head>
+        }</style><style>picture { border: 0;
+        max-width: 100%;
+        vertical-align: middle;
+        display: inline-block; }</style></head>
 <body>
   <div data-animation="over-left" class="navbar-fixed-2 transparent-header-one-row w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1">
     <div class="nav-container-2 w-container">
@@ -29,8 +32,8 @@
         <nav role="navigation" class="nav-menu-2 w-nav-menu">
           <div class="nav-menu-shadow-overlay-2">
             <div class="tablet-menu-2">
-              <a href="{{ links.2f }}" class="logo-mobile-2 w-nav-brand"><img src="/assets/images/bliss-logo-green_1bliss-logo-green.webp" loading="lazy" alt="" class="image-bliss"></a>
-              <div class="close-menu-button-2 w-nav-button"><img src="/assets/images/close-orange_1close-orange.png" loading="lazy" alt="" class="nav-close-icon-2"><img src="/assets/external/62849b600f97da9768555b15_x_icon.png" loading="lazy" alt="" class="nav-close-icon-copy"></div>
+              <a href="{{ links.2f }}" class="logo-mobile-2 w-nav-brand">{%- image "/assets/images/bliss-logo-green_1bliss-logo-green.webp", "", '[]', 'loading="lazy" class="image-bliss"' -%}</a>
+              <div class="close-menu-button-2 w-nav-button">{%- image "/assets/images/close-orange_1close-orange.png", "", '[]', 'loading="lazy" class="nav-close-icon-2"' -%}{%- image "/assets/external/62849b600f97da9768555b15_x_icon.png", "", '[]', 'loading="lazy" class="nav-close-icon-copy"' -%}</div>
             </div>
             <div data-hover="true" data-delay="0" data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d80" class="nav-dropdown-2 contact-us w-dropdown">
               <div class="nav-dropdown-toggle-2 w-dropdown-toggle">
@@ -134,7 +137,7 @@
       <div class="pricing-plan-bg"></div>
     </div>
   </div>
-  <div class="home-10-service-big"><img class="home-10-service-image membership" src="/assets/images/2-1_12-1.webp" alt="" style="opacity:0" sizes="(max-width: 991px) 100vw, 65vw" data-w-id="695c816f-36a3-995e-921c-b74a36e181ea" loading="lazy" srcset="/assets/images/2-1_1-p-500.jpg 500w, /assets/images/2-1_1-p-800.jpg 800w, /assets/images/2-1_1-p-1080.jpg 1080w, /assets/images/2-1_1-p-1600.jpg 1600w, /assets/images/2-1_12-1.webp 1920w">
+  <div class="home-10-service-big">{%- image "/assets/images/2-1_12-1.webp", "", '[]', 'class="home-10-service-image membership" style="opacity:0" data-w-id="695c816f-36a3-995e-921c-b74a36e181ea" loading="lazy"' -%}
     <div class="home-10-services-right-2"></div>
     <div class="home-10-overlay-block">
       <div data-w-id="695c816f-36a3-995e-921c-b74a36e181ed" style="opacity:0" class="home-10-services-overlay-2">
@@ -272,7 +275,7 @@
             <a href="{{ links.-3c5bec29 }}" class="drop-and-drag w-inline-block">
               <h5>{{ texts.2edebfc7 }}</h5>
             </a>
-            <div class="hydro-therapy-wrapper"><img src="/assets/images/noah-1_1noah-1.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 991px) 50vw, 34vw" srcset="/assets/images/noah-1_1-p-500.jpg 500w, /assets/images/noah-1_1noah-1.webp 700w" alt="" class="hydro-therapy-image"></div>
+            <div class="hydro-therapy-wrapper">{%- image "/assets/images/noah-1_1noah-1.webp", "", '[]', 'loading="lazy" class="hydro-therapy-image"' -%}</div>
           </div>
         </div>
         <div class="hydro-therapy-slider w-slide">
@@ -280,7 +283,7 @@
             <a href="{{ links.-3c5bec29 }}" class="drop-and-drag w-inline-block">
               <h5>{{ texts.2edebfc7 }}</h5>
             </a>
-            <div class="hydro-therapy-wrapper"><img src="/assets/images/noah3-1_1noah3-1.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 991px) 50vw, 34vw" srcset="/assets/images/noah3-1_1-p-500.jpg 500w, /assets/images/noah3-1_1noah3-1.webp 700w" alt="" class="hydro-therapy-image"></div>
+            <div class="hydro-therapy-wrapper">{%- image "/assets/images/noah3-1_1noah3-1.webp", "", '[]', 'loading="lazy" class="hydro-therapy-image"' -%}</div>
           </div>
         </div>
         <div class="hydro-therapy-slider w-slide">
@@ -288,7 +291,7 @@
             <a href="{{ links.-3c5bec29 }}" class="drop-and-drag w-inline-block">
               <h5>{{ texts.2edebfc7 }}</h5>
             </a>
-            <div class="hydro-therapy-wrapper"><img src="/assets/images/woman-relaxing-bath-with-bubbles-1_1woman-relaxing-bath-with-bubbles-1.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 991px) 50vw, 34vw" srcset="/assets/images/woman-relaxing-bath-with-bubbles-1_1-p-500.jpg 500w, /assets/images/woman-relaxing-bath-with-bubbles-1_1woman-relaxing-bath-with-bubbles-1.webp 700w" alt="" class="hydro-therapy-image"></div>
+            <div class="hydro-therapy-wrapper">{%- image "/assets/images/woman-relaxing-bath-with-bubbles-1_1woman-relaxing-bath-with-bubbles-1.webp", "", '[]', 'loading="lazy" class="hydro-therapy-image"' -%}</div>
           </div>
         </div>
         <div class="hydro-therapy-slider w-slide">
@@ -296,7 +299,7 @@
             <a href="{{ links.-3c5bec29 }}" class="drop-and-drag w-inline-block">
               <h5>{{ texts.2edebfc7 }}</h5>
             </a>
-            <div class="hydro-therapy-wrapper"><img src="/assets/images/anthony-1_1anthony-1.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 991px) 50vw, 34vw" srcset="/assets/images/anthony-1_1-p-500.jpg 500w, /assets/images/anthony-1_1anthony-1.webp 700w" alt="" class="hydro-therapy-image"></div>
+            <div class="hydro-therapy-wrapper">{%- image "/assets/images/anthony-1_1anthony-1.webp", "", '[]', 'loading="lazy" class="hydro-therapy-image"' -%}</div>
           </div>
         </div>
         <div class="hydro-therapy-slider w-slide">
@@ -304,7 +307,7 @@
             <a href="{{ links.-3c5bec29 }}" class="drop-and-drag w-inline-block">
               <h5>{{ texts.2edebfc7 }}</h5>
             </a>
-            <div class="hydro-therapy-wrapper"><img src="/assets/images/woman-receiving-beauty-treatment-skin-care-1_1woman-receiving-beauty-treatment-skin-care-1.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 991px) 50vw, 34vw" srcset="/assets/images/woman-receiving-beauty-treatment-skin-care-1_1-p-500.jpg 500w, /assets/images/woman-receiving-beauty-treatment-skin-care-1_1woman-receiving-beauty-treatment-skin-care-1.webp 700w" alt="" class="hydro-therapy-image"></div>
+            <div class="hydro-therapy-wrapper">{%- image "/assets/images/woman-receiving-beauty-treatment-skin-care-1_1woman-receiving-beauty-treatment-skin-care-1.webp", "", '[]', 'loading="lazy" class="hydro-therapy-image"' -%}</div>
           </div>
         </div>
         <div class="hydro-therapy-slider w-slide">
@@ -312,7 +315,7 @@
             <a href="{{ links.-3c5bec29 }}" class="drop-and-drag w-inline-block">
               <h5>{{ texts.2edebfc7 }}</h5>
             </a>
-            <div class="hydro-therapy-wrapper"><img src="/assets/images/beautiful-1_1beautiful-1.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 991px) 50vw, 34vw" srcset="/assets/images/beautiful-1_1-p-500.jpg 500w, /assets/images/beautiful-1_1beautiful-1.webp 700w" alt="" class="hydro-therapy-image"></div>
+            <div class="hydro-therapy-wrapper">{%- image "/assets/images/beautiful-1_1beautiful-1.webp", "", '[]', 'loading="lazy" class="hydro-therapy-image"' -%}</div>
           </div>
         </div>
       </div>
@@ -337,7 +340,7 @@
           <div class="testimonials-star-icons">{{ texts.2554b999 }}</div>
           <p class="paragraph-large">{{ texts.375da77a }}<br></p>
           <div class="testimonials-profile-wrapper">
-            <div class="testimonials-profile-photo-wrapper"><img src="/assets/images/girl-1-1_1girl-1-1.webp" loading="lazy" alt="" class="testimonials-profile-photo"></div>
+            <div class="testimonials-profile-photo-wrapper">{%- image "/assets/images/girl-1-1_1girl-1-1.webp", "", '[]', 'loading="lazy" class="testimonials-profile-photo"' -%}</div>
             <div>
               <h5 class="testimonials-profile-title">{{ texts.-4ed6244 }}</h5>
               <p class="testimonials-profile-positin">{{ texts.7f57354a }}</p>
@@ -348,7 +351,7 @@
           <div class="testimonials-star-icons">{{ texts.2554b999 }}</div>
           <p class="paragraph-large">{{ texts.375da77a }}</p>
           <div class="testimonials-profile-wrapper">
-            <div class="testimonials-profile-photo-wrapper"><img src="/assets/images/rela-member1_1rela-member1.webp" loading="lazy" alt="member" class="testimonials-profile-photo"></div>
+            <div class="testimonials-profile-photo-wrapper">{%- image "/assets/images/rela-member1_1rela-member1.webp", "member", '[]', 'loading="lazy" class="testimonials-profile-photo"' -%}</div>
             <div>
               <h5 class="testimonials-profile-title">{{ texts.-6673992d }}</h5>
               <p class="testimonials-profile-positin">{{ texts.-6afe5873 }}</p>
@@ -359,7 +362,7 @@
           <div class="testimonials-star-icons">{{ texts.2554b999 }}</div>
           <p class="paragraph-large">{{ texts.375da77a }}</p>
           <div class="testimonials-profile-wrapper">
-            <div class="testimonials-profile-photo-wrapper"><img src="/assets/images/rela-member4_1rela-member4.webp" loading="lazy" alt="member" class="testimonials-profile-photo"></div>
+            <div class="testimonials-profile-photo-wrapper">{%- image "/assets/images/rela-member4_1rela-member4.webp", "member", '[]', 'loading="lazy" class="testimonials-profile-photo"' -%}</div>
             <div>
               <h5 class="testimonials-profile-title">{{ texts.-3de2b0ce }}</h5>
               <p class="testimonials-profile-positin">{{ texts.40dabb0b }}</p>
@@ -479,10 +482,10 @@
       </div>
     </div>
   </div>
-  <a href="{{ links.53ab78d8 }}" target="_blank" class="buy-this-template w-inline-block"><img src="/assets/images/webflow-logo.svg" loading="lazy" alt="" class="btn-icon">
+  <a href="{{ links.53ab78d8 }}" target="_blank" class="buy-this-template w-inline-block">{%- image "/assets/images/webflow-logo.svg", "", '[]', 'loading="lazy" class="btn-icon"' -%}
     <div class="text-block">{{ texts.-28239c5e }}</div>
   </a>
-  <a href="{{ links.4ae71637 }}" target="_blank" class="all-templates w-inline-block"><img src="/assets/images/wcopilot.svg" loading="lazy" width="16" alt="" class="btn-icon">
+  <a href="{{ links.4ae71637 }}" target="_blank" class="all-templates w-inline-block">{%- image "/assets/images/wcopilot.svg", "", '[]', 'loading="lazy" width="16" class="btn-icon"' -%}
     <div>{{ texts.1570db3a }}</div>
   </a>
   <div class="hire-popup">
@@ -497,7 +500,7 @@
           <div>{{ texts.-7eb4752d }}</div>
         </a>
       </div>
-      <div data-w-id="6ca11bc6-470f-5429-795a-b60df65e9c7f" class="hire-popup-close"><img src="/assets/images/close-pop-up.svg" loading="lazy" alt="" class="close-popup-image"></div>
+      <div data-w-id="6ca11bc6-470f-5429-795a-b60df65e9c7f" class="hire-popup-close">{%- image "/assets/images/close-pop-up.svg", "", '[]', 'loading="lazy" class="close-popup-image"' -%}</div>
     </div>
   </div>
   <script src="/assets/external/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" crossorigin="anonymous"></script>

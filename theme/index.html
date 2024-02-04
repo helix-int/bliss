@@ -25,7 +25,10 @@
   <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/bliss-spa?hide_gdpr_banner=1&primary_color=8ca472', text: 'Book an Appointment', color: '#8ca472', textColor: '#ffffff', branding: true }); }</script>
 {{ settings.site.header_additional_content }}{%- include "partials/_site-css-variables" -%}<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script><style>.w-video.w-embed {
             aspect-ratio: 16 / 9;
-        }</style></head>
+        }</style><style>picture { border: 0;
+        max-width: 100%;
+        vertical-align: middle;
+        display: inline-block; }</style></head>
 <body>
   <div data-animation="over-left" class="navbar-fixed-2 transparent-header-one-row w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1">
     <div class="nav-container-2 w-container">
@@ -34,8 +37,8 @@
         <nav role="navigation" class="nav-menu-2 w-nav-menu">
           <div class="nav-menu-shadow-overlay-2">
             <div class="tablet-menu-2">
-              <a href="{{ links.2f }}" aria-current="page" class="logo-mobile-2 w-nav-brand w--current"><img src="/assets/images/bliss-logo-green_1bliss-logo-green.webp" loading="lazy" alt="" class="image-bliss"></a>
-              <div class="close-menu-button-2 w-nav-button"><img src="/assets/images/close-orange_1close-orange.png" loading="lazy" alt="" class="nav-close-icon-2"><img src="/assets/external/62849b600f97da9768555b15_x_icon.png" loading="lazy" alt="" class="nav-close-icon-copy"></div>
+              <a href="{{ links.2f }}" aria-current="page" class="logo-mobile-2 w-nav-brand w--current">{%- image "/assets/images/bliss-logo-green_1bliss-logo-green.webp", "", '[]', 'loading="lazy" class="image-bliss"' -%}</a>
+              <div class="close-menu-button-2 w-nav-button">{%- image "/assets/images/close-orange_1close-orange.png", "", '[]', 'loading="lazy" class="nav-close-icon-2"' -%}{%- image "/assets/external/62849b600f97da9768555b15_x_icon.png", "", '[]', 'loading="lazy" class="nav-close-icon-copy"' -%}</div>
             </div>
             <div data-hover="true" data-delay="0" data-w-id="729bbb76-e63d-c1d2-30b8-f01a712d2d80" class="nav-dropdown-2 contact-us w-dropdown">
               <div class="nav-dropdown-toggle-2 w-dropdown-toggle">
@@ -162,28 +165,28 @@
       </div>
       <div class="our-services">
         <div class="dream-spa-benefits">
-          <div class="service-img-item"><img src="/assets/images/1_11.webp" loading="lazy" alt="" class="spa-icon"></div>
+          <div class="service-img-item">{%- image "/assets/images/1_11.webp", "", '[]', 'loading="lazy" class="spa-icon"' -%}</div>
           <div class="our-services-content-2">
             <h4 data-w-id="6dd7a1ac-e70b-c9aa-d38d-50c781298b35" style="opacity:0" class="our-benefits">{{ texts.60596c8 }}</h4>
             <p data-w-id="6dd7a1ac-e70b-c9aa-d38d-50c781298b37" style="opacity:0" class="services-text-home-1">{{ texts.3ef05711 }}</p>
           </div>
         </div>
         <div class="dream-spa-benefits">
-          <div class="service-img-item"><img src="/assets/images/2_12.webp" loading="lazy" alt="" class="spa-icon"></div>
+          <div class="service-img-item">{%- image "/assets/images/2_12.webp", "", '[]', 'loading="lazy" class="spa-icon"' -%}</div>
           <div class="our-services-content-2">
             <h4 data-w-id="db0a20d0-c32c-1aae-0c5d-6f34724a60a5" style="opacity:0" class="our-benefits">{{ texts.-559812a8 }}</h4>
             <p data-w-id="db0a20d0-c32c-1aae-0c5d-6f34724a60a7" style="opacity:0" class="services-text-home-1">{{ texts.776404ed }}</p>
           </div>
         </div>
         <div class="dream-spa-benefits">
-          <div class="service-img-item"><img src="/assets/images/3608011_body_hand_health_massage_medical_icon-1_13608011_body_hand_health_massage_medical_icon-1.webp" loading="lazy" alt="" class="spa-icon"></div>
+          <div class="service-img-item">{%- image "/assets/images/3608011_body_hand_health_massage_medical_icon-1_13608011_body_hand_health_massage_medical_icon-1.webp", "", '[]', 'loading="lazy" class="spa-icon"' -%}</div>
           <div class="our-services-content-2">
             <h4 data-w-id="2bfb86d7-365c-7454-bd6a-03252b14de51" style="opacity:0" class="our-benefits">{{ texts.-676a8ddc }}</h4>
             <p data-w-id="2bfb86d7-365c-7454-bd6a-03252b14de53" style="opacity:0" class="services-text-home-1">{{ texts.-4139c72e }}</p>
           </div>
         </div>
         <div class="dream-spa-benefits">
-          <div class="service-img-item"><img src="/assets/images/4762335_care_face_health_massage_relax_icon-1_14762335_care_face_health_massage_relax_icon-1.webp" loading="lazy" alt="" class="spa-icon"></div>
+          <div class="service-img-item">{%- image "/assets/images/4762335_care_face_health_massage_relax_icon-1_14762335_care_face_health_massage_relax_icon-1.webp", "", '[]', 'loading="lazy" class="spa-icon"' -%}</div>
           <div class="our-services-content-2">
             <h4 data-w-id="9832c696-9951-f888-6339-1e85c3135a9e" style="opacity:0" class="our-benefits">{{ texts.-4c2f42b3 }}</h4>
             <p data-w-id="9832c696-9951-f888-6339-1e85c3135aa0" style="opacity:0" class="services-text-home-1">{{ texts.-87b2858 }}</p>
@@ -212,7 +215,7 @@
         <div class="slider-info-content">
           <div class="slider-info">
             <h6 data-w-id="a472cad9-325d-057b-deb2-94b6dc60e3ef" style="opacity:0">{{ texts.32bc1b8b }}</h6>
-            <h2 data-w-id="37a0d5c9-7941-3282-3762-eecf4f5b983a" style="opacity:0" class="skin-care">{{ texts.-5a3504c7 }}</h2><img class="image-spa-2" src="/assets/images/spa-2-1_1spa-2-1.webp" alt="" style="opacity:0" sizes="100vw" data-w-id="dc559811-f5bf-b0c9-b3e7-5aebea8f7b1a" loading="lazy" srcset="/assets/images/spa-2-1_1-p-500.png 500w, /assets/images/spa-2-1_1spa-2-1.webp 739w">
+            <h2 data-w-id="37a0d5c9-7941-3282-3762-eecf4f5b983a" style="opacity:0" class="skin-care">{{ texts.-5a3504c7 }}</h2>{%- image "/assets/images/spa-2-1_1spa-2-1.webp", "", '[]', 'class="image-spa-2" style="opacity:0" data-w-id="dc559811-f5bf-b0c9-b3e7-5aebea8f7b1a" loading="lazy"' -%}
             <ul data-w-id="49d1e6aa-7dc4-4fe7-17d8-13b957752f4a" style="opacity:0" role="list" class="list-home-1">
               <li class="list-item"><span class="list-item-circle">{{ texts.f762 }}</span>{{ texts.3eb76960 }}</li>
               <li class="list-item"><span class="list-item-circle"> </span>{{ texts.-2a6b1df7 }}</li>
@@ -230,7 +233,7 @@
       <div data-delay="3000" data-animation="slide" class="about-4-testimonials-slider w-slider" data-autoplay="true" data-easing="ease" style="opacity:0" data-hide-arrows="false" data-disable-swipe="false" data-w-id="8fd6fa15-d919-9380-39a6-703765d07b38" data-autoplay-limit="0" data-nav-spacing="8" data-duration="500" data-infinite="true">
         <div class="about-4-testimonials-mask w-slider-mask">
           <div data-w-id="8fd6fa15-d919-9380-39a6-703765d07b3a" class="about-4-testimonials-slide w-slide">
-            <div class="about-4-testimonials-item"><img src="/assets/images/rela-member4_1rela-member4.webp" loading="lazy" alt="member" class="about-4-testimonials-image-2">
+            <div class="about-4-testimonials-item">{%- image "/assets/images/rela-member4_1rela-member4.webp", "member", '[]', 'loading="lazy" class="about-4-testimonials-image-2"' -%}
               <div class="about-4-testimonials-content">
                 <h4 class="white-text-2 testimonials-text">{{ texts.-48b8cfe0 }}</h4>
                 <div class="about-4-testimonials-author-info">
@@ -241,7 +244,7 @@
             </div>
           </div>
           <div data-w-id="8fd6fa15-d919-9380-39a6-703765d07b45" class="about-4-testimonials-slide w-slide">
-            <div class="about-4-testimonials-item"><img src="/assets/images/rela-member2_1rela-member2.webp" loading="lazy" alt="member" class="about-4-testimonials-image-2">
+            <div class="about-4-testimonials-item">{%- image "/assets/images/rela-member2_1rela-member2.webp", "member", '[]', 'loading="lazy" class="about-4-testimonials-image-2"' -%}
               <div class="about-4-testimonials-content">
                 <h4 class="white-text-2 testimonials-text">{{ texts.583c57bc }}</h4>
                 <div class="about-4-testimonials-author-info">
@@ -252,7 +255,7 @@
             </div>
           </div>
           <div data-w-id="8fd6fa15-d919-9380-39a6-703765d07b50" class="about-4-testimonials-slide w-slide">
-            <div class="about-4-testimonials-item"><img src="/assets/images/rela-member1_1rela-member1.webp" loading="lazy" alt="member" class="about-4-testimonials-image-2">
+            <div class="about-4-testimonials-item">{%- image "/assets/images/rela-member1_1rela-member1.webp", "member", '[]', 'loading="lazy" class="about-4-testimonials-image-2"' -%}
               <div class="about-4-testimonials-content">
                 <h4 class="white-text-2 testimonials-text">{{ texts.1d05cabf }}</h4>
                 <div class="about-4-testimonials-author-info">
@@ -263,7 +266,7 @@
             </div>
           </div>
           <div data-w-id="8fd6fa15-d919-9380-39a6-703765d07b5b" class="about-4-testimonials-slide w-slide">
-            <div class="about-4-testimonials-item"><img src="/assets/images/rela-member3_1rela-member3.webp" loading="lazy" alt="member" class="about-4-testimonials-image-2">
+            <div class="about-4-testimonials-item">{%- image "/assets/images/rela-member3_1rela-member3.webp", "member", '[]', 'loading="lazy" class="about-4-testimonials-image-2"' -%}
               <div class="about-4-testimonials-content">
                 <h4 class="white-text-2 testimonials-text">{{ texts.6a1ac60d }}</h4>
                 <div class="about-4-testimonials-author-info">
@@ -295,7 +298,7 @@
       {%- assign collection = collections.blog-posts | limit: 1 | sort: "-created-on" -%}<div id="w-node-_631f81a7-7089-9fda-e8e4-9de9eac0f0c0-d3853b53" class="collection-list-wrapper-5 w-dyn-list">
         {%- unless collection.length == 0 -%}<div role="list" class="w-dyn-items">
           {%- for item in collection -%}<div role="listitem" class="w-dyn-item">
-            <a href="{{ links.23 }}" class="lightbox-link w-inline-block w-lightbox"><img class="gallery-image-1" src="/assets/images/entry-square-2.webp" alt="" sizes="(max-width: 479px) 94vw, (max-width: 767px) 96vw, 100vw" id="w-node-_7643dceb-50a1-1f41-a5d1-e41aae6e330c-d3853b53" loading="lazy" srcset="/assets/images/entry-square-2-p-500.webp 500w, /assets/images/entry-square-2-p-800.webp 800w, /assets/images/entry-square-2-p-1080.webp 1080w, /assets/images/entry-square-2.webp 1200w">
+            <a href="{{ links.23 }}" class="lightbox-link w-inline-block w-lightbox">{%- image "/assets/images/entry-square-2.webp", "", '[]', 'class="gallery-image-1" id="w-node-_7643dceb-50a1-1f41-a5d1-e41aae6e330c-d3853b53" loading="lazy"' -%}
               <div class="lightbox-overlay">
                 <div class="lightbox-icon">{{ texts.f06e }}</div>
               </div>
@@ -310,7 +313,7 @@
       {%- assign collection = collections.blog-posts | offset: 2 | limit: 1 | sort: "-created-on" -%}<div id="w-node-_631f81a7-7089-9fda-e8e4-9de9eac0f0cc-d3853b53" class="collection-large-list-wrapper w-dyn-list">
         {%- unless collection.length == 0 -%}<div role="list" class="w-dyn-items">
           {%- for item in collection -%}<div role="listitem" class="w-dyn-item">
-            <a href="{{ links.23 }}" class="lightbox-link w-inline-block w-lightbox"><img class="gallery-image-1" src="/assets/images/building.webp" alt="" sizes="(max-width: 479px) 94vw, (max-width: 767px) 96vw, 100vw" id="w-node-_900aefa9-2c1d-5839-cdde-68f94b9ddd8a-d3853b53" loading="lazy" srcset="/assets/images/building-p-500.webp 500w, /assets/images/building.webp 600w">
+            <a href="{{ links.23 }}" class="lightbox-link w-inline-block w-lightbox">{%- image "/assets/images/building.webp", "", '[]', 'class="gallery-image-1" id="w-node-_900aefa9-2c1d-5839-cdde-68f94b9ddd8a-d3853b53" loading="lazy"' -%}
               <div class="lightbox-overlay">
                 <div class="lightbox-icon">{{ texts.f06e }}</div>
               </div>
@@ -325,7 +328,7 @@
       {%- assign collection = collections.blog-posts | offset: 3 | limit: 1 | sort: "-created-on" -%}<div id="w-node-_631f81a7-7089-9fda-e8e4-9de9eac0f0d2-d3853b53" class="collection-large-list-wrapper w-dyn-list">
         {%- unless collection.length == 0 -%}<div role="list" class="w-dyn-items">
           {%- for item in collection -%}<div role="listitem" class="w-dyn-item">
-            <a href="{{ links.23 }}" class="lightbox-link w-inline-block w-lightbox"><img class="gallery-image-1" src="/assets/images/beds.webp" alt="" sizes="(max-width: 479px) 94vw, (max-width: 767px) 96vw, 100vw" id="w-node-f1e08168-176b-d9bb-62d1-2b0e62d764e6-d3853b53" loading="lazy" srcset="/assets/images/beds-p-500.webp 500w, /assets/images/beds.webp 600w">
+            <a href="{{ links.23 }}" class="lightbox-link w-inline-block w-lightbox">{%- image "/assets/images/beds.webp", "", '[]', 'class="gallery-image-1" id="w-node-f1e08168-176b-d9bb-62d1-2b0e62d764e6-d3853b53" loading="lazy"' -%}
               <div class="lightbox-overlay">
                 <div class="lightbox-icon">{{ texts.f06e }}</div>
               </div>
@@ -340,7 +343,7 @@
       {%- assign collection = collections.blog-posts | offset: 5 | limit: 1 | sort: "-created-on" -%}<div id="w-node-_631f81a7-7089-9fda-e8e4-9de9eac0f0de-d3853b53" class="collection-list-wrapper-5 w-dyn-list">
         {%- unless collection.length == 0 -%}<div role="list" class="w-dyn-items">
           {%- for item in collection -%}<div role="listitem" class="w-dyn-item">
-            <a href="{{ links.23 }}" class="lightbox-link w-inline-block w-lightbox"><img class="gallery-image-1" src="/assets/images/bed-square.webp" alt="" sizes="(max-width: 479px) 94vw, (max-width: 767px) 96vw, 100vw" id="w-node-_3a955658-01ed-6324-59dd-853179f221e9-d3853b53" loading="lazy" srcset="/assets/images/bed-square-p-500.webp 500w, /assets/images/bed-square-p-800.webp 800w, /assets/images/bed-square-p-1080.webp 1080w, /assets/images/bed-square.webp 1200w">
+            <a href="{{ links.23 }}" class="lightbox-link w-inline-block w-lightbox">{%- image "/assets/images/bed-square.webp", "", '[]', 'class="gallery-image-1" id="w-node-_3a955658-01ed-6324-59dd-853179f221e9-d3853b53" loading="lazy"' -%}
               <div class="lightbox-overlay">
                 <div class="lightbox-icon">{{ texts.f06e }}</div>
               </div>
@@ -356,18 +359,18 @@
   </div>
   <div class="our-partners">
     <div data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d1d" class="our-partners-list">
-      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d1e" class="our-partners-item w-inline-block"><img src="/assets/images/client1.webp" loading="lazy" alt="partners-img" class="our-partners-brand"></a>
-      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d20" class="our-partners-item w-inline-block"><img src="/assets/images/client2.webp" loading="lazy" alt="partners-img" class="our-partners-brand"></a>
-      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d22" class="our-partners-item w-inline-block"><img src="/assets/images/client3.webp" loading="lazy" alt="partners-img" class="our-partners-brand"></a>
-      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d24" class="our-partners-item w-inline-block"><img src="/assets/images/client4.webp" loading="lazy" alt="partners-img" class="our-partners-brand"></a>
-      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d26" class="our-partners-item w-inline-block"><img src="/assets/images/client2.webp" loading="lazy" alt="partners-img" class="our-partners-brand"></a>
+      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d1e" class="our-partners-item w-inline-block">{%- image "/assets/images/client1.webp", "partners-img", '[]', 'loading="lazy" class="our-partners-brand"' -%}</a>
+      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d20" class="our-partners-item w-inline-block">{%- image "/assets/images/client2.webp", "partners-img", '[]', 'loading="lazy" class="our-partners-brand"' -%}</a>
+      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d22" class="our-partners-item w-inline-block">{%- image "/assets/images/client3.webp", "partners-img", '[]', 'loading="lazy" class="our-partners-brand"' -%}</a>
+      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d24" class="our-partners-item w-inline-block">{%- image "/assets/images/client4.webp", "partners-img", '[]', 'loading="lazy" class="our-partners-brand"' -%}</a>
+      <a href="{{ links.-1b5f74d4 }}" data-w-id="12ee7904-f39b-dfcf-2d72-c87aaa017d26" class="our-partners-item w-inline-block">{%- image "/assets/images/client2.webp", "partners-img", '[]', 'loading="lazy" class="our-partners-brand"' -%}</a>
     </div>
   </div>
   <div class="section-skills without-space">
     <div class="w-layout-grid grid-amazing-skills">
       {%- assign collection = collections.blog-posts | offset: 2 | limit: 1 | sort: "-created-on" -%}<div id="w-node-_0934291f-35d6-b06b-185b-cd222cf35f8e-d3853b53" class="w-dyn-list">
         {%- unless collection.length == 0 -%}<div role="list" class="w-dyn-items">
-          {%- for item in collection -%}<div role="listitem" class="w-dyn-item"><img class="image-25" src="/assets/images/bed.webp" alt="" sizes="100vw" loading="lazy" srcset="/assets/images/bed-p-500.webp 500w, /assets/images/bed.webp 536w"></div>{%- endfor -%}
+          {%- for item in collection -%}<div role="listitem" class="w-dyn-item">{%- image "/assets/images/bed.webp", "", '[]', 'class="image-25" loading="lazy"' -%}</div>{%- endfor -%}
         </div>{%- endunless -%}
         {%- if collection.length == 0 -%}<div class="w-dyn-empty">
           <div>{{ texts.3d503d2b }}</div>
