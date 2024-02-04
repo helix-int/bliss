@@ -1,0 +1,3990 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+  branch: master
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor: &ref_0
+      preview: false
+    folder: cms/pages
+    fields: &ref_1
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_2
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Twitter Image
+            name: twitter:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: pages-templates
+    label: Pages templates
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor: *ref_0
+    folder: cms/pages/templates
+    fields: *ref_1
+  - name: posts_categories
+    label: Blog Posts Categories
+    folder: cms/posts-categories
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: posts-categories
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[posts-categories].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_2
+  - name: blog_posts
+    label: Blog Posts
+    folder: cms/blog-posts
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Post Body
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_main-image-2
+        label: Main Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: Smaller version of main image that is used on blog post grid
+        name: f_thumbnail-image
+        label: Thumbnail image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: A summary of the blog post that appears on blog post grid
+        name: f_post-summary
+        label: Post Summary
+        widget: string
+        required: false
+      - hint: ''
+        name: f_featured
+        label: Featured?
+        widget: boolean
+        required: false
+        default: false
+      - hint: ''
+        name: f_category
+        label: Category
+        widget: relation
+        required: false
+        collection: posts_categories
+        value_field: cms/posts-categories/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: ''
+        name: f_next-post
+        label: Next Post
+        widget: relation
+        required: false
+        collection: blog_posts
+        value_field: cms/blog-posts/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: ''
+        name: f_previous-post
+        label: Previous Post
+        widget: relation
+        required: false
+        collection: blog_posts
+        value_field: cms/blog-posts/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: Description for image
+        name: f_alt-text
+        label: Alt Text
+        widget: string
+        required: false
+      - hint: ''
+        name: f_author-image
+        label: Author Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_author-name
+        label: Author Name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_services-title
+        label: Services Title
+        widget: string
+        required: false
+      - hint: ''
+        name: f_similar-services
+        label: Similar Services
+        widget: string
+        required: false
+      - hint: ''
+        name: f_reflexology-title
+        label: Reflexology Title
+        widget: string
+        required: false
+      - hint: ''
+        name: f_services-link
+        label: Services Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_package-price
+        label: Package Price
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: blog-posts
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[blog-posts].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_2
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: Demos, key: 3edced0'
+            label: Text
+            name: 3edced0
+            widget: string
+          - hint: 'Original text: Home 1, key: -7ed3d6b0'
+            label: Text
+            name: '-7ed3d6b0'
+            widget: string
+          - hint: 'Original text: Home 2, key: -7ed3d6af'
+            label: Text
+            name: '-7ed3d6af'
+            widget: string
+          - hint: 'Original text: Home 3, key: -7ed3d6ae'
+            label: Text
+            name: '-7ed3d6ae'
+            widget: string
+          - hint: "Original text:  OUR\_SPA, key: -1af4aa10"
+            label: Text
+            name: '-1af4aa10'
+            widget: string
+          - hint: 'Original text: Our SPA, key: 21098e90'
+            label: Text
+            name: '21098e90'
+            widget: string
+          - hint: 'Original text: EXPERTS, key: -233f9c97'
+            label: Text
+            name: '-233f9c97'
+            widget: string
+          - hint: 'Original text: EXPERIENCE, key: 17d0456a'
+            label: Text
+            name: 17d0456a
+            widget: string
+          - hint: 'Original text: Treatments, key: 1c7731b'
+            label: Text
+            name: 1c7731b
+            widget: string
+          - hint: 'Original text: SAUNA ROOMS, key: -2827090e'
+            label: Text
+            name: '-2827090e'
+            widget: string
+          - hint: 'Original text: TESTIMONIALS, key: -6a1ba84c'
+            label: Text
+            name: '-6a1ba84c'
+            widget: string
+          - hint: 'Original text: PRICING, key: 18042ba6'
+            label: Text
+            name: 18042ba6
+            widget: string
+          - hint: 'Original text: APPOINTMENT, key: 2868ef7f'
+            label: Text
+            name: 2868ef7f
+            widget: string
+          - hint: 'Original text: LOCATIONS, key: 5ebc673e'
+            label: Text
+            name: 5ebc673e
+            widget: string
+          - hint: 'Original text: FAQ, key: 10ef6'
+            label: Text
+            name: 10ef6
+            widget: string
+          - hint: 'Original text: SERVICES, key: -7f24ffa2'
+            label: Text
+            name: '-7f24ffa2'
+            widget: string
+          - hint: 'Original text: Our Services, key: 13a96ef2'
+            label: Text
+            name: 13a96ef2
+            widget: string
+          - hint: 'Original text: DEEP TISSUE MASSAGE, key: 641e32e4'
+            label: Text
+            name: 641e32e4
+            widget: string
+          - hint: 'Original text: HYDRO THERAPY, key: 2580def9'
+            label: Text
+            name: 2580def9
+            widget: string
+          - hint: 'Original text: REFLEXOLOGY, key: -38ae26a8'
+            label: Text
+            name: '-38ae26a8'
+            widget: string
+          - hint: 'Original text: SPECIALS, key: -507b3926'
+            label: Text
+            name: '-507b3926'
+            widget: string
+          - hint: 'Original text: MEMBERSHIP, key: -32f88c2a'
+            label: Text
+            name: '-32f88c2a'
+            widget: string
+          - hint: 'Original text: GIFT CARDS, key: 569c053'
+            label: Text
+            name: 569c053
+            widget: string
+          - hint: 'Original text: PACKAGES, key: 5b6744ed'
+            label: Text
+            name: 5b6744ed
+            widget: string
+          - hint: 'Original text: Blog, key: 1fa3c2'
+            label: Text
+            name: 1fa3c2
+            widget: string
+          - hint: 'Original text: Blog Grid, key: -51e0aafc'
+            label: Text
+            name: '-51e0aafc'
+            widget: string
+          - hint: 'Original text: Blog Classic, key: -e17d1ec'
+            label: Text
+            name: '-e17d1ec'
+            widget: string
+          - hint: 'Original text: Blog Sidebar, key: 3b5100de'
+            label: Text
+            name: 3b5100de
+            widget: string
+          - hint: 'Original text: Blog Category, key: 24da77bc'
+            label: Text
+            name: 24da77bc
+            widget: string
+          - hint: 'Original text: Blog Details, key: 1bdfe7c4'
+            label: Text
+            name: 1bdfe7c4
+            widget: string
+          - hint: 'Original text: Contact Us, key: 7f2746de'
+            label: Text
+            name: 7f2746de
+            widget: string
+          - hint: 'Original text: Pages, key: 494ffa4'
+            label: Text
+            name: 494ffa4
+            widget: string
+          - hint: 'Original text: Testimonials, key: 1590c3d4'
+            label: Text
+            name: 1590c3d4
+            widget: string
+          - hint: 'Original text: OUR SERVICES, key: 18b07ed2'
+            label: Text
+            name: 18b07ed2
+            widget: string
+          - hint: 'Original text: 404, key: c938'
+            label: Text
+            name: c938
+            widget: string
+          - hint: 'Original text: Coming Soon, key: ccc773a'
+            label: Text
+            name: ccc773a
+            widget: string
+          - hint: 'Original text: BOOK NOW, key: -59e6af01'
+            label: Text
+            name: '-59e6af01'
+            widget: string
+          - hint: 'Original text: , key: f00d'
+            label: Text
+            name: f00d
+            widget: string
+          - hint: 'Original text: SPA & Massage , key: 34b6deeb'
+            label: Text
+            name: 34b6deeb
+            widget: string
+          - hint: 'Original text: Webflow Template, key: 35210498'
+            label: Text
+            name: '35210498'
+            widget: string
+          - hint: "Original text: 3 LANDING\_PAGES | 26+ INNER\_PAGES., key: 173111c3"
+            label: Text
+            name: 173111c3
+            widget: string
+          - hint: 'Original text: Customers Trust Us Find Out Why, key: 3a8fdafe'
+            label: Text
+            name: 3a8fdafe
+            widget: string
+          - hint: >-
+              Original text: Best features with the latest technologies to make
+              fast and modern website., key: -4c60a6ed
+            label: Text
+            name: '-4c60a6ed'
+            widget: string
+          - hint: 'Original text: Extensive Style Guide, key: -4b2eaa24'
+            label: Text
+            name: '-4b2eaa24'
+            widget: string
+          - hint: 'Original text: Beautiful Components, key: 7de0e145'
+            label: Text
+            name: 7de0e145
+            widget: string
+          - hint: 'Original text: 5 Stars Customer, key: -1d699fb8'
+            label: Text
+            name: '-1d699fb8'
+            widget: string
+          - hint: 'Original text: Customer Support, key: -47e04673'
+            label: Text
+            name: '-47e04673'
+            widget: string
+          - hint: 'Original text: Highly Adjustable, key: -168b5c86'
+            label: Text
+            name: '-168b5c86'
+            widget: string
+          - hint: 'Original text: Website Layouts, key: 7fe6bc4'
+            label: Text
+            name: 7fe6bc4
+            widget: string
+          - hint: 'Original text: Smooth CSS3, key: 496735c2'
+            label: Text
+            name: 496735c2
+            widget: string
+          - hint: 'Original text: Animations, key: -7675ce71'
+            label: Text
+            name: '-7675ce71'
+            widget: string
+          - hint: 'Original text: Fully Customisable, key: -77cd66f5'
+            label: Text
+            name: '-77cd66f5'
+            widget: string
+          - hint: 'Original text: Color Schemes, key: 56c1ff71'
+            label: Text
+            name: 56c1ff71
+            widget: string
+          - hint: 'Original text: 3 Complete Website Homepages, key: -15560e3a'
+            label: Text
+            name: '-15560e3a'
+            widget: string
+          - hint: >-
+              Original text: Unlimited potential in creating websites to suit
+              your needs., key: -b0b7eb
+            label: Text
+            name: '-b0b7eb'
+            widget: string
+          - hint: 'Original text: , key: f30b'
+            label: Text
+            name: f30b
+            widget: string
+          - hint: 'Original text: Various Ready-to-Use Inner Pages, key: 5ddbe5ee'
+            label: Text
+            name: 5ddbe5ee
+            widget: string
+          - hint: >-
+              Original text: Launch your website like a pro from the start with
+              our essential pages., key: -65abada3
+            label: Text
+            name: '-65abada3'
+            widget: string
+          - hint: 'Original text: Our Bliss Spa, key: 7f58ddcf'
+            label: Text
+            name: 7f58ddcf
+            widget: string
+          - hint: 'Original text: Our Experts, key: -500fa98b'
+            label: Text
+            name: '-500fa98b'
+            widget: string
+          - hint: 'Original text: Our Experience, key: 30bd62fe'
+            label: Text
+            name: 30bd62fe
+            widget: string
+          - hint: 'Original text: Sauna Rooms, key: -7d6ef90e'
+            label: Text
+            name: '-7d6ef90e'
+            widget: string
+          - hint: 'Original text: Our Pricing, key: -14cbe14e'
+            label: Text
+            name: '-14cbe14e'
+            widget: string
+          - hint: 'Original text: Appointment, key: b7f037f'
+            label: Text
+            name: b7f037f
+            widget: string
+          - hint: 'Original text: Our Locations, key: 25bbcb4a'
+            label: Text
+            name: 25bbcb4a
+            widget: string
+          - hint: 'Original text: Deep Tissue Massage, key: -14d9291c'
+            label: Text
+            name: '-14d9291c'
+            widget: string
+          - hint: 'Original text: Hydro Therapy, key: 274f2f9'
+            label: Text
+            name: 274f2f9
+            widget: string
+          - hint: 'Original text: Reflexology, key: -559812a8'
+            label: Text
+            name: '-559812a8'
+            widget: string
+          - hint: 'Original text: Membership, key: 26ef63f6'
+            label: Text
+            name: 26ef63f6
+            widget: string
+          - hint: 'Original text: Gift Cards, key: 26f3ac73'
+            label: Text
+            name: 26f3ac73
+            widget: string
+          - hint: 'Original text: Packages, key: 309bb90d'
+            label: Text
+            name: 309bb90d
+            widget: string
+          - hint: 'Original text: Licensing, key: -38ad4b62'
+            label: Text
+            name: '-38ad4b62'
+            widget: string
+          - hint: 'Original text: Style Guide, key: -7aba473'
+            label: Text
+            name: '-7aba473'
+            widget: string
+          - hint: >-
+              Original text: Start building your next gorgeous website, key:
+              -68cf73b2
+            label: Text
+            name: '-68cf73b2'
+            widget: string
+          - hint: 'Original text: Purchase Now, key: -643850c9'
+            label: Text
+            name: '-643850c9'
+            widget: string
+          - hint: 'Original text: We will take care of you!, key: 296b9a19'
+            label: Text
+            name: 296b9a19
+            widget: string
+          - hint: >-
+              Original text: For those who love gentle care with natural
+              ingredients only. , key: -46c04981
+            label: Text
+            name: '-46c04981'
+            widget: string
+          - hint: 'Original text: GET IN TOUCH, key: -12b421f2'
+            label: Text
+            name: '-12b421f2'
+            widget: string
+          - hint: >-
+              Original text: 5175 Plainfield Ave NE, Rockford, MI 49341, key:
+              -308bd780
+            label: Text
+            name: '-308bd780'
+            widget: string
+          - hint: 'Original text: (616) 446 5035, key: 5a5cd471'
+            label: Text
+            name: 5a5cd471
+            widget: string
+          - hint: 'Original text: INSTAGRAM, key: -582ee86e'
+            label: Text
+            name: '-582ee86e'
+            widget: string
+          - hint: 'Original text: FACEBOOK, key: 4c478ac6'
+            label: Text
+            name: 4c478ac6
+            widget: string
+          - hint: 'Original text: TWITTER, key: -bd2c9ad'
+            label: Text
+            name: '-bd2c9ad'
+            widget: string
+          - hint: 'Original text: Book an appointment:, key: 4d7d0677'
+            label: Text
+            name: 4d7d0677
+            widget: string
+          - hint: "Original text: BOOK\_ONLINE, key: -6f26e816"
+            label: Text
+            name: '-6f26e816'
+            widget: string
+          - hint: "Original text: CALL\_US: (616) 446-5035, key: -440e413c"
+            label: Text
+            name: '-440e413c'
+            widget: string
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: >-
+              Original text: © Moon Moon Massage and Spa. All Rights Reserved
+              2023., key: -fa64ca0
+            label: Text
+            name: '-fa64ca0'
+            widget: string
+          - hint: 'Original text: Protected Page, key: -11d4bbff'
+            label: Text
+            name: '-11d4bbff'
+            widget: string
+          - hint: 'Original text: Password, key: 4c641ebb'
+            label: Text
+            name: 4c641ebb
+            widget: string
+          - hint: >-
+              Original text: Incorrect password. Please try again., key:
+              -f5c4b5f
+            label: Text
+            name: '-f5c4b5f'
+            widget: string
+          - hint: 'Original text: Buy this Template, key: -28239c5e'
+            label: Text
+            name: '-28239c5e'
+            widget: string
+          - hint: 'Original text: All Templates, key: 1570db3a'
+            label: Text
+            name: 1570db3a
+            widget: string
+          - hint: >-
+              Original text: Hire a Webflow Professional to build a website
+              using this template. , key: -bd3419
+            label: Text
+            name: '-bd3419'
+            widget: string
+          - hint: 'Original text: Learn More, key: -52bd880f'
+            label: Text
+            name: '-52bd880f'
+            widget: string
+          - hint: 'Original text: Make an Appointment, key: 5b89905e'
+            label: Text
+            name: 5b89905e
+            widget: string
+          - hint: 'Original text: Get A Quote, key: -7eb4752d'
+            label: Text
+            name: '-7eb4752d'
+            widget: string
+          - hint: 'Original text: Something’s not right., key: 25cd99cb'
+            label: Text
+            name: 25cd99cb
+            widget: string
+          - hint: >-
+              Original text: We can’t find the page your are looking for. , key:
+              19d22687
+            label: Text
+            name: 19d22687
+            widget: string
+          - hint: 'Original text: Back to homepage, key: 2948e5a'
+            label: Text
+            name: 2948e5a
+            widget: string
+          - hint: 'Original text: Shop, key: 274f16'
+            label: Text
+            name: 274f16
+            widget: string
+          - hint: 'Original text: get in touch, key: -5bfbfdf2'
+            label: Text
+            name: '-5bfbfdf2'
+            widget: string
+          - hint: >-
+              Original text: Get in touch with us and we'll help your health!,
+              key: -6796153
+            label: Text
+            name: '-6796153'
+            widget: string
+          - hint: >-
+              Original text: Nam libero tempore, cum soluta nobis est eligendi
+              optio cumque nihil impedit quo minus id quod maxime placeat facere
+              possimus, omnis voluptas assumenda est, omnis dolor repellendus.,
+              key: -1e6f9b34
+            label: Text
+            name: '-1e6f9b34'
+            widget: text
+          - hint: 'Original text: London, key: -77fff9c8'
+            label: Text
+            name: '-77fff9c8'
+            widget: string
+          - hint: 'Original text: , key: f3c5'
+            label: Text
+            name: f3c5
+            widget: string
+          - hint: 'Original text: 14 Tottenham Road, London, England, key: -5e17e104'
+            label: Text
+            name: '-5e17e104'
+            widget: string
+          - hint: 'Original text: , key: f879'
+            label: Text
+            name: f879
+            widget: string
+          - hint: 'Original text: +1 212 425 8617, key: 2e107ad4'
+            label: Text
+            name: 2e107ad4
+            widget: string
+          - hint: 'Original text: , key: f0e0'
+            label: Text
+            name: f0e0
+            widget: string
+          - hint: 'Original text: bliss@office.com, key: 7d0d4630'
+            label: Text
+            name: 7d0d4630
+            widget: string
+          - hint: 'Original text: Paris, key: 495296b'
+            label: Text
+            name: 495296b
+            widget: string
+          - hint: 'Original text: 27 Rue de Berri, Paris, France, key: -6105b45a'
+            label: Text
+            name: '-6105b45a'
+            widget: string
+          - hint: 'Original text: New York, key: 526ed28f'
+            label: Text
+            name: 526ed28f
+            widget: string
+          - hint: 'Original text: 5 Washington Square, New York, USA, key: 67160a8a'
+            label: Text
+            name: 67160a8a
+            widget: string
+          - hint: 'Original text: , key: f053'
+            label: Text
+            name: f053
+            widget: string
+          - hint: 'Original text: , key: f054'
+            label: Text
+            name: f054
+            widget: string
+          - hint: 'Original text: Send us a message, key: 20046dbe'
+            label: Text
+            name: 20046dbe
+            widget: string
+          - hint: >-
+              Original text: Thank you! Your submission has been received!, key:
+              5a0ea5a1
+            label: Text
+            name: 5a0ea5a1
+            widget: string
+          - hint: >-
+              Original text: Oops! Something went wrong while submitting the
+              form., key: -7c112e99
+            label: Text
+            name: '-7c112e99'
+            widget: string
+          - hint: 'Original text: Our resourses, key: 7f724e41'
+            label: Text
+            name: 7f724e41
+            widget: string
+          - hint: 'Original text: Services included in every plan, key: -46312b99'
+            label: Text
+            name: '-46312b99'
+            widget: string
+          - hint: >-
+              Original text: For those who love gentle care with natural
+              ingredients only. We turn your skin care routine into a pleasant
+              ritual., key: -64cf452f
+            label: Text
+            name: '-64cf452f'
+            widget: text
+          - hint: 'Original text: Best Service, key: 7ba94079'
+            label: Text
+            name: 7ba94079
+            widget: string
+          - hint: >-
+              Original text: Customized services for every skin type.
+              Professional retail products available to continue taking care of
+              your skin at home., key: -6d7962e5
+            label: Text
+            name: '-6d7962e5'
+            widget: text
+          - hint: 'Original text: Learn more, key: -52aefc2f'
+            label: Text
+            name: '-52aefc2f'
+            widget: string
+          - hint: 'Original text: Affordable Price, key: 5227c963'
+            label: Text
+            name: 5227c963
+            widget: string
+          - hint: 'Original text: Permanent Support, key: -19a345e3'
+            label: Text
+            name: '-19a345e3'
+            widget: string
+          - hint: 'Original text: Contact support, key: c0bd7af'
+            label: Text
+            name: c0bd7af
+            widget: string
+          - hint: 'Original text: Finnish Sauna, key: -7b60a8eb'
+            label: Text
+            name: '-7b60a8eb'
+            widget: string
+          - hint: >-
+              Original text: When you choose us as a service partner we bring
+              expertise and experience as standard., key: -69669f8f
+            label: Text
+            name: '-69669f8f'
+            widget: string
+          - hint: 'Original text: Daily Program, key: -38d3c8c3'
+            label: Text
+            name: '-38d3c8c3'
+            widget: string
+          - hint: 'Original text: Volcanic Stones, key: 473670f7'
+            label: Text
+            name: 473670f7
+            widget: string
+          - hint: 'Original text: Scrub Massage, key: -6ac153a6'
+            label: Text
+            name: '-6ac153a6'
+            widget: string
+          - hint: 'Original text: Our Blog, key: 20f836'
+            label: Text
+            name: 20f836
+            widget: string
+          - hint: 'Original text: Read more, key: 31997f7f'
+            label: Text
+            name: 31997f7f
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Previous, key: -4811e0e9'
+            label: Text
+            name: '-4811e0e9'
+            widget: string
+          - hint: 'Original text: Next, key: 24ff13'
+            label: Text
+            name: 24ff13
+            widget: string
+          - hint: >-
+              Original text: Subscribe to our newsletter and get a 30% discount
+              on a spa treatment!, key: -6fddd82c
+            label: Text
+            name: '-6fddd82c'
+            widget: string
+          - hint: 'Original text: Read full post, key: -57de9259'
+            label: Text
+            name: '-57de9259'
+            widget: string
+          - hint: 'Original text: , key: f16d'
+            label: Text
+            name: f16d
+            widget: string
+          - hint: 'Original text: Follow us:, key: -217d773'
+            label: Text
+            name: '-217d773'
+            widget: string
+          - hint: 'Original text: @bliss.com, key: 24a44ad2'
+            label: Text
+            name: 24a44ad2
+            widget: string
+          - hint: 'Original text: Recent Posts, key: 2d2c9ce'
+            label: Text
+            name: 2d2c9ce
+            widget: string
+          - hint: 'Original text: Categories, key: -3be6ddc4'
+            label: Text
+            name: '-3be6ddc4'
+            widget: string
+          - hint: 'Original text: Changelog, key: -31d02e8c'
+            label: Text
+            name: '-31d02e8c'
+            widget: string
+          - hint: 'Original text: Version 1.0, key: -739c1db5'
+            label: Text
+            name: '-739c1db5'
+            widget: string
+          - hint: 'Original text: Initial release of template, key: 124e030e'
+            label: Text
+            name: 124e030e
+            widget: string
+          - hint: 'Original text: Something great is coming soon, key: -7d83c8c3'
+            label: Text
+            name: '-7d83c8c3'
+            widget: string
+          - hint: >-
+              Original text: You can subscribe us to get noticed when our
+              website is ready., key: 2fbe2aaa
+            label: Text
+            name: 2fbe2aaa
+            widget: string
+          - hint: 'Original text: Give your body pleasure, key: 234a788d'
+            label: Text
+            name: 234a788d
+            widget: string
+          - hint: 'Original text: We offer various types of massages, key: 1c67765f'
+            label: Text
+            name: 1c67765f
+            widget: string
+          - hint: >-
+              Original text: We believe this approach is best for our clients
+              because each program is customized for the client’s unique needs.
+              We are transforming the way we support people by optimizing
+              results and focusing on the whole person., key: -705c0b7c
+            label: Text
+            name: '-705c0b7c'
+            widget: text
+          - hint: 'Original text: Therapeutic Massage, key: -561feb07'
+            label: Text
+            name: '-561feb07'
+            widget: string
+          - hint: >-
+              Original text: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua., key: 4b9725b8
+            label: Text
+            name: 4b9725b8
+            widget: text
+          - hint: 'Original text: Body Scrubbing, key: 2aade5f1'
+            label: Text
+            name: 2aade5f1
+            widget: string
+          - hint: 'Original text: Honey Wrap, key: 5051324f'
+            label: Text
+            name: 5051324f
+            widget: string
+          - hint: 'Original text: Lympho Massage, key: 4d6f7362'
+            label: Text
+            name: 4d6f7362
+            widget: string
+          - hint: 'Original text: Head Massage, key: -bc9ecb5'
+            label: Text
+            name: '-bc9ecb5'
+            widget: string
+          - hint: 'Original text: Full Body Massage, key: -39eb9522'
+            label: Text
+            name: '-39eb9522'
+            widget: string
+          - hint: 'Original text: , key: f04b'
+            label: Text
+            name: f04b
+            widget: string
+          - hint: 'Original text: 91%, key: dc0d'
+            label: Text
+            name: dc0d
+            widget: string
+          - hint: 'Original text: Face Massage, key: e174ec8'
+            label: Text
+            name: e174ec8
+            widget: string
+          - hint: 'Original text: 68%, key: d1a3'
+            label: Text
+            name: d1a3
+            widget: string
+          - hint: 'Original text: Foot Massage, key: 560ce3d9'
+            label: Text
+            name: 560ce3d9
+            widget: string
+          - hint: 'Original text: 90%, key: dbee'
+            label: Text
+            name: dbee
+            widget: string
+          - hint: 'Original text: Back Massage, key: 68eb5352'
+            label: Text
+            name: 68eb5352
+            widget: string
+          - hint: 'Original text: 36%, key: c622'
+            label: Text
+            name: c622
+            widget: string
+          - hint: 'Original text: All Services, key: -4dd08bc3'
+            label: Text
+            name: '-4dd08bc3'
+            widget: string
+          - hint: 'Original text: Similar services that we provide, key: 3eefa45b'
+            label: Text
+            name: 3eefa45b
+            widget: string
+          - hint: 'Original text: We work with love, key: 7168dfaf'
+            label: Text
+            name: 7168dfaf
+            widget: string
+          - hint: 'Original text: More details, key: -7fb50769'
+            label: Text
+            name: '-7fb50769'
+            widget: string
+          - hint: 'Original text: , key: f060'
+            label: Text
+            name: f060
+            widget: string
+          - hint: 'Original text: Previous post, key: 1c444009'
+            label: Text
+            name: 1c444009
+            widget: string
+          - hint: 'Original text: Next post, key: -437a0273'
+            label: Text
+            name: '-437a0273'
+            widget: string
+          - hint: 'Original text: , key: f061'
+            label: Text
+            name: f061
+            widget: string
+          - hint: 'Original text: 9, key: 39'
+            label: Text
+            name: '39'
+            widget: string
+          - hint: 'Original text: Years of Experience, key: 344c5089'
+            label: Text
+            name: 344c5089
+            widget: string
+          - hint: 'Original text: 12, key: 621'
+            label: Text
+            name: '621'
+            widget: string
+          - hint: 'Original text: Numbers of Salons, key: 34ce71e9'
+            label: Text
+            name: 34ce71e9
+            widget: string
+          - hint: 'Original text: 127, key: be36'
+            label: Text
+            name: be36
+            widget: string
+          - hint: 'Original text: Our Products, key: -7a5fd008'
+            label: Text
+            name: '-7a5fd008'
+            widget: string
+          - hint: 'Original text: 55, key: 6a0'
+            label: Text
+            name: 6a0
+            widget: string
+          - hint: 'Original text: Team Members, key: -729719aa'
+            label: Text
+            name: '-729719aa'
+            widget: string
+          - hint: 'Original text: Bliss Spa Studio, key: -76877d0d'
+            label: Text
+            name: '-76877d0d'
+            widget: string
+          - hint: 'Original text: Welcome to rest and relaxation, key: -15ac086d'
+            label: Text
+            name: '-15ac086d'
+            widget: string
+          - hint: 'Original text: Mineral Salt Scrub, key: -31d85f05'
+            label: Text
+            name: '-31d85f05'
+            widget: string
+          - hint: 'Original text: Geothermal Spa, key: -43790a56'
+            label: Text
+            name: '-43790a56'
+            widget: string
+          - hint: 'Original text: Mineral Baths, key: 2edba2ea'
+            label: Text
+            name: 2edba2ea
+            widget: string
+          - hint: 'Original text: WE ARE EXPERTS, key: -212b84d5'
+            label: Text
+            name: '-212b84d5'
+            widget: string
+          - hint: >-
+              Original text: Skin care procedures and relaxing massage, key:
+              52b0719a
+            label: Text
+            name: 52b0719a
+            widget: string
+          - hint: >-
+              Original text: We offer a variety of facial services to suit your
+              individual skin care needs. Our estheticians use only the finest
+              Bioelements products based on trace minerals, essential oils, and
+              plant extracts., key: 70cc1258
+            label: Text
+            name: 70cc1258
+            widget: text
+          - hint: >-
+              Original text: Treat yourself tó most relaxing hour of your life!,
+              key: -3ce776a4
+            label: Text
+            name: '-3ce776a4'
+            widget: string
+          - hint: 'Original text:  Website and app designing, key: -201a00e9'
+            label: Text
+            name: '-201a00e9'
+            widget: string
+          - hint: 'Original text:  User experience designing, key: 3c9a3b23'
+            label: Text
+            name: 3c9a3b23
+            widget: string
+          - hint: 'Original text: Book Now, key: 7b3ec11f'
+            label: Text
+            name: 7b3ec11f
+            widget: string
+          - hint: 'Original text: Watch video and visit spa, key: f243e70'
+            label: Text
+            name: f243e70
+            widget: string
+          - hint: 'Original text: Aromatherapy, key: 5acf53d7'
+            label: Text
+            name: 5acf53d7
+            widget: string
+          - hint: 'Original text: Hydrotherapy, key: -48958067'
+            label: Text
+            name: '-48958067'
+            widget: string
+          - hint: 'Original text: Facials, key: 221e9387'
+            label: Text
+            name: '221e9387'
+            widget: string
+          - hint: 'Original text: Violet Krasinski, key: -3de2b0ce'
+            label: Text
+            name: '-3de2b0ce'
+            widget: string
+          - hint: 'Original text: Physiotherapist, key: e719fa2'
+            label: Text
+            name: e719fa2
+            widget: string
+          - hint: 'Original text: , key: f39e'
+            label: Text
+            name: f39e
+            widget: string
+          - hint: 'Original text: , key: f232'
+            label: Text
+            name: f232
+            widget: string
+          - hint: 'Original text: , key: f099'
+            label: Text
+            name: f099
+            widget: string
+          - hint: 'Original text: Rita Parker, key: -6673992d'
+            label: Text
+            name: '-6673992d'
+            widget: string
+          - hint: 'Original text: Chief masseuse, key: -28f32e6f'
+            label: Text
+            name: '-28f32e6f'
+            widget: string
+          - hint: 'Original text: Bella Almost, key: -3bf4baf0'
+            label: Text
+            name: '-3bf4baf0'
+            widget: string
+          - hint: 'Original text: Cosmetologist, key: -183950c0'
+            label: Text
+            name: '-183950c0'
+            widget: string
+          - hint: 'Original text: Esme Shield, key: 2bf06a03'
+            label: Text
+            name: 2bf06a03
+            widget: string
+          - hint: 'Original text: Manager, key: -6afe5873'
+            label: Text
+            name: '-6afe5873'
+            widget: string
+          - hint: >-
+              Original text: “ Thanks to the wonderful masters at Bliss Spa for
+              helping me relax and unwind! , key: 2671050f
+            label: Text
+            name: 2671050f
+            widget: string
+          - hint: >-
+              Original text: I sincerely recommend this particular salon, as I
+              am convinced of the quality of the service. I am already a
+              permanent customer of the salon, I receive pleasant discounts and
+              bonuses, which cannot but please.“, key: -2f5c1c99
+            label: Text
+            name: '-2f5c1c99'
+            widget: text
+          - hint: 'Original text: Violetta Rosepole, key: 3c12ffb'
+            label: Text
+            name: 3c12ffb
+            widget: string
+          - hint: 'Original text: HR business admin, key: 4b93d0c5'
+            label: Text
+            name: 4b93d0c5
+            widget: string
+          - hint: >-
+              Original text: “ Thanks to the wonderful masters at Bliss Spa for
+              helping me relax and unwind! I sincerely recommend this particular
+              salon, as I am convinced of the quality of the service. I am
+              already a permanent customer of the salon, I receive pleasant
+              discounts and bonuses, which cannot but please.“, key: -5a7359c8
+            label: Text
+            name: '-5a7359c8'
+            widget: text
+          - hint: 'Original text: Layla Gordon, key: 2f8d24a0'
+            label: Text
+            name: 2f8d24a0
+            widget: string
+          - hint: 'Original text: Linda Moore, key: -a559212'
+            label: Text
+            name: '-a559212'
+            widget: string
+          - hint: 'Original text: Business admin, key: -1c122cf1'
+            label: Text
+            name: '-1c122cf1'
+            widget: string
+          - hint: >-
+              Original text: The Bliss Spa team is a well-oiled machine that is
+              passionate about making a positive difference in your day,
+              confidence, and body., key: -499df65b
+            label: Text
+            name: '-499df65b'
+            widget: text
+          - hint: 'Original text: Meet our professionals, key: 368775df'
+            label: Text
+            name: 368775df
+            widget: string
+          - hint: 'Original text: Meet the team of Bliss spa, key: 663dced5'
+            label: Text
+            name: 663dced5
+            widget: string
+          - hint: 'Original text: Melissa Carthy, key: 22dc8e45'
+            label: Text
+            name: 22dc8e45
+            widget: string
+          - hint: 'Original text: Dermatologist, key: -5c9d2eba'
+            label: Text
+            name: '-5c9d2eba'
+            widget: string
+          - hint: 'Original text: Susie Ross, key: 1ef3ab0'
+            label: Text
+            name: 1ef3ab0
+            widget: string
+          - hint: 'Original text: Chief Masseur, key: -5c090ecd'
+            label: Text
+            name: '-5c090ecd'
+            widget: string
+          - hint: 'Original text: Shirley Higgins, key: d32b6f'
+            label: Text
+            name: d32b6f
+            widget: string
+          - hint: 'Original text: Top Cosmetologist, key: -4685946b'
+            label: Text
+            name: '-4685946b'
+            widget: string
+          - hint: 'Original text: Emily Blunt, key: 33bcf9f'
+            label: Text
+            name: 33bcf9f
+            widget: string
+          - hint: 'Original text: Dream Spa, key: 2edebfc7'
+            label: Text
+            name: 2edebfc7
+            widget: string
+          - hint: 'Original text: faq, key: 18b16'
+            label: Text
+            name: 18b16
+            widget: string
+          - hint: 'Original text: The most common questions, key: -780be63a'
+            label: Text
+            name: '-780be63a'
+            widget: string
+          - hint: 'Original text: What spa treatments do you offer?, key: 4f80918c'
+            label: Text
+            name: 4f80918c
+            widget: string
+          - hint: 'Original text: , key: f078'
+            label: Text
+            name: f078
+            widget: string
+          - hint: >-
+              Original text: Many people has the notion that enlightenment is
+              one state. Many also believe that when it is attained, a person is
+              forever in that state.For your necessary discernment. Thank you
+              for reading., key: 4d21701f
+            label: Text
+            name: 4d21701f
+            widget: text
+          - hint: 'Original text: How much does a top master cost?, key: 4b702582'
+            label: Text
+            name: 4b702582
+            widget: string
+          - hint: 'Original text: Do you have therapeutic massage?, key: 3d68d068'
+            label: Text
+            name: 3d68d068
+            widget: string
+          - hint: 'Original text: Do you have gift certificates?, key: -22dc6a2b'
+            label: Text
+            name: '-22dc6a2b'
+            widget: string
+          - hint: 'Original text: What time do you work on weekdays?, key: 7ba4d523'
+            label: Text
+            name: 7ba4d523
+            widget: string
+          - hint: 'Original text: How much does a Finnish bath cost?, key: -79236ed3'
+            label: Text
+            name: '-79236ed3'
+            widget: string
+          - hint: >-
+              Original text: What aroma oils do you use in the spa?, key:
+              -7be84af5
+            label: Text
+            name: '-7be84af5'
+            widget: string
+          - hint: 'Original text: Can I buy an annual pass?, key: -54d89681'
+            label: Text
+            name: '-54d89681'
+            widget: string
+          - hint: 'Original text: Frequently asked questions, key: 7c9faae0'
+            label: Text
+            name: 7c9faae0
+            widget: string
+          - hint: 'Original text: Latest news, key: 79e72fac'
+            label: Text
+            name: 79e72fac
+            widget: string
+          - hint: 'Original text: Read our posts and learn more!, key: 64d137bc'
+            label: Text
+            name: 64d137bc
+            widget: string
+          - hint: 'Original text: Shower massage, key: 422917f5'
+            label: Text
+            name: 422917f5
+            widget: string
+          - hint: >-
+              Original text: Our approach allows early identification of
+              important health and well-being problems., key: -363c98dd
+            label: Text
+            name: '-363c98dd'
+            widget: string
+          - hint: 'Original text: Abdominal massage, key: -274c72a4'
+            label: Text
+            name: '-274c72a4'
+            widget: string
+          - hint: 'Original text: Underwater massage, key: -16ba3036'
+            label: Text
+            name: '-16ba3036'
+            widget: string
+          - hint: 'Original text: Athlete Recovery, key: -62b23aea'
+            label: Text
+            name: '-62b23aea'
+            widget: string
+          - hint: 'Original text: Thermo Stone, key: -2f432678'
+            label: Text
+            name: '-2f432678'
+            widget: string
+          - hint: 'Original text: Hydro Massage, key: -7b02dbe5'
+            label: Text
+            name: '-7b02dbe5'
+            widget: string
+          - hint: 'Original text: Body Cleansing, key: -43cf90a6'
+            label: Text
+            name: '-43cf90a6'
+            widget: string
+          - hint: 'Original text: Face Scrub, key: 404826ac'
+            label: Text
+            name: 404826ac
+            widget: string
+          - hint: 'Original text: Water Relaxation, key: -60533eb2'
+            label: Text
+            name: '-60533eb2'
+            widget: string
+          - hint: >-
+              Original text: “ There are many variations of passages of Lorem
+              Ipsum available, but the majority have suffered alteration in some
+              form, by injected humour “, key: -67eb7eb2
+            label: Text
+            name: '-67eb7eb2'
+            widget: text
+          - hint: 'Original text: Blanche Fields, key: -76ba7050'
+            label: Text
+            name: '-76ba7050'
+            widget: string
+          - hint: 'Original text: Architect, key: 1424fbd5'
+            label: Text
+            name: 1424fbd5
+            widget: string
+          - hint: 'Original text: Designer, key: 40dabb0b'
+            label: Text
+            name: 40dabb0b
+            widget: string
+          - hint: 'Original text: Krista Vermoth, key: -3f8de969'
+            label: Text
+            name: '-3f8de969'
+            widget: string
+          - hint: 'Original text: We are experts, key: 32bc1b8b'
+            label: Text
+            name: 32bc1b8b
+            widget: string
+          - hint: 'Original text: Skin Care and Face Masks, key: -5a3504c7'
+            label: Text
+            name: '-5a3504c7'
+            widget: string
+          - hint: 'Original text: , key: f762'
+            label: Text
+            name: f762
+            widget: string
+          - hint: >-
+              Original text: Your athletic spa experience and recovery., key:
+              -2a6b1df7
+            label: Text
+            name: '-2a6b1df7'
+            widget: string
+          - hint: >-
+              Original text: The salt contains the essential oil of juniper
+              fruits., key: 4117e812
+            label: Text
+            name: '4117e812'
+            widget: string
+          - hint: >-
+              Original text: We offer a variety of facial services to suit your
+              individual skin care needs. Our estheticians use only the finest
+              Bioelements products based on trace minerals, essential oils, and
+              plant extracts. Every facial includes a skin analysis, deep pore
+              cleansing, gentle exfoliation, customized mask, and moisture
+              treatment., key: 7858007
+            label: Text
+            name: '7858007'
+            widget: text
+          - hint: 'Original text: LEARN MORE, key: 552c03d1'
+            label: Text
+            name: 552c03d1
+            widget: string
+          - hint: 'Original text:  , key: f6eb'
+            label: Text
+            name: f6eb
+            widget: string
+          - hint: "Original text: MOON\_MOON\_, key: 7d41bf60"
+            label: Text
+            name: 7d41bf60
+            widget: string
+          - hint: 'Original text: Massage, key: -6aafca95'
+            label: Text
+            name: '-6aafca95'
+            widget: string
+          - hint: >-
+              Original text: Authentic full-service massage on Plainfield Ave.,
+              Grand Rapids, key: 9213067
+            label: Text
+            name: '9213067'
+            widget: string
+          - hint: 'Original text: Open today until 9:00PM, key: -6fcb7a6b'
+            label: Text
+            name: '-6fcb7a6b'
+            widget: string
+          - hint: "Original text: BOOK\_An Appointment, key: -56736d3d"
+            label: Text
+            name: '-56736d3d'
+            widget: string
+          - hint: 'Original text: Or call us at , key: -310b78d0'
+            label: Text
+            name: '-310b78d0'
+            widget: string
+          - hint: "Original text: CoUPLES\_THERAPY, key: -e6c5ee4"
+            label: Text
+            name: '-e6c5ee4'
+            widget: string
+          - hint: >-
+              Original text: Experience our four hands massage for couples in
+              one our of private tranquility rooms, key: 4f4600f2
+            label: Text
+            name: 4f4600f2
+            widget: string
+          - hint: 'Original text: BOOK AN APPOINTMENT, key: 8608e23'
+            label: Text
+            name: '8608e23'
+            widget: string
+          - hint: >-
+              Original text: Our holistic treatments bring you wellbeing and
+              rejuvenation from head to toe, key: -3d182e84
+            label: Text
+            name: '-3d182e84'
+            widget: string
+          - hint: "Original text: MOON\_MOON\_MASSAGE, key: -6692a1f5"
+            label: Text
+            name: '-6692a1f5'
+            widget: string
+          - hint: 'Original text: Welcome to tranquility,, key: 5970c8d7'
+            label: Text
+            name: 5970c8d7
+            widget: string
+          - hint: 'Original text: relaxation and restoration., key: 2d5f7354'
+            label: Text
+            name: 2d5f7354
+            widget: string
+          - hint: >-
+              Original text: Experience unprecedented relaxation from a soothing
+              massage in the clean, comfortable environment of Moon Moon
+              Massage. Using high-quality professional acupressure techniques,
+              our massage therapy improves your blood circulation, metabolism,
+              and immunity. Let us relieve your fatigue, stress, and body pain,
+              and improve your sleep and overall wellness., key: 3292257
+            label: Text
+            name: '3292257'
+            widget: text
+          - hint: >-
+              Original text: Deep pressure glides along and applies pressure
+              across the grain of your muscle to break up stress and align
+              tissue fibers., key: 6daf0ef7
+            label: Text
+            name: 6daf0ef7
+            widget: text
+          - hint: 'Original text: Tui Na Massage, key: 10dfa556'
+            label: Text
+            name: 10dfa556
+            widget: string
+          - hint: >-
+              Original text: Acupressure techniques and Chinese herbs remove
+              blockages at key points in the body, allowing natural healing.,
+              key: -10412a2f
+            label: Text
+            name: '-10412a2f'
+            widget: text
+          - hint: 'Original text: Couples Massage, key: 30da46de'
+            label: Text
+            name: 30da46de
+            widget: string
+          - hint: >-
+              Original text: Catch up with your loved one or simply relax
+              together as two massage therapists tend to you in a shared
+              tranquility room., key: 4a1cad93
+            label: Text
+            name: 4a1cad93
+            widget: text
+          - hint: 'Original text: Authentic Massage, key: 60596c8'
+            label: Text
+            name: 60596c8
+            widget: string
+          - hint: >-
+              Original text: When you choose us as a service partner, we bring
+              expertise and experience as our standard., key: 3ef05711
+            label: Text
+            name: 3ef05711
+            widget: text
+          - hint: >-
+              Original text: Our massage therapists are experienced in pinpoint
+              treatments to bring lasting relief and relaxation., key: 776404ed
+            label: Text
+            name: 776404ed
+            widget: text
+          - hint: 'Original text: Full Service, key: -676a8ddc'
+            label: Text
+            name: '-676a8ddc'
+            widget: string
+          - hint: >-
+              Original text: We treat your entire body holistically, leaving
+              your rejuvenated from head to toe, with peace and clarity of
+              mind., key: -4139c72e
+            label: Text
+            name: '-4139c72e'
+            widget: text
+          - hint: 'Original text: Premium Products, key: -4c2f42b3'
+            label: Text
+            name: '-4c2f42b3'
+            widget: string
+          - hint: >-
+              Original text: Our treatments combine time-tested herbal remedies
+              with proven innovations in cleansing products., key: -87b2858
+            label: Text
+            name: '-87b2858'
+            widget: text
+          - hint: >-
+              Original text: Treat yourself to most relaxing hour of your life!,
+              key: 3eb76960
+            label: Text
+            name: 3eb76960
+            widget: string
+          - hint: >-
+              Original text: “Audi is an amazing masseuse and her hands are
+              impressively strong. I went in today with my lower back hurting
+              and let her know and she worked out all the knots now my back
+              feels better. Thank you Audi!”, key: -48b8cfe0
+            label: Text
+            name: '-48b8cfe0'
+            widget: text
+          - hint: 'Original text: Chris Gablick, key: -5b7735c'
+            label: Text
+            name: '-5b7735c'
+            widget: string
+          - hint: 'Original text: Via Google Reviews, key: 4ea767a6'
+            label: Text
+            name: 4ea767a6
+            widget: string
+          - hint: >-
+              Original text: “Audi was simply awesome! Her hands, fingers, and
+              feet woke up some slumbering muscles and joints that I forgot that
+              I had! Audi is a genuine, kind, and thoughtful massage therapist
+              and I look forward to future sessions! Thank you!”, key: 583c57bc
+            label: Text
+            name: 583c57bc
+            widget: text
+          - hint: 'Original text: Patrick Coyle, key: 67739e8'
+            label: Text
+            name: '67739e8'
+            widget: string
+          - hint: "Original text: “Audi has great techniques for relieving the tightness and pain in my muscles. She asks if she may walk or kneel to provide extra pressure and it’s amazing how well that works! The beds are warm and soft and wide.\_The music is very soothing.”, key: 1d05cabf"
+            label: Text
+            name: 1d05cabf
+            widget: text
+          - hint: 'Original text: K Swartz, key: -5fe37790'
+            label: Text
+            name: '-5fe37790'
+            widget: string
+          - hint: >-
+              Original text: “I highly recommend and I plan to make this a more
+              frequent visit! Bringing the hubby next time too! Thank you & God
+              bless you for helping me feel better!”, key: 6a1ac60d
+            label: Text
+            name: 6a1ac60d
+            widget: text
+          - hint: 'Original text: Nikki Manning, key: -74af75e4'
+            label: Text
+            name: '-74af75e4'
+            widget: string
+          - hint: 'Original text: , key: f06e'
+            label: Text
+            name: f06e
+            widget: string
+          - hint: 'Original text: Our Skills, key: -674a8c2a'
+            label: Text
+            name: '-674a8c2a'
+            widget: string
+          - hint: >-
+              Original text: Combining timeless traditions with cutting edge
+              techniques, key: 49f0526f
+            label: Text
+            name: 49f0526f
+            widget: string
+          - hint: >-
+              Original text: Your body is a complex ecosystem, which is why we
+              don't treat just one muscle group, but rather employ holistic
+              treatments that bring lasting benefits., key: 4a8c3bb1
+            label: Text
+            name: 4a8c3bb1
+            widget: text
+          - hint: 'Original text: Deep Tissue Stimulation, key: 4bb7c8b2'
+            label: Text
+            name: 4bb7c8b2
+            widget: string
+          - hint: 'Original text: Reflexology Techniques, key: 6960540b'
+            label: Text
+            name: 6960540b
+            widget: string
+          - hint: 'Original text: 97%, key: dcc7'
+            label: Text
+            name: dcc7
+            widget: string
+          - hint: 'Original text: Tui Na and Herbal Treatments, key: -2f06321b'
+            label: Text
+            name: '-2f06321b'
+            widget: string
+          - hint: 'Original text: 95%, key: dc89'
+            label: Text
+            name: dc89
+            widget: string
+          - hint: 'Original text: Affordable Quality Care, key: -106a3a8'
+            label: Text
+            name: '-106a3a8'
+            widget: string
+          - hint: >-
+              Original text: Service options tailored to your needs, key:
+              -5655d7ac
+            label: Text
+            name: '-5655d7ac'
+            widget: string
+          - hint: >-
+              Original text: Come as an individual or a couple for two hands or
+              four, we happily accommodate your preferences and comfort level.,
+              key: 6046845c
+            label: Text
+            name: 6046845c
+            widget: text
+          - hint: 'Original text: Couple Massage, key: 4f8bb52b'
+            label: Text
+            name: 4f8bb52b
+            widget: string
+          - hint: 'Original text: $129, key: 111b94'
+            label: Text
+            name: 111b94
+            widget: string
+          - hint: 'Original text: 60 Minutes, key: -cd602a7'
+            label: Text
+            name: '-cd602a7'
+            widget: string
+          - hint: 'Original text: (or $199 for 90 minutes), key: -69e5b82'
+            label: Text
+            name: '-69e5b82'
+            widget: string
+          - hint: 'Original text: Everything in Full Body Massage, key: -38dec830'
+            label: Text
+            name: '-38dec830'
+            widget: string
+          - hint: 'Original text: Two Massage Therapists, key: 515bcba2'
+            label: Text
+            name: 515bcba2
+            widget: string
+          - hint: 'Original text: Private Room with Two Beds, key: -4b2e10c8'
+            label: Text
+            name: '-4b2e10c8'
+            widget: string
+          - hint: "Original text: BOOK\_NOW, key: -59ac7f81"
+            label: Text
+            name: '-59ac7f81'
+            widget: string
+          - hint: 'Original text: $45, key: 8da5'
+            label: Text
+            name: 8da5
+            widget: string
+          - hint: 'Original text: 30 Minutes, key: 164da9fc'
+            label: Text
+            name: 164da9fc
+            widget: string
+          - hint: 'Original text: ($65 for 60min, $99 for 90min), key: -60f1f12f'
+            label: Text
+            name: '-60f1f12f'
+            widget: string
+          - hint: 'Original text: Reflexology Massage, key: 3726e6a3'
+            label: Text
+            name: 3726e6a3
+            widget: string
+          - hint: 'Original text: Ears, Hands, Feet Massage, key: -383c1e80'
+            label: Text
+            name: '-383c1e80'
+            widget: string
+          - hint: 'Original text: Deep Tissue Back Massage, key: -2c744a87'
+            label: Text
+            name: '-2c744a87'
+            widget: string
+          - hint: 'Original text: Herbal Oils Treatment, key: 5ea16821'
+            label: Text
+            name: 5ea16821
+            widget: string
+          - hint: 'Original text: Four Hands Massage, key: -5d09d24b'
+            label: Text
+            name: '-5d09d24b'
+            widget: string
+          - hint: 'Original text: A Must-Try Experience, key: 1c5a96f4'
+            label: Text
+            name: 1c5a96f4
+            widget: string
+          - hint: >-
+              Original text: We at Bliss Spa Studio turn your skin care
+              procedure into a pleasant ritual., key: -6796c33f
+            label: Text
+            name: '-6796c33f'
+            widget: string
+          - hint: 'Original text: Relax & Beauty, key: -5a1e667a'
+            label: Text
+            name: '-5a1e667a'
+            widget: string
+          - hint: 'Original text: FB, key: 8bc'
+            label: Text
+            name: 8bc
+            widget: string
+          - hint: 'Original text: In, key: 945'
+            label: Text
+            name: '945'
+            widget: string
+          - hint: 'Original text: Tw, key: aa3'
+            label: Text
+            name: aa3
+            widget: string
+          - hint: 'Original text: 65, key: 6bf'
+            label: Text
+            name: 6bf
+            widget: string
+          - hint: 'Original text: Natural Face Care, key: -7d904863'
+            label: Text
+            name: '-7d904863'
+            widget: string
+          - hint: 'Original text: View More, key: 162663f0'
+            label: Text
+            name: 162663f0
+            widget: string
+          - hint: 'Original text: Who we are and what we do, key: -1758a47a'
+            label: Text
+            name: '-1758a47a'
+            widget: string
+          - hint: >-
+              Original text: Some people choose price as a primary reason. Those
+              companies that get customer because of low price will lose those
+              customer., key: -281bdfb5
+            label: Text
+            name: '-281bdfb5'
+            widget: text
+          - hint: 'Original text: 01. Relaxation, key: 6e404a38'
+            label: Text
+            name: 6e404a38
+            widget: string
+          - hint: >-
+              Original text: Indulge in a comprehensive menu of massages, body
+              treatments and salon services., key: 58a3c7f
+            label: Text
+            name: 58a3c7f
+            widget: string
+          - hint: 'Original text: 02. Beauty, key: -7f42a730'
+            label: Text
+            name: '-7f42a730'
+            widget: string
+          - hint: 'Original text: 03. Massage, key: -34bb2f2a'
+            label: Text
+            name: '-34bb2f2a'
+            widget: string
+          - hint: 'Original text: Reviews we are proud of, key: 31bc20b4'
+            label: Text
+            name: 31bc20b4
+            widget: string
+          - hint: 'Original text: October 17, 2022, key: -52d53c88'
+            label: Text
+            name: '-52d53c88'
+            widget: string
+          - hint: >-
+              Original text: “ Thanks to the wonderful masters at Bliss Spa for
+              helping me relax and unwind! I sincerely recommend this particular
+              salon, as I am convinced of the quality of the service.“, key:
+              -36252a9a
+            label: Text
+            name: '-36252a9a'
+            widget: text
+          - hint: 'Original text: October 22, 2022, key: c8cc812'
+            label: Text
+            name: c8cc812
+            widget: string
+          - hint: 'Original text: Your wellbeing at affordable prices, key: -fa5dc1'
+            label: Text
+            name: '-fa5dc1'
+            widget: string
+          - hint: 'Original text: Face masks, key: 41b5a3a4'
+            label: Text
+            name: 41b5a3a4
+            widget: string
+          - hint: 'Original text: from, key: 3017aa'
+            label: Text
+            name: 3017aa
+            widget: string
+          - hint: 'Original text: 48$, key: ca20'
+            label: Text
+            name: ca20
+            widget: string
+          - hint: >-
+              Original text: Indulge in a comprehensive menu of massages., key:
+              -28d8e11c
+            label: Text
+            name: '-28d8e11c'
+            widget: string
+          - hint: 'Original text: Full body massage, key: 59107ede'
+            label: Text
+            name: 59107ede
+            widget: string
+          - hint: 'Original text: 65$, key: d145'
+            label: Text
+            name: d145
+            widget: string
+          - hint: 'Original text: Geothermal spa, key: -43789236'
+            label: Text
+            name: '-43789236'
+            widget: string
+          - hint: 'Original text: 78$, key: d563'
+            label: Text
+            name: d563
+            widget: string
+          - hint: 'Original text: Finnish sauna, key: -799db8cb'
+            label: Text
+            name: '-799db8cb'
+            widget: string
+          - hint: 'Original text: 98$, key: dce5'
+            label: Text
+            name: dce5
+            widget: string
+          - hint: 'Original text: Chief masseusse, key: a8d62a6'
+            label: Text
+            name: a8d62a6
+            widget: string
+          - hint: 'Original text: Top masseur, key: -2cef719d'
+            label: Text
+            name: '-2cef719d'
+            widget: string
+          - hint: 'Original text: Spa industry''s latest posts, key: -50a073cc'
+            label: Text
+            name: '-50a073cc'
+            widget: string
+          - hint: 'Original text: Natural Spa Treatments, key: 521b102e'
+            label: Text
+            name: 521b102e
+            widget: string
+          - hint: >-
+              Original text: The Spa Center Bliss is where tradition meets
+              modern health and beauty. For those who love gentle care with
+              natural ingredients only. We offer a variety of facial services to
+              suit your individual skin care needs., key: -28980e32
+            label: Text
+            name: '-28980e32'
+            widget: text
+          - hint: >-
+              Original text: The Spa Center Bliss is where tradition meets
+              modern health and beauty. For those who love gentle care with
+              natural ingredients only., key: 3d08c601
+            label: Text
+            name: 3d08c601
+            widget: text
+          - hint: >-
+              Original text: The Spa Center Bliss is where tradition meets
+              modern health and beauty. For those who love care., key: -345dde05
+            label: Text
+            name: '-345dde05'
+            widget: text
+          - hint: 'Original text: Facebook, key: 217bfee6'
+            label: Text
+            name: 217bfee6
+            widget: string
+          - hint: 'Original text: Instagram, key: 792b2792'
+            label: Text
+            name: 792b2792
+            widget: string
+          - hint: 'Original text: Twitter, key: 2c9a4253'
+            label: Text
+            name: 2c9a4253
+            widget: string
+          - hint: 'Original text: about company, key: -15cfe116'
+            label: Text
+            name: '-15cfe116'
+            widget: string
+          - hint: >-
+              Original text: We offer results and affordable prices!, key:
+              1a239b3a
+            label: Text
+            name: 1a239b3a
+            widget: string
+          - hint: 'Original text: 95+, key: dc8f'
+            label: Text
+            name: dc8f
+            widget: string
+          - hint: 'Original text: Professionals who love their work, key: -329d2ff1'
+            label: Text
+            name: '-329d2ff1'
+            widget: string
+          - hint: 'Original text: 135k, key: 170c78'
+            label: Text
+            name: 170c78
+            widget: string
+          - hint: 'Original text: A variety of spa treatments, key: 16ff7b69'
+            label: Text
+            name: 16ff7b69
+            widget: string
+          - hint: 'Original text: We offer the best, key: -6cd2b17'
+            label: Text
+            name: '-6cd2b17'
+            widget: string
+          - hint: 'Original text: We are proud of our service, key: -1ef3b506'
+            label: Text
+            name: '-1ef3b506'
+            widget: string
+          - hint: 'Original text: Gift certificates, key: -e39f974'
+            label: Text
+            name: '-e39f974'
+            widget: string
+          - hint: 'Original text: Surprise your relatives, key: -507e468f'
+            label: Text
+            name: '-507e468f'
+            widget: string
+          - hint: 'Original text: Deep Massage, key: -663589a9'
+            label: Text
+            name: '-663589a9'
+            widget: string
+          - hint: >-
+              Original text: Bliss Spa will help you to rest after the eventful
+              day and forget the everyday worries. Comfortable candle light,
+              subtle perfume of aroma oils and soft music will help you to relax
+              and recover strength., key: 727dd15a
+            label: Text
+            name: 727dd15a
+            widget: text
+          - hint: 'Original text: More Details, key: -1c7c6f89'
+            label: Text
+            name: '-1c7c6f89'
+            widget: string
+          - hint: 'Original text: Salt & Aroma, key: 37f5522e'
+            label: Text
+            name: 37f5522e
+            widget: string
+          - hint: 'Original text: Spa news, key: 7a3807ef'
+            label: Text
+            name: 7a3807ef
+            widget: string
+          - hint: 'Original text: Our tips from the world of beauty, key: 61cf82a6'
+            label: Text
+            name: 61cf82a6
+            widget: string
+          - hint: 'Original text: Water Filling, key: 4563136'
+            label: Text
+            name: '4563136'
+            widget: string
+          - hint: 'Original text: Salt Balance, key: 72650112'
+            label: Text
+            name: '72650112'
+            widget: string
+          - hint: 'Original text: Hot Baths, key: -f607df3'
+            label: Text
+            name: '-f607df3'
+            widget: string
+          - hint: 'Original text: What is hydro therapy?, key: -78fed060'
+            label: Text
+            name: '-78fed060'
+            widget: string
+          - hint: 'Original text: Hydromassage and relaxation, key: 54e51e53'
+            label: Text
+            name: 54e51e53
+            widget: string
+          - hint: 'Original text: Images, key: -7d409168'
+            label: Text
+            name: '-7d409168'
+            widget: string
+          - hint: >-
+              Original text: All graphical assets in this template are licensed
+              for personal and commercial use. If you’d like to use a specific
+              asset, please check the license below., key: e8b4108
+            label: Text
+            name: e8b4108
+            widget: text
+          - hint: 'Original text: UNSPLASH, key: 2e171240'
+            label: Text
+            name: '2e171240'
+            widget: string
+          - hint: 'Original text: Source, key: -6c0aabc5'
+            label: Text
+            name: '-6c0aabc5'
+            widget: string
+          - hint: 'Original text: License, key: 6d291c21'
+            label: Text
+            name: 6d291c21
+            widget: string
+          - hint: 'Original text: FREEPICK, key: -2cfe8f73'
+            label: Text
+            name: '-2cfe8f73'
+            widget: string
+          - hint: 'Original text: Fonts, key: 40e8de4'
+            label: Text
+            name: 40e8de4
+            widget: string
+          - hint: 'Original text: cormorant garamond, key: -69b83a3c'
+            label: Text
+            name: '-69b83a3c'
+            widget: string
+          - hint: >-
+              Original text: You can use these fonts freely in your products &
+              projects - print or digital, commercial or otherwise. However, you
+              can't sell the fonts on their own. This isn't legal advice, please
+              consider consulting a lawyer and see the full license for all
+              details. (from Google Fonts website), key: -143958f0
+            label: Text
+            name: '-143958f0'
+            widget: text
+          - hint: 'Original text: open sans, key: 58b2e8a9'
+            label: Text
+            name: 58b2e8a9
+            widget: string
+          - hint: 'Original text: Icons, key: 43362fa'
+            label: Text
+            name: 43362fa
+            widget: string
+          - hint: 'Original text: Social Icons, key: 3e7bdca7'
+            label: Text
+            name: 3e7bdca7
+            widget: string
+          - hint: 'Original text: , key: f231'
+            label: Text
+            name: f231
+            widget: string
+          - hint: 'Original text: , key: f434'
+            label: Text
+            name: f434
+            widget: string
+          - hint: >-
+              Original text: You can use these fonts freely in your products &
+              projects - print or digital, commercial or otherwise. However, you
+              can't sell the fonts on their own. This isn't legal advice, please
+              consider consulting a lawyer and see the full license for all
+              details. (from Font Awesome website), key: -67201d85
+            label: Text
+            name: '-67201d85'
+            widget: text
+          - hint: 'Original text: London Spa, key: -204e0464'
+            label: Text
+            name: '-204e0464'
+            widget: string
+          - hint: 'Original text: Find us on map, key: 64f955d6'
+            label: Text
+            name: 64f955d6
+            widget: string
+          - hint: 'Original text: Paris Spa, key: -633b2b1'
+            label: Text
+            name: '-633b2b1'
+            widget: string
+          - hint: >-
+              Original text: 27 Ruengerd de Berrider, Paris, France, key:
+              e87cd25
+            label: Text
+            name: e87cd25
+            widget: string
+          - hint: 'Original text: New York Spa, key: 2a4c473'
+            label: Text
+            name: 2a4c473
+            widget: string
+          - hint: >-
+              Original text: Get in Touch With Us And We’ll Help Your Health!,
+              key: -35668ee1
+            label: Text
+            name: '-35668ee1'
+            widget: string
+          - hint: >-
+              Original text: We promise to find an individual approach!, key:
+              7030c2ac
+            label: Text
+            name: 7030c2ac
+            widget: string
+          - hint: >-
+              Original text: We guarantee a system of discounts and promotions!,
+              key: -5abf7967
+            label: Text
+            name: '-5abf7967'
+            widget: string
+          - hint: >-
+              Original text: We will be in touch with you all the time!, key:
+              -6820393a
+            label: Text
+            name: '-6820393a'
+            widget: string
+          - hint: 'Original text: Our pricing plan, key: 4e9967b7'
+            label: Text
+            name: 4e9967b7
+            widget: string
+          - hint: 'Original text: Pricing that suits your needs, key: -5d5a21d7'
+            label: Text
+            name: '-5d5a21d7'
+            widget: string
+          - hint: 'Original text: A Blissful Spa Day, key: -470e1003'
+            label: Text
+            name: '-470e1003'
+            widget: string
+          - hint: 'Original text: $238, key: 111f73'
+            label: Text
+            name: 111f73
+            widget: string
+          - hint: 'Original text: /month, key: 5667e7b1'
+            label: Text
+            name: 5667e7b1
+            widget: string
+          - hint: 'Original text: 50 Minute Relaxation Massage, key: 1ebbaaf7'
+            label: Text
+            name: 1ebbaaf7
+            widget: string
+          - hint: 'Original text: 60 Minute River Relaxation Manicure, key: 115fe5d5'
+            label: Text
+            name: 115fe5d5
+            widget: string
+          - hint: 'Original text: 50 Minute Pre-Natal Massage, key: -41d9709a'
+            label: Text
+            name: '-41d9709a'
+            widget: string
+          - hint: 'Original text: 60 Minute River Relaxation Pedicure, key: b8be340'
+            label: Text
+            name: b8be340
+            widget: string
+          - hint: 'Original text: Choose plan, key: -4431c8e'
+            label: Text
+            name: '-4431c8e'
+            widget: string
+          - hint: 'Original text: Spa Experience, key: -7326925a'
+            label: Text
+            name: '-7326925a'
+            widget: string
+          - hint: 'Original text: $538, key: 112ab6'
+            label: Text
+            name: 112ab6
+            widget: string
+          - hint: 'Original text: 50-minute Relaxation Massage, key: -43317c56'
+            label: Text
+            name: '-43317c56'
+            widget: string
+          - hint: 'Original text: 40 Minutes of Face Lifting, key: 462ab2d8'
+            label: Text
+            name: 462ab2d8
+            widget: string
+          - hint: 'Original text: 20 Minute Chocolate Wrap, key: 22e922f8'
+            label: Text
+            name: 22e922f8
+            widget: string
+          - hint: 'Original text: Spa Weekend, key: -34bd655'
+            label: Text
+            name: '-34bd655'
+            widget: string
+          - hint: 'Original text: $338, key: 112334'
+            label: Text
+            name: '112334'
+            widget: string
+          - hint: 'Original text: We care about you, key: -3f4e09d1'
+            label: Text
+            name: '-3f4e09d1'
+            widget: string
+          - hint: 'Original text: Gift certificate, key: -193bad39'
+            label: Text
+            name: '-193bad39'
+            widget: string
+          - hint: >-
+              Original text: Many people confuse reflexology with massage,
+              Reiki, or acupuncture, but there are essential differences between
+              these therapies. Massage therapists manipulate larger areas of
+              soft tissue in the body while reflexologists apply pressure to
+              specific points., key: -2a27d1ce
+            label: Text
+            name: '-2a27d1ce'
+            widget: text
+          - hint: 'Original text: testimonials, key: bc56fb4'
+            label: Text
+            name: bc56fb4
+            widget: string
+          - hint: 'Original text: Happy customers say about us, key: -63bb180f'
+            label: Text
+            name: '-63bb180f'
+            widget: string
+          - hint: "Original text: \_\_\_ , key: 2554b999"
+            label: Text
+            name: 2554b999
+            widget: string
+          - hint: >-
+              Original text: Thanks to the wonderful masters at Bliss Spa for
+              helping me relax and unwind! I sincerely recommend this particular
+              salon, as I am convinced of the quality of the service., key:
+              375da77a
+            label: Text
+            name: 375da77a
+            widget: text
+          - hint: 'Original text: Jessica Robinson, key: -4ed6244'
+            label: Text
+            name: '-4ed6244'
+            widget: string
+          - hint: 'Original text: CEO, Bridge, key: 7f57354a'
+            label: Text
+            name: 7f57354a
+            widget: string
+          - hint: 'Original text: WHAT WE DO, key: -508e913f'
+            label: Text
+            name: '-508e913f'
+            widget: string
+          - hint: >-
+              Original text: Bliss spa center is created for the , key:
+              -4c688aba
+            label: Text
+            name: '-4c688aba'
+            widget: string
+          - hint: 'Original text: health of your body, key: 619535aa'
+            label: Text
+            name: 619535aa
+            widget: string
+          - hint: 'Original text: , we work with love, and attention., key: -1417d5f8'
+            label: Text
+            name: '-1417d5f8'
+            widget: string
+          - hint: 'Original text: Helen Bowman, key: 2ca904b8'
+            label: Text
+            name: 2ca904b8
+            widget: string
+          - hint: 'Original text: Company Director, key: 7a6f5c0f'
+            label: Text
+            name: 7a6f5c0f
+            widget: string
+          - hint: 'Original text: History of our company, key: -62e5fff4'
+            label: Text
+            name: '-62e5fff4'
+            widget: string
+          - hint: 'Original text: Our Spa History, key: c741ae4'
+            label: Text
+            name: c741ae4
+            widget: string
+          - hint: 'Original text: 1994, key: 172343'
+            label: Text
+            name: '172343'
+            widget: string
+          - hint: 'Original text: 2001, key: 1774bf'
+            label: Text
+            name: 1774bf
+            widget: string
+          - hint: 'Original text: 2010, key: 1774dd'
+            label: Text
+            name: 1774dd
+            widget: string
+          - hint: 'Original text: 2015, key: 1774e2'
+            label: Text
+            name: '1774e2'
+            widget: string
+          - hint: 'Original text: 2019, key: 1774e6'
+            label: Text
+            name: '1774e6'
+            widget: string
+          - hint: 'Original text: Our beginning, key: -4a411717'
+            label: Text
+            name: '-4a411717'
+            widget: string
+          - hint: 'Original text: Great Opening in New York, key: -4578a9f1'
+            label: Text
+            name: '-4578a9f1'
+            widget: string
+          - hint: >-
+              Original text: The Spa Center Bliss is where tradition meets
+              modern health and beauty. This 8,000 square foot oasis for
+              wellness is located in New York. The Spa at Bliss combines all
+              aspects of spa, beauty, and wellness to create a full service menu
+              with both classic and trending services. The Spa Center Bliss is
+              where tradition meets modern health and beauty. This 8,000 square
+              foot oasis for wellness is located in New York. The Spa at Bliss
+              combines all aspects of spa, beauty, and wellness., key: -d3c4736
+            label: Text
+            name: '-d3c4736'
+            widget: text
+          - hint: 'Original text: Read More, key: 318af39f'
+            label: Text
+            name: 318af39f
+            widget: string
+          - hint: 'Original text: Great Opening in London, key: 3b6369b8'
+            label: Text
+            name: 3b6369b8
+            widget: string
+          - hint: 'Original text: Great Opening in Spain, key: 6da82e29'
+            label: Text
+            name: 6da82e29
+            widget: string
+          - hint: 'Original text: Great Opening in Rotterdam, key: -1870733a'
+            label: Text
+            name: '-1870733a'
+            widget: string
+          - hint: 'Original text: Great Opening in Italy, key: 6d1d1503'
+            label: Text
+            name: 6d1d1503
+            widget: string
+          - hint: >-
+              Original text: Amazing spa treatment skills with full passion,
+              key: 65111e69
+            label: Text
+            name: '65111e69'
+            widget: string
+          - hint: "Original text: Our expertise includes architecture, planning, structural engineering, interior design, \_landscape architecture and construction services., key: -122810da"
+            label: Text
+            name: '-122810da'
+            widget: text
+          - hint: 'Original text: Hydro Procedures, key: -2381f890'
+            label: Text
+            name: '-2381f890'
+            widget: string
+          - hint: 'Original text: Skin Care, key: -12ac002c'
+            label: Text
+            name: '-12ac002c'
+            widget: string
+          - hint: 'Original text: Essential & Balance Packages, key: 7b800dd'
+            label: Text
+            name: 7b800dd
+            widget: string
+          - hint: >-
+              Original text: We believe this approach is best for our clients
+              because each program is customized for the client’s unique needs.
+              We are transforming the way we support people by optimizing., key:
+              3f09372d
+            label: Text
+            name: 3f09372d
+            widget: text
+          - hint: 'Original text: Our package offers, key: 2e327e25'
+            label: Text
+            name: 2e327e25
+            widget: string
+          - hint: 'Original text: Choose maximum enjoyment, key: 85392c0'
+            label: Text
+            name: 85392c0
+            widget: string
+          - hint: 'Original text: Book now, key: 7b3f393f'
+            label: Text
+            name: 7b3f393f
+            widget: string
+          - hint: 'Original text: Relax & enjoy, key: 62220061'
+            label: Text
+            name: '62220061'
+            widget: string
+          - hint: 'Original text: We offer the best for you, key: 1909d811'
+            label: Text
+            name: 1909d811
+            widget: string
+          - hint: 'Original text: We offer pleasure, key: 30e2fc63'
+            label: Text
+            name: 30e2fc63
+            widget: string
+          - hint: 'Original text: View all, key: 4b09c9c6'
+            label: Text
+            name: 4b09c9c6
+            widget: string
+          - hint: 'Original text: Salt sauna, key: 6a2d03b0'
+            label: Text
+            name: 6a2d03b0
+            widget: string
+          - hint: 'Original text: Salt sauna for your great pleasure, key: -6fed1eda'
+            label: Text
+            name: '-6fed1eda'
+            widget: string
+          - hint: 'Original text: 1 Hour , key: 5ad741ed'
+            label: Text
+            name: 5ad741ed
+            widget: string
+          - hint: 'Original text: 2 Hours, key: -7042827f'
+            label: Text
+            name: '-7042827f'
+            widget: string
+          - hint: 'Original text: 1 Procedure Hour, key: 20dc2f20'
+            label: Text
+            name: 20dc2f20
+            widget: string
+          - hint: 'Original text: 2 Procedure Hour, key: 26e0cff'
+            label: Text
+            name: 26e0cff
+            widget: string
+          - hint: 'Original text: 178$, key: 171b92'
+            label: Text
+            name: 171b92
+            widget: string
+          - hint: >-
+              Original text: Finnish Sauna for your great pleasure, key:
+              -3b756a75
+            label: Text
+            name: '-3b756a75'
+            widget: string
+          - hint: 'Original text: 58$, key: cde1'
+            label: Text
+            name: cde1
+            widget: string
+          - hint: 'Original text: 88$, key: d924'
+            label: Text
+            name: d924
+            widget: string
+          - hint: 'Original text: 108$, key: 17014b'
+            label: Text
+            name: 17014b
+            widget: string
+          - hint: 'Original text: 188$, key: 171f53'
+            label: Text
+            name: 171f53
+            widget: string
+          - hint: 'Original text: Search results, key: 7e85e19e'
+            label: Text
+            name: 7e85e19e
+            widget: string
+          - hint: 'Original text: No matching results., key: -75764c4'
+            label: Text
+            name: '-75764c4'
+            widget: string
+          - hint: 'Original text: Grid System, key: -568e37b7'
+            label: Text
+            name: '-568e37b7'
+            widget: string
+          - hint: 'Original text: Color Palette, key: -4b21e982'
+            label: Text
+            name: '-4b21e982'
+            widget: string
+          - hint: 'Original text: Typography, key: 5500514f'
+            label: Text
+            name: 5500514f
+            widget: string
+          - hint: 'Original text: Buttons, key: 719b5761'
+            label: Text
+            name: 719b5761
+            widget: string
+          - hint: 'Original text: The table of grid system sizes, key: -399be1cd'
+            label: Text
+            name: '-399be1cd'
+            widget: string
+          - hint: 'Original text: Device Width, key: 79d62b7c'
+            label: Text
+            name: 79d62b7c
+            widget: string
+          - hint: 'Original text: ≥ 992px, key: -5372fae1'
+            label: Text
+            name: '-5372fae1'
+            widget: string
+          - hint: 'Original text: < 992px, key: -60311a4a'
+            label: Text
+            name: '-60311a4a'
+            widget: string
+          - hint: 'Original text: < 767px, key: -604e93a4'
+            label: Text
+            name: '-604e93a4'
+            widget: string
+          - hint: 'Original text: < 479px, key: -60785e46'
+            label: Text
+            name: '-60785e46'
+            widget: string
+          - hint: 'Original text: Max Container Width, key: -2218edb5'
+            label: Text
+            name: '-2218edb5'
+            widget: string
+          - hint: 'Original text: 1200px, key: 5674a1a9'
+            label: Text
+            name: 5674a1a9
+            widget: string
+          - hint: 'Original text: 100%, key: 170054'
+            label: Text
+            name: '170054'
+            widget: string
+          - hint: 'Original text: Spacing System, key: -89b1314'
+            label: Text
+            name: '-89b1314'
+            widget: string
+          - hint: 'Original text: Spacing - Desktop, key: -64b9a8b4'
+            label: Text
+            name: '-64b9a8b4'
+            widget: string
+          - hint: 'Original text: 130 px, key: 56827d1a'
+            label: Text
+            name: 56827d1a
+            widget: string
+          - hint: 'Original text: 50 px, key: 30135ad'
+            label: Text
+            name: 30135ad
+            widget: string
+          - hint: >-
+              Original text: - Paddings Tops and Bottom for blocks - , key:
+              6a0f7fc1
+            label: Text
+            name: 6a0f7fc1
+            widget: string
+          - hint: >-
+              Original text: - Inside of Blocks (between headlines and inside a
+              content block) - , key: -62e1bacb
+            label: Text
+            name: '-62e1bacb'
+            widget: string
+          - hint: 'Original text: 60px, key: 194e42'
+            label: Text
+            name: '194e42'
+            widget: string
+          - hint: 'Original text: Spacing - Tablet, key: -538d2eca'
+            label: Text
+            name: '-538d2eca'
+            widget: string
+          - hint: 'Original text: 80 px, key: 32b7c30'
+            label: Text
+            name: 32b7c30
+            widget: string
+          - hint: 'Original text: 40 px, key: 2f31e2c'
+            label: Text
+            name: 2f31e2c
+            widget: string
+          - hint: 'Original text: 40px, key: 186584'
+            label: Text
+            name: '186584'
+            widget: string
+          - hint: 'Original text: Spacing - Mobile, key: -5eb9dc8e'
+            label: Text
+            name: '-5eb9dc8e'
+            widget: string
+          - hint: 'Original text: 60 px, key: 30f4d2e'
+            label: Text
+            name: 30f4d2e
+            widget: string
+          - hint: 'Original text: Primary, key: 5075a5e2'
+            label: Text
+            name: 5075a5e2
+            widget: string
+          - hint: 'Original text: #8ca472, key: -5f568a64'
+            label: Text
+            name: '-5f568a64'
+            widget: string
+          - hint: 'Original text: #fefaf0, key: -10b87a59'
+            label: Text
+            name: '-10b87a59'
+            widget: string
+          - hint: 'Original text: #fd6932, key: -10dcfffd'
+            label: Text
+            name: '-10dcfffd'
+            widget: string
+          - hint: 'Original text: Secondary, key: 46b69154'
+            label: Text
+            name: 46b69154
+            widget: string
+          - hint: 'Original text: #ffffff, key: -10aa4fdd'
+            label: Text
+            name: '-10aa4fdd'
+            widget: string
+          - hint: 'Original text: #f9f9fa, key: -13251a7c'
+            label: Text
+            name: '-13251a7c'
+            widget: string
+          - hint: 'Original text: #e9e9e9, key: -14da67c1'
+            label: Text
+            name: '-14da67c1'
+            widget: string
+          - hint: 'Original text: #a36433, key: -1c17cd8d'
+            label: Text
+            name: '-1c17cd8d'
+            widget: string
+          - hint: 'Original text: #000000, key: -6fe2541d'
+            label: Text
+            name: '-6fe2541d'
+            widget: string
+          - hint: 'Original text: Headers - Desktop, key: -4bfa1531'
+            label: Text
+            name: '-4bfa1531'
+            widget: string
+          - hint: 'Original text: Heading 1, key: 6af22973'
+            label: Text
+            name: 6af22973
+            widget: string
+          - hint: 'Original text: Heading 2, key: 6af22974'
+            label: Text
+            name: 6af22974
+            widget: string
+          - hint: 'Original text: Heading 3, key: 6af22975'
+            label: Text
+            name: 6af22975
+            widget: string
+          - hint: 'Original text: Heading 4, key: 6af22976'
+            label: Text
+            name: 6af22976
+            widget: string
+          - hint: 'Original text: Heading 5, key: 6af22977'
+            label: Text
+            name: 6af22977
+            widget: string
+          - hint: 'Original text: Heading 6, key: 6af22978'
+            label: Text
+            name: 6af22978
+            widget: string
+          - hint: 'Original text: Headers - Tablet, key: -4a7ebead'
+            label: Text
+            name: '-4a7ebead'
+            widget: string
+          - hint: 'Original text: Headers - Mobile, key: -55ab6c71'
+            label: Text
+            name: '-55ab6c71'
+            widget: string
+          - hint: 'Original text: Body, key: 1fadc2'
+            label: Text
+            name: 1fadc2
+            widget: string
+          - hint: 'Original text: Paragraph, key: -145e16b2'
+            label: Text
+            name: '-145e16b2'
+            widget: string
+          - hint: >-
+              Original text: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Suspendisse varius enim in eros elementum tristique. Duis
+              cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+              commodo diam libero vitae erat., key: -3910d286
+            label: Text
+            name: '-3910d286'
+            widget: text
+          - hint: 'Original text: Paragraph Large, key: -2c12ea37'
+            label: Text
+            name: '-2c12ea37'
+            widget: string
+          - hint: 'Original text: Links, key: 4605f99'
+            label: Text
+            name: 4605f99
+            widget: string
+          - hint: 'Original text: Link, key: 24241a'
+            label: Text
+            name: 24241a
+            widget: string
+          - hint: 'Original text: Look more, key: -48ac2fea'
+            label: Text
+            name: '-48ac2fea'
+            widget: string
+          - hint: 'Original text: Link With Icon, key: -6102f4f3'
+            label: Text
+            name: '-6102f4f3'
+            widget: string
+          - hint: 'Original text: All services, key: -51aaefe3'
+            label: Text
+            name: '-51aaefe3'
+            widget: string
+          - hint: 'Original text: List, key: 2424be'
+            label: Text
+            name: 2424be
+            widget: string
+          - hint: 'Original text:  List item, key: -4bd24eeb'
+            label: Text
+            name: '-4bd24eeb'
+            widget: string
+          - hint: 'Original text: List item, key: 2aff8d35'
+            label: Text
+            name: 2aff8d35
+            widget: string
+          - hint: 'Original text: Primary Button, key: 1caed350'
+            label: Text
+            name: 1caed350
+            widget: string
+          - hint: 'Original text: Button Text, key: -8fb26a5'
+            label: Text
+            name: '-8fb26a5'
+            widget: string
+          - hint: 'Original text: Primary Button Green, key: -184ff5ed'
+            label: Text
+            name: '-184ff5ed'
+            widget: string
+          - hint: 'Original text: Secondary Button, key: -6b1a7c62'
+            label: Text
+            name: '-6b1a7c62'
+            widget: string
+          - hint: 'Original text: Reviews of Our Services, key: 71a69876'
+            label: Text
+            name: 71a69876
+            widget: string
+          - hint: 'Original text: CEo, send&get group, key: -13dcb9e8'
+            label: Text
+            name: '-13dcb9e8'
+            widget: string
+          - hint: >-
+              Original text: “I just wanted to let you know that your team has
+              been doing a tremendous job on our requests.", key: 6c2c3703
+            label: Text
+            name: 6c2c3703
+            widget: text
+          - hint: 'Original text: DIRECTOR, key: 3d50438c'
+            label: Text
+            name: 3d50438c
+            widget: string
+          - hint: 'Original text: DESIGNER, key: 6ba646eb'
+            label: Text
+            name: 6ba646eb
+            widget: string
+          - hint: 'Original text: DEVELOPER, key: -5eb70856'
+            label: Text
+            name: '-5eb70856'
+            widget: string
+          - hint: 'Original text: Business Analyst, key: 1366d422'
+            label: Text
+            name: 1366d422
+            widget: string
+          - hint: 'Original text: Treatments We Offer, key: -40496611'
+            label: Text
+            name: '-40496611'
+            widget: string
+          - hint: 'Original text: Incredible Spa Treatments, key: 41dd2'
+            label: Text
+            name: 41dd2
+            widget: string
+          - hint: 'Original text: Let''s make your body healthy, key: -4981e5ed'
+            label: Text
+            name: '-4981e5ed'
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /home-2/, key: 5377d6dc'
+            label: Link
+            name: 5377d6dc
+            widget: string
+          - hint: 'Original link: /home-3/, key: 5377d6fb'
+            label: Link
+            name: 5377d6fb
+            widget: string
+          - hint: 'Original link: /our-spa/, key: 35a47a1b'
+            label: Link
+            name: 35a47a1b
+            widget: string
+          - hint: 'Original link: /experts/, key: -3ac9850b'
+            label: Link
+            name: '-3ac9850b'
+            widget: string
+          - hint: 'Original link: /experience/, key: -347dcf8a'
+            label: Link
+            name: '-347dcf8a'
+            widget: string
+          - hint: 'Original link: /treatments/, key: 3d5aa505'
+            label: Link
+            name: 3d5aa505
+            widget: string
+          - hint: 'Original link: /sauna-rooms/, key: 761ecb39'
+            label: Link
+            name: 761ecb39
+            widget: string
+          - hint: 'Original link: /testimonials/, key: -1b5f74d4'
+            label: Link
+            name: '-1b5f74d4'
+            widget: string
+          - hint: 'Original link: /pricing/, key: -d9445a8'
+            label: Link
+            name: '-d9445a8'
+            widget: string
+          - hint: 'Original link: /appointment/, key: 24a44a1f'
+            label: Link
+            name: 24a44a1f
+            widget: string
+          - hint: 'Original link: /locations/, key: -4e1c9a00'
+            label: Link
+            name: '-4e1c9a00'
+            widget: string
+          - hint: 'Original link: /faq/, key: 2c62888'
+            label: Link
+            name: 2c62888
+            widget: string
+          - hint: 'Original link: /our-services/, key: -661a1d7f'
+            label: Link
+            name: '-661a1d7f'
+            widget: string
+          - hint: 'Original link: /deep-tissue-massage/, key: -e875046'
+            label: Link
+            name: '-e875046'
+            widget: string
+          - hint: 'Original link: /hydro-therapy/, key: -75359eee'
+            label: Link
+            name: '-75359eee'
+            widget: string
+          - hint: 'Original link: /reflexology/, key: 62d89b66'
+            label: Link
+            name: 62d89b66
+            widget: string
+          - hint: 'Original link: /membership/, key: -42cf3076'
+            label: Link
+            name: '-42cf3076'
+            widget: string
+          - hint: 'Original link: /gift-cards/, key: -5bfe5326'
+            label: Link
+            name: '-5bfe5326'
+            widget: string
+          - hint: 'Original link: /packages/, key: 44e50d93'
+            label: Link
+            name: 44e50d93
+            widget: string
+          - hint: 'Original link: /blog-grid/, key: ce8312d'
+            label: Link
+            name: ce8312d
+            widget: string
+          - hint: 'Original link: /blog-classic/, key: 16d5a7d9'
+            label: Link
+            name: 16d5a7d9
+            widget: string
+          - hint: 'Original link: /blog-sidebar/, key: -578d1b1'
+            label: Link
+            name: '-578d1b1'
+            widget: string
+          - hint: >-
+              Original link:
+              https://bliss-wcopilot.webflow.io/posts-categories/eco-care, key:
+              24ba9a05
+            label: Link
+            name: 24ba9a05
+            widget: string
+          - hint: >-
+              Original link:
+              https://bliss-wcopilot.webflow.io/blog-posts/premium-products-and-services-for-your-skin,
+              key: bbc1807
+            label: Link
+            name: bbc1807
+            widget: string
+          - hint: >-
+              Original link: https://bliss-wcopilot.webflow.io/404, key:
+              -10adc0e9
+            label: Link
+            name: '-10adc0e9'
+            widget: string
+          - hint: 'Original link: /coming-soon/, key: 64f73df7'
+            label: Link
+            name: 64f73df7
+            widget: string
+          - hint: 'Original link: /templates/licensing/, key: -7b14e98a'
+            label: Link
+            name: '-7b14e98a'
+            widget: string
+          - hint: 'Original link: /templates/style-guide/, key: 7d792e54'
+            label: Link
+            name: 7d792e54
+            widget: string
+          - hint: >-
+              Original link:
+              https://webflow.com/templates/html/bliss-spa-website-template,
+              key: -455f7358
+            label: Link
+            name: '-455f7358'
+            widget: string
+          - hint: 'Original link: tel:(208)555-0112, key: 51b316d2'
+            label: Link
+            name: 51b316d2
+            widget: string
+          - hint: 'Original link: https://www.instagram.com/, key: b979dd0'
+            label: Link
+            name: b979dd0
+            widget: string
+          - hint: 'Original link: https://www.facebook.com/, key: 6c4279f0'
+            label: Link
+            name: 6c4279f0
+            widget: string
+          - hint: 'Original link: https://twitter.com/, key: 636eb9b8'
+            label: Link
+            name: 636eb9b8
+            widget: string
+          - hint: 'Original link: https://calendly.com/bliss-spa, key: -675de4fd'
+            label: Link
+            name: '-675de4fd'
+            widget: string
+          - hint: 'Original link: tel:+16164465035, key: -4bd0a163'
+            label: Link
+            name: '-4bd0a163'
+            widget: string
+          - hint: 'Original link: http://bit.ly/3VZO0iX, key: 53ab78d8'
+            label: Link
+            name: 53ab78d8
+            widget: string
+          - hint: 'Original link: http://bit.ly/3PteFC1, key: 4ae71637'
+            label: Link
+            name: 4ae71637
+            widget: string
+          - hint: >-
+              Original link: https://wcopilot.com/webflow-experts, key:
+              -585dc8fa
+            label: Link
+            name: '-585dc8fa'
+            widget: string
+          - hint: >-
+              Original link:
+              https://calendly.com/d/yj5-h2k-qq7/client-brief?month=2023-05,
+              key: -7f5c9be6
+            label: Link
+            name: '-7f5c9be6'
+            widget: string
+          - hint: 'Original link: https://wcopilot.com/submit-a-task, key: 7e11388e'
+            label: Link
+            name: 7e11388e
+            widget: string
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: 'Original link: tel:+12124258617, key: 400e914d'
+            label: Link
+            name: 400e914d
+            widget: string
+          - hint: 'Original link: mailto:bliss@office.com, key: -5d33fdc8'
+            label: Link
+            name: '-5d33fdc8'
+            widget: string
+          - hint: 'Original link: #email, key: 417be959'
+            label: Link
+            name: 417be959
+            widget: string
+          - hint: 'Original link: http://www.instagram.com, key: 68b7b95c'
+            label: Link
+            name: 68b7b95c
+            widget: string
+          - hint: 'Original link: #DREAM-SPA, key: -3c5bec29'
+            label: Link
+            name: '-3c5bec29'
+            widget: string
+          - hint: 'Original link: https://web.whatsapp.com/, key: -3442465f'
+            label: Link
+            name: '-3442465f'
+            widget: string
+          - hint: 'Original link: http://www.facebook.com, key: 71fe362'
+            label: Link
+            name: 71fe362
+            widget: string
+          - hint: 'Original link: http://www.twitter.com, key: -5ba5d2a3'
+            label: Link
+            name: '-5ba5d2a3'
+            widget: string
+          - hint: 'Original link: https://unsplash.com/, key: 6bccb4d'
+            label: Link
+            name: 6bccb4d
+            widget: string
+          - hint: 'Original link: https://unsplash.com/license, key: 503d854'
+            label: Link
+            name: 503d854
+            widget: string
+          - hint: >-
+              Original link: https://unsplash.com/photos/Sd9A6NVHsd4, key:
+              -279445c1
+            label: Link
+            name: '-279445c1'
+            widget: string
+          - hint: >-
+              Original link: https://unsplash.com/photos/Nql2-Awyab0, key:
+              -25409431
+            label: Link
+            name: '-25409431'
+            widget: string
+          - hint: >-
+              Original link: https://unsplash.com/photos/h0AnGGgseio, key:
+              -32a95037
+            label: Link
+            name: '-32a95037'
+            widget: string
+          - hint: >-
+              Original link: https://unsplash.com/photos/f1YNZ-7CSlk, key:
+              40197012
+            label: Link
+            name: '40197012'
+            widget: string
+          - hint: >-
+              Original link: https://unsplash.com/photos/y2T5hT7pWx4, key:
+              5e415b73
+            label: Link
+            name: 5e415b73
+            widget: string
+          - hint: 'Original link: https://www.freepik.com/, key: -66d21c24'
+            label: Link
+            name: '-66d21c24'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepikcompany.com/legal?_gl=1*npjk46*fp_ga*MTgwMzI3NDYuMTY0NTEwNDg1Mg..*fp_ga_QWX66025LC*MTY0NTExMTY2My4yLjEuMTY0NTExMTk2Mi4zMA..*_ga*MTgwMzI3NDYuMTY0NTEwNDg1Mg..*_ga_18B6QPTJPC*MTY0NTExMTY2My4yLjEuMTY0NTExMTkzNS41Nw..#nav-freepik-license,
+              key: 2dd755bb
+            label: Link
+            name: 2dd755bb
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/charming-relaxed-gentle-young-woman-making-cosmetological-procedure-applying-facial-cream-face-with-fingers-smiling-broadly-feeling-perfect-taking-care-skin_10153435.htm#&position=0&from_view=author,
+              key: 3cc15f59
+            label: Link
+            name: 3cc15f59
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/close-up-portrait-young-female-brunette-student-girl-with-bun-hairstyle-baked-shoulders-looking-aside-with-calm-face-expression-touching-jawline-with-fingers_8687246.htm#&position=28&from_view=author,
+              key: -2d728cc0
+            label: Link
+            name: '-2d728cc0'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/beauty-portrait-feminine-young-woman-looking-away-touching-her-nude-shoulder-isolated-white_6514195.htm#query=woman%20skin%20care&position=3&from_view=search&track=sph,
+              key: 1e2ae3e3
+            label: Link
+            name: 1e2ae3e3
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/naked-young-beautiful-woman-with-natural-make-up-smiling-cosmetology-spa-facial-treatment_9028037.htm,
+              key: 4663b87b
+            label: Link
+            name: 4663b87b
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/beauty-fashion-concept-carefree-beautiful-girl-with-curly-hair-naked-shoulders-smiling_9798855.htm#page=1&position=1&from_view=detail#query=spa%20towels&position=1&from_view=detail,
+              key: -7f81a7ad
+            label: Link
+            name: '-7f81a7ad'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/skin-care-beauty-smiling-natural-woman-with-naked-shoulders-healthy-clean-fresh-skin-looking-happy-touching-cheek-girl-apply-facial-cosmetics-white-wall_16226047.htm#page=1&position=7&from_view=detail#query=spa%20towels&position=7&from_view=detail,
+              key: 26388e13
+            label: Link
+            name: '26388e13'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/woman-with-natural-makeup-healthy-skin-portrait-beautiful-female-model-touching-fresh-glowing-hydrated-facial-skin-white-wall-closeup-skin-care-concept_19050858.htm?query=spa%20towels,
+              key: -72d4c89
+            label: Link
+            name: '-72d4c89'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/close-up-young-beautiful-redhead-woman-smiling-front-touching-perfect-clean-skin-face-looking-happy-standing-naked-white-wall_18947966.htm?query=spa%20towels,
+              key: 688c82ac
+            label: Link
+            name: 688c82ac
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/young-naked-beautiful-girl-with-clean-healthy-skin-hiding-eye-lemon-slice-beauty-spa-cosmetology_8467325.htm,
+              key: 71efb824
+            label: Link
+            name: 71efb824
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/young-beautiful-naked-girl-smiling-hiding-eye-cucumber-slice-white-background-beauty-spa-cosmetology-concept_9028219.htm?query=skin%20care%20lotion%20spa,
+              key: -2970851c
+            label: Link
+            name: '-2970851c'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/beautiful-young-woman-lying-waiting-her-massage-spa-concept_10215479.htm#page=4&query=spa&position=10&from_view=search,
+              key: -743d06cc
+            label: Link
+            name: '-743d06cc'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/beauty-spa_10788374.htm#query=spa%20beauty&position=19&from_view=search,
+              key: -56ff04e3
+            label: Link
+            name: '-56ff04e3'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/spa-concept-jasmine-oil-with-bath-salt-flowers_9555033.htm#query=massage%20oil%20oil%20massage&position=0&from_view=search,
+              key: 892b16d
+            label: Link
+            name: 892b16d
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/two-young-beautiful-smiling-women-white-bathrobes-towels-head_16783001.htm#page=3&query=spa&position=11&from_view=search,
+              key: -4056bd39
+            label: Link
+            name: '-4056bd39'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/spa-composition-with-thai-orchid-flowers-bath-accessories_21289522.htm#page=2&query=spa&position=41&from_view=search,
+              key: -3ce39894
+            label: Link
+            name: '-3ce39894'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/preparation-cosmetic-mask-from-natural-ingredients-facial-skin-care-home_16500247.htm?query=spa,
+              key: 1853dab2
+            label: Link
+            name: 1853dab2
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/spa-treatment-product-female-feet-hand-spa_12985871.htm#page=2&query=massage%20oil%20oil%20massage&position=5&from_view=search,
+              key: 3420023a
+            label: Link
+            name: 3420023a
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/beauty-spa_10788395.htm#query=massage%20spa&position=15&from_view=search,
+              key: -572e6e29
+            label: Link
+            name: '-572e6e29'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/beauty-spa_10788292.htm#query=massage%20oil%20oil%20massage&position=8&from_view=search,
+              key: -6242b510
+            label: Link
+            name: '-6242b510'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/spa-concept-with-jasmine-flowers-white-background-copy-space_9764606.htm#query=massage%20oil%20oil%20massage&position=22&from_view=search#position=22&query=massage%20oil%20oil%20massage,
+              key: 3f4cf81e
+            label: Link
+            name: 3f4cf81e
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/preparation-cosmetic-mask-from-natural-ingredients-facial-skin-care-home-spa-salon_16773256.htm?query=spa%20massage%20skin%20care,
+              key: -39c44d99
+            label: Link
+            name: '-39c44d99'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/world-map-continent-global-support-graphic_17117708.htm?query=google%20map,
+              key: 6e6aca4d
+            label: Link
+            name: 6e6aca4d
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/natural-elements-spa-with-aromatic-incense_4774527.htm#query=spa&position=23&from_view=search,
+              key: 1a4f8f12
+            label: Link
+            name: 1a4f8f12
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/spa-composition-with-body-care-items-light_9510933.htm#query=spa&position=2&from_view=search&track=sph,
+              key: -3a5a9ec3
+            label: Link
+            name: '-3a5a9ec3'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/well-kept-portrait-beautiful-young-woman-white-studio-background-concept-cosmetics-makeup-natural-eco-treatment-skin-care-shiny-healthy-look-fashion-healthcare-copyspace_11530227.htm#query=spa%20girls&position=26&from_view=search&track=sph,
+              key: -781a2ede
+            label: Link
+            name: '-781a2ede'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/spa-composition-with-body-care-items-light-wall_10896470.htm,
+              key: a66f831
+            label: Link
+            name: a66f831
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/beautiful-spa-composition-massage-table-wellness-center-copyspace_9667988.htm#query=spa&position=0&from_view=search&track=sph,
+              key: 34bc04d3
+            label: Link
+            name: 34bc04d3
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/concept-gift-with-basket-cosmetics-close-up_21037210.htm#query=spa%20gift%20certefication&position=2&from_view=search&track=ais,
+              key: 7459be1b
+            label: Link
+            name: 7459be1b
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/spa-accessories-white-textured-table-close-up_21729366.htm?query=spa%20candle%20massage,
+              key: -4957be77
+            label: Link
+            name: '-4957be77'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/portrait-young-happy-asian-lady-bathrobeisolated-white-background_26565839.htm#query=spa%20resort&position=44&from_view=search#position=44&query=spa%20resort,
+              key: 252959ea
+            label: Link
+            name: 252959ea
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/beautiful-young-woman-lying-waiting-her-massage-spa-concept_10215324.htm#query=spa%20resort&position=22&from_view=search,
+              key: 3d48a2dc
+            label: Link
+            name: 3d48a2dc
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/beauty-portrait-calm-ginger-woman-with-long-hair-lying-mirror-table-with-bottle-lotion-while-looking_6514876.htm?query=Spa,
+              key: 52e23f63
+            label: Link
+            name: 52e23f63
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-psd/template-smiling-woman-spa-after-massage_5437526.htm#page=2&query=Spa&position=4&from_view=search,
+              key: 7b46513
+            label: Link
+            name: 7b46513
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/spa-massage-young-woman-with-facial-mask-face-indoors_11961578.htm#page=71&query=spa%20salon&position=15&from_view=search,
+              key: -4275fdf3
+            label: Link
+            name: '-4275fdf3'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/beauty-spa_10788319.htm#query=spa&position=23&from_view=search,
+              key: -6d838dea
+            label: Link
+            name: '-6d838dea'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/woman-receiving-beauty-treatment-skin-care_10211589.htm#page=2&query=spa&position=38&from_view=search,
+              key: 44a227ce
+            label: Link
+            name: 44a227ce
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/honey-pouring-woman-s-naked-back-spa-salon_8224567.htm#query=spa&position=26&from_view=search,
+              key: 5e7510c1
+            label: Link
+            name: 5e7510c1
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/refined-woman-sitting-bath-nature-background-wonderful-caucasian-lady-relaxing-during-spa-drinking-tea_13467773.htm?query=spa,
+              key: -688ce099
+            label: Link
+            name: '-688ce099'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/sensual-white-woman-with-blonde-hair-drinking-tea-bath-amazing-tanned-lady-doing-spa-with-eyes-closed-enjoying-coffee_13467764.htm#query=spa&position=37&from_view=search,
+              key: -74d37f7
+            label: Link
+            name: '-74d37f7'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/woman-relaxing-bath-with-bubbles_10705060.htm?query=spa,
+              key: 51f1e7c3
+            label: Link
+            name: 51f1e7c3
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/young-woman-having-face-massage-relaxing-spa-salon_8224621.htm#query=spa&position=1&from_view=search,
+              key: -65dc3394
+            label: Link
+            name: '-65dc3394'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/young-woman-relaxing-spa-salon_8224702.htm#query=spa&position=2&from_view=search,
+              key: 44ffed45
+            label: Link
+            name: 44ffed45
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.freepik.com/free-photo/woman-relaxing-spa_12930395.htm#query=spa%20massage&position=3&from_view=search,
+              key: 5f18b736
+            label: Link
+            name: 5f18b736
+            widget: string
+          - hint: 'Original link: https://www.pinterest.com/, key: 176a1ee8'
+            label: Link
+            name: 176a1ee8
+            widget: string
+          - hint: 'Original link: https://dribbble.com, key: -60c90cbe'
+            label: Link
+            name: '-60c90cbe'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.google.com/maps/d/viewer?ie=UTF8&hl=en&msa=0&z=7&mid=14jEeIQ7yyKK7iih9Sl_AjR7jZf0&ll=51.470910462064595%2C-0.2021954999999931,
+              key: -48890e16
+            label: Link
+            name: '-48890e16'
+            widget: string
+          - hint: 'Original link: #pricing, key: 2101c243'
+            label: Link
+            name: 2101c243
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: 75bd736e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 66ac15fc
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1771a22
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: icf59be
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4ee87222
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 30b80f62
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 45fdb122
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2f583062
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i7fa3820
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2da63c1a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i5a2fe5fe
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i56fbad57
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i294352ef
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i2af82b8e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i7de95822
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i59d1e0b0
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 102a2d90
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 140bf332
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i55742c1e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: e7b6c3c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i62a2edbe
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i2509c9df
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 659d3b32
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i2711f118
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i242a95a6
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 12ce7718
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i559f6280
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i778d041a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i57338d1e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i14752f3e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i117a849e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i215655de
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7760bec0
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i7e8320f4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i17fc8bbe
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 230408c2
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6d4d3eca
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i612a417e
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow
