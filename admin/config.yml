@@ -1824,17 +1824,17 @@ collections:
             label: Text
             name: 4f8bb52b
             widget: string
-          - hint: 'Original text: $129, key: 111b94'
+          - hint: 'Original text: $130, key: 111baa'
             label: Text
-            name: 111b94
+            name: 111baa
             widget: string
           - hint: 'Original text: 60 Minutes, key: -cd602a7'
             label: Text
             name: '-cd602a7'
             widget: string
-          - hint: 'Original text: (or $199 for 90 minutes), key: -69e5b82'
+          - hint: 'Original text: (or $200 for 90 minutes), key: 7f2451f'
             label: Text
-            name: '-69e5b82'
+            name: 7f2451f
             widget: string
           - hint: 'Original text: Everything in Full Body Massage, key: -38dec830'
             label: Text
@@ -1860,9 +1860,9 @@ collections:
             label: Text
             name: 164da9fc
             widget: string
-          - hint: 'Original text: ($65 for 60min, $99 for 90min), key: -60f1f12f'
+          - hint: 'Original text: ($65 for 60min, $100 for 90min), key: 69ffd308'
             label: Text
-            name: '-60f1f12f'
+            name: 69ffd308
             widget: string
           - hint: 'Original text: Reflexology Massage, key: 3726e6a3'
             label: Text
