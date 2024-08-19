@@ -18,20 +18,17 @@
   <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/bliss-spa?hide_gdpr_banner=1&primary_color=8ca472', text: 'Book an Appointment', color: '#8ca472', textColor: '#ffffff', branding: true }); }</script>
 {{ settings.site.header_additional_content }}{%- include "partials/_site-css-variables" -%}<style>.w-video.w-embed {
             aspect-ratio: 16 / 9;
-        }</style><style>picture { border: 0;
-        max-width: 100%;
-        vertical-align: middle;
-        display: inline-block; }</style></head>
+        }</style></head>
 <body class="body-with-background">
   <div data-animation="over-left" class="navbar-fixed-2 w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1">
     <div class="nav-container-2 w-container">
       <div class="nav-menu-wrapper-2">
-        <a href="{{ links.2f }}" class="brand-bliss w-nav-brand">{%- image "/assets/images/bliss-logo-green_1bliss-logo-green.webp", "", '[]', 'loading="lazy" class="image-bliss"' -%}</a>
+        <a href="{{ links.2f }}" class="brand-bliss w-nav-brand"><img src="{{ images.-7dcfea60.url }}" loading="lazy" alt="{{ images.-7dcfea60.alt | escape }}" class="image-bliss"></a>
         <nav role="navigation" class="nav-menu-2 w-nav-menu">
           <div class="nav-menu-shadow-overlay-2">
             <div class="tablet-menu-2">
-              <a href="{{ links.2f }}" class="logo-mobile-2 w-nav-brand">{%- image "/assets/images/bliss-logo-green_1bliss-logo-green.webp", "", '[]', 'loading="lazy" class="image-bliss"' -%}</a>
-              <div class="close-menu-button-2 w-nav-button">{%- image "/assets/images/close-orange_1close-orange.png", "", '[]', 'loading="lazy" class="nav-close-icon-2"' -%}{%- image "/assets/external/62849b600f97da9768555b15_x_icon.png", "", '[]', 'loading="lazy" class="nav-close-icon-copy"' -%}</div>
+              <a href="{{ links.2f }}" class="logo-mobile-2 w-nav-brand"><img src="{{ images.-7dcfea60.url }}" loading="lazy" alt="{{ images.-7dcfea60.alt | escape }}" class="image-bliss"></a>
+              <div class="close-menu-button-2 w-nav-button"><img src="{{ images.-2255cf73.url }}" loading="lazy" alt="{{ images.-2255cf73.alt | escape }}" class="nav-close-icon-2"><img src="{{ images.-22d7d66a.url }}" loading="lazy" alt="{{ images.-22d7d66a.alt | escape }}" class="nav-close-icon-copy"></div>
             </div>
             <div data-hover="true" data-delay="0" data-w-id="a8f0933c-9ad7-d893-43d6-a40b5832b6ad" class="nav-dropdown-2 w-dropdown">
               <div class="nav-dropdown-toggle-2 w-dropdown-toggle">
@@ -322,8 +319,8 @@
     <div class="base-container w-container">
       <div class="blog-template-wrapper">
         {%- assign posts-categoriesOfBlog-posts = f_category | resolveReference -%}<a href="{{ posts-categoriesOfBlog-posts.url }}" class="blog-sidebar-post-category">{{ posts-categoriesOfBlog-posts.data.title }}</a>
-        <h1>{{ title }}</h1>
-        <p class="blog-template-date">{{ created-on | formatDate: "MMMM d, yyyy" }}</p>{%- image f_main-image-2.url, f_main-image-2.alt, '[]', 'loading="lazy" class="blog-template-image"' -%}
+        <h1 class=""></h1>
+        <p class="blog-template-date"></p><img alt="{{ images.0.alt | escape }}" loading="lazy" src="{{ images.0.url }}" class="blog-template-image">
         <div class="rich-text-style w-richtext">{{ content | markdown }}</div>
         <div class="blog-template-pagination">
           <div class="blog-template-prev-button">
@@ -331,15 +328,15 @@
               <p style="color:rgb(253,105,50);-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="prev-post-arrow">{{ texts.f060 }}</p>
               <div>
                 <p>{{ texts.1c444009 }}</p>
-                {%- assign blog-postsOfBlog-posts = f_previous-post | resolveReference -%}<h5 style="color:rgb(253,105,50)" class="blog-details-link-title">{{ blog-postsOfBlog-posts.data.title }}</h5>
+                <h5 style="color:rgb(253,105,50)" class="blog-details-link-title"></h5>
               </div>
             </a>
-          </div>{%- image "/assets/images/3_13.png", "", '[]', 'loading="lazy" class="blog-template-pagination-icon"' -%}
+          </div><img src="{{ images.6bdc003.url }}" loading="lazy" alt="{{ images.6bdc003.alt | escape }}" class="blog-template-pagination-icon">
           <div class="blog-template-next-button">
             {%- assign blog-postsOfBlog-posts = f_next-post | resolveReference -%}<a data-w-id="a0533b00-24ef-faa4-daa0-c501b1c13abd" href="{{ blog-postsOfBlog-posts.url }}" class="blog-template-pagination-link w-inline-block">
               <div class="blog-template-next">
                 <p>{{ texts.-437a0273 }}</p>
-                {%- assign blog-postsOfBlog-posts = f_next-post | resolveReference -%}<h5 style="color:rgb(253,105,50)" class="blog-details-link-title">{{ blog-postsOfBlog-posts.data.title }}</h5>
+                <h5 style="color:rgb(253,105,50)" class="blog-details-link-title"></h5>
               </div>
               <p style="color:rgb(253,105,50);-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="next-post-arrow">{{ texts.f061 }}</p>
             </a>
@@ -402,10 +399,10 @@
       </div>
     </div>
   </div>
-  <a href="{{ links.53ab78d8 }}" target="_blank" class="buy-this-template w-inline-block">{%- image "/assets/images/webflow-logo.svg", "", '[]', 'loading="lazy" class="btn-icon"' -%}
+  <a href="{{ links.53ab78d8 }}" target="_blank" class="buy-this-template w-inline-block"><img src="{{ images.-70c5d55a.url }}" loading="lazy" alt="{{ images.-70c5d55a.alt | escape }}" class="btn-icon">
     <div class="text-block">{{ texts.-28239c5e }}</div>
   </a>
-  <a href="{{ links.4ae71637 }}" target="_blank" class="all-templates w-inline-block">{%- image "/assets/images/wcopilot.svg", "", '[]', 'loading="lazy" width="16" class="btn-icon"' -%}
+  <a href="{{ links.4ae71637 }}" target="_blank" class="all-templates w-inline-block"><img src="{{ images.-114e4c7b.url }}" loading="lazy" width="16" alt="{{ images.-114e4c7b.alt | escape }}" class="btn-icon">
     <div>{{ texts.1570db3a }}</div>
   </a>
   <div class="hire-popup">
@@ -420,7 +417,7 @@
           <div>{{ texts.-7eb4752d }}</div>
         </a>
       </div>
-      <div data-w-id="6ca11bc6-470f-5429-795a-b60df65e9c7f" class="hire-popup-close">{%- image "/assets/images/close-pop-up.svg", "", '[]', 'loading="lazy" class="close-popup-image"' -%}</div>
+      <div data-w-id="6ca11bc6-470f-5429-795a-b60df65e9c7f" class="hire-popup-close"><img src="{{ images.ab969c.url }}" loading="lazy" alt="{{ images.ab969c.alt | escape }}" class="close-popup-image"></div>
     </div>
   </div>
   <script src="/assets/external/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" crossorigin="anonymous"></script>
